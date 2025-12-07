@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crypto Panic Meter – Official App Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Crypto Panic Meter – a fun, simple app that shows the emotional side of the crypto market with a live panic meter, BTC/ETH/SOL prices, and daily humor."
+  />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --card: #f9fafb;
+      --border: #e5e7eb;
+      --chip-bg: #eff6ff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #020617;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --accent-soft: #0b1220;
+        --card: #020617;
+        --border: #111827;
+        --chip-bg: #020617;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3.5rem;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      max-width: 34rem;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border-radius: 1.25rem;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      max-width: 360px;
+    }
+
+    .hero-meter-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-meter-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .hero-meter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.7rem;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #b91c1c;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-meter-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .hero-links a {
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero-links a:hover {
+      text-decoration: underline;
+    }
+
+    .store-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #030712;
+      color: #f9fafb;
+      font-size: 0.8rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .store-button span:first-child {
+      font-size: 1.3rem;
+    }
+
+    section {
+      margin-top: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .feature-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .pill {
+      padding: 0.1rem 0.6rem;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .small {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 2rem 1.25rem 3rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .hero-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <span class="badge">iOS • Crypto • Fun</span>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Crypto Panic Meter</h1>
+          <p class="hero-subtitle">
+            A fun way to check the emotional side of the crypto market. Watch the
+            panic needle move with BTC, get daily panic quotes, and laugh through
+            volatility instead of stressing over it.
+          </p>
+
+          <div class="hero-links">
+            <!-- Replace href with your real App Store URL -->
+            <a class="store-button" href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">
+              <span></span>
+              <span>Download on the<br />App Store</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@cryptopanicguy" target="_blank" rel="noopener noreferrer">
+              @CryptoPanicGuy on TikTok
+            </a>
+
+            <a href="https://cryptopanicreport.substack.com" target="_blank" rel="noopener noreferrer">
+              Crypto Panic Report (Substack)
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-meter-label">Today’s Panic Level</div>
+          <div class="hero-meter-value">73 / 100</div>
+          <div class="hero-meter-pill">
+            😱 High Panic
+          </div>
+          <p class="hero-meter-caption">
+            The app turns real BTC market moves into a simple, animated panic meter with humor and personality.
+          </p>
+        </aside>
+      </div>
+    </header>
+
+    <section id="features">
+      <h2>What the app does</h2>
+      <p>
+        Crypto Panic Meter is a lightweight iOS app that turns crypto volatility into an emotional “panic meter.”
+        Instead of staring at complex charts, you get a quick visual sense of how nervous or calm the market feels,
+        boosted with short, funny lines from CryptoPanicGuy.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-title">Live Panic Meter</div>
+          <p class="feature-body">
+            See a simple animated gauge that reacts to Bitcoin’s price movement. Calm, concern, panic, or full meltdown—
+            the meter gives you the mood at a glance.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-title">Daily Panic Quotes</div>
+          <p class="feature-body">
+            Get short, meme-style lines from CryptoPanicGuy that match the current mood. Designed to make you smile,
+            even when the market looks brutal.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-title">Live Crypto Prices (Pro)</div>
+          <p class="feature-body">
+            Upgrade to Panic Pro to unlock live BTC, ETH, and SOL prices directly inside the app, next to the panic
+            meter and mood.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-title">Theme Moods</div>
+          <p class="feature-body">
+            Switch between Standard, Calm, and Crazy themes so the app matches your current emotional state—or the
+            market’s.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <h2>Free vs Panic Pro</h2>
+      <div class="columns">
+        <div>
+          <h3>Free Version</h3>
+          <p class="small">
+            The free version of Crypto Panic Meter gives you the core experience:
+          </p>
+          <ul class="small">
+            <li>Animated panic meter based on Bitcoin movement</li>
+            <li>Basic daily panic messages</li>
+            <li>Theme selection between Standard, Calm, and Crazy</li>
+            <li>No login, no account, no personal data collection</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Panic Pro (Subscription)</h3>
+          <p class="small">
+            Panic Pro is an optional, low-cost subscription that unlocks more content and data:
+          </p>
+          <ul class="small">
+            <li>Live BTC, ETH &amp; SOL prices in the main view</li>
+            <li>Expanded library of dark humor and panic quotes</li>
+            <li>Additional mood and visual refinements over time</li>
+            <li>Support ongoing development of new features and memes</li>
+          </ul>
+          <p class="small">
+            Subscriptions are handled securely via Apple’s App Store and can be managed from your device settings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="who">
+      <h2>Who it’s for</h2>
+      <p>
+        Crypto Panic Meter is for:
+      </p>
+      <ul class="small">
+        <li>Crypto investors who want a simple emotional dashboard instead of 10 different charts</li>
+        <li>People who enjoy memes and want to make volatility feel less intimidating</li>
+        <li>Anyone who follows BTC and likes to laugh about the ups and downs</li>
+      </ul>
+
+      <div class="pill-row">
+        <span class="pill">No financial advice</span>
+        <span class="pill">No trading signals</span>
+        <span class="pill">Just emotional flavor</span>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy &amp; data</h2>
+      <p class="small">
+        Crypto Panic Meter does not collect personally identifiable information. All app state (such as theme and
+        cached data) is stored locally on your device. Purchases are processed by Apple, and we never see your payment
+        details.
+      </p>
+      <p class="small">
+        For full details, please see our
+        <a href="https://erascopia.github.io/privacy_policy.html" target="_blank" rel="noopener noreferrer">
+          Privacy Policy
+        </a>.
+      </p>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <p class="small"><strong>Does the app give trading advice?</strong><br />
+        No. Crypto Panic Meter is for entertainment and mood-checking only. It does not provide trading signals or
+        financial advice.</p>
+
+      <p class="small"><strong>Do I need an account?</strong><br />
+        No account or signup is required. You can install the app and start using it immediately.</p>
+
+      <p class="small"><strong>Can I use it without a subscription?</strong><br />
+        Yes. The free version includes the core panic meter experience. Panic Pro is optional and adds extra data and
+        content.</p>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> Crypto Panic Meter / EraScopia</span>
+      <span>
+        Contact:
+        <a href="mailto:erascopia@gmail.com">erascopia@gmail.com</a>
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    // Simple year injection for footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
