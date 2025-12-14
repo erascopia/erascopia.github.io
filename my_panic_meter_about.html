@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#05070D" />
+  <title>Panic Meter — Support</title>
+  <meta name="description" content="Support page for Panic Meter — on-device panic scoring from voice or text. FAQs, troubleshooting, subscriptions, and contact." />
+  <style>
+    :root{
+      --bg:#05070D;
+      --card:#0B1020;
+      --card2:#090D18;
+      --ink:#EAF0FF;
+      --muted:#9AA7C2;
+      --line:rgba(255,255,255,.08);
+      --glow1:rgba(120,190,255,.28);
+      --glow2:rgba(120,255,240,.12);
+      --accent:#7BC6FF;
+      --accent2:#9AF7E7;
+      --danger:#FF5C7A;
+      --ok:#7CFFB2;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 600px at 15% 20%, rgba(123,198,255,.14), transparent 65%),
+        radial-gradient(800px 520px at 75% 15%, rgba(154,247,231,.10), transparent 60%),
+        radial-gradient(980px 760px at 50% 95%, rgba(140,120,255,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* Ambient "contained substance" background */
+    .ambient{
+      position:fixed; inset:-40px;
+      pointer-events:none;
+      filter: blur(30px);
+      opacity:.85;
+      transform: translateZ(0);
+    }
+    .blob{
+      position:absolute;
+      width:560px;height:560px;
+      left:50%;top:18%;
+      transform: translate(-50%,0);
+      border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), transparent 45%),
+        radial-gradient(circle at 50% 55%, rgba(123,198,255,.22), transparent 55%),
+        radial-gradient(circle at 60% 60%, rgba(154,247,231,.14), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(20,60,140,.25), transparent 65%);
+      animation: float 10s ease-in-out infinite, morph 14s ease-in-out infinite;
+      box-shadow: 0 0 180px rgba(123,198,255,.18);
+      mix-blend-mode: screen;
+    }
+    .blob.b2{
+      width:420px;height:420px;
+      left:18%;top:55%;
+      opacity:.55;
+      background:
+        radial-gradient(circle at 38% 35%, rgba(255,255,255,.25), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(154,247,231,.14), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(123,198,255,.10), transparent 70%);
+      animation-duration: 13s, 18s;
+    }
+    .blob.b3{
+      width:380px;height:380px;
+      left:82%;top:62%;
+      opacity:.45;
+      animation-duration: 15s, 20s;
+    }
+    @keyframes float{
+      0%,100%{transform:translate(-50%,0) translateY(0)}
+      50%{transform:translate(-50%,0) translateY(16px)}
+    }
+    @keyframes morph{
+      0%,100%{border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%}
+      50%{border-radius: 58% 42% 48% 52% / 45% 58% 42% 55%}
+    }
+
+    .wrap{
+      width:min(1120px, calc(100% - 48px));
+      margin:0 auto;
+      position:relative;
+      padding: 28px 0 80px;
+    }
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;
+      position:sticky;top:0;
+      padding: 14px 0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(5,7,13,.75), rgba(5,7,13,.15));
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+    }
+    .mark{
+      width:40px;height:40px;border-radius:14px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.55), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(123,198,255,.28), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(154,247,231,.18), transparent 70%),
+        rgba(12,18,38,.92);
+      box-shadow: 0 10px 36px rgba(0,0,0,.5), 0 0 32px rgba(123,198,255,.20);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brand h1{
+      font-size:14px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin:0;
+      color:rgba(234,240,255,.92);
+    }
+    .brand .sub{
+      font-size:12px;
+      margin:2px 0 0;
+      color:var(--muted);
+    }
+    nav{
+      display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      color:rgba(234,240,255,.85);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.45);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:12px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+    nav a:hover{
+      transform: translateY(-1px);
+      background: rgba(11,16,32,.70);
+      border-color: rgba(123,198,255,.35);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      padding: 34px 0 18px;
+      align-items:center;
+    }
+    .hero h2{
+      margin:0 0 10px;
+      font-size:40px;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .hero p{
+      margin:0 0 16px;
+      color:rgba(234,240,255,.78);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 54ch;
+    }
+    .hero .pillrow{
+      display:flex;gap:10px;flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.52);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:12px;
+      color: rgba(234,240,255,.82);
+      box-shadow: 0 14px 40px rgba(0,0,0,.28);
+    }
+    .cta{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(11,16,32,.70);
+      color: rgba(234,240,255,.92);
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(123,198,255,.45); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(123,198,255,.22), rgba(154,247,231,.10));
+      border-color: rgba(123,198,255,.45);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn.primary:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(280px 120px at 20% 0%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(220px 120px at 80% 100%, rgba(154,247,231,.10), transparent 65%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .btn small{opacity:.7;font-weight:500}
+    .card{
+      background: linear-gradient(180deg, rgba(11,16,32,.78), rgba(9,13,24,.72));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(680px 220px at 20% 10%, rgba(123,198,255,.12), transparent 55%),
+        radial-gradient(520px 260px at 85% 40%, rgba(154,247,231,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .card .inner{
+      position:relative;
+      padding: 18px;
+    }
+    .mock{
+      height: 320px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(123,198,255,.20), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(154,247,231,.12), transparent 70%),
+        rgba(7,10,18,.75);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 18px 70px rgba(0,0,0,.55);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .mock .mini-blob{
+      width: 180px;height:180px;border-radius: 55% 45% 52% 48% / 45% 55% 45% 55%;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.55), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(123,198,255,.22), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(154,247,231,.14), transparent 70%),
+        rgba(12,18,38,.88);
+      box-shadow: 0 0 60px rgba(123,198,255,.22);
+      animation: morph 12s ease-in-out infinite;
+      filter: blur(.2px);
+    }
+    .mock .scan{
+      position:absolute; inset:0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.045) 0px,
+        rgba(255,255,255,.045) 1px,
+        transparent 6px,
+        transparent 12px
+      );
+      opacity:.16;
+      mix-blend-mode: overlay;
+      transform: translateY(-18px);
+      animation: scan 6.5s ease-in-out infinite;
+    }
+    @keyframes scan{
+      0%,100%{transform:translateY(-18px)}
+      50%{transform:translateY(18px)}
+    }
+    .mock .label{
+      position:absolute; bottom:14px; left:14px; right:14px;
+      display:flex; justify-content:space-between; align-items:center;
+      color: rgba(234,240,255,.78);
+      font-size:12px;
+    }
+    .badge{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.55);
+      color: rgba(234,240,255,.86);
+      font-size:12px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .span6{grid-column: span 6}
+    .span4{grid-column: span 4}
+    .span8{grid-column: span 8}
+    .span12{grid-column: span 12}
+
+    .section{
+      margin-top: 22px;
+    }
+    .section h3{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: .02em;
+    }
+    .section p, .section li{
+      color: rgba(234,240,255,.78);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.50);
+      border-radius: 16px;
+      padding: 12px 14px;
+      overflow:hidden;
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;align-items:center;justify-content:space-between;
+      gap: 10px;
+      font-weight:600;
+      color: rgba(234,240,255,.92);
+    }
+    summary::-webkit-details-marker{display:none}
+    summary .chev{
+      width:10px;height:10px; border-right:2px solid rgba(234,240,255,.75);
+      border-bottom:2px solid rgba(234,240,255,.75);
+      transform: rotate(45deg);
+      transition: transform .2s ease;
+      flex:0 0 auto;
+      margin-left: 6px;
+    }
+    details[open] summary .chev{ transform: rotate(225deg); }
+    .note{
+      margin-top:10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(9,13,24,.55);
+      color: rgba(234,240,255,.78);
+    }
+    .note strong{color: rgba(234,240,255,.92)}
+    .k{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color: rgba(234,240,255,.85);
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .list{
+      margin: 0;
+      padding-left: 18px;
+    }
+    .hr{
+      height:1px;
+      background: rgba(255,255,255,.08);
+      margin: 18px 0;
+    }
+
+    footer{
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(154,167,194,.85);
+      font-size: 12px;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    footer a{color: rgba(234,240,255,.78); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    .fineprint{
+      color: rgba(154,167,194,.85);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 940px){
+      .hero{grid-template-columns: 1fr; padding-top: 22px;}
+      .grid{grid-template-columns: repeat(6, 1fr);}
+      .span8{grid-column: span 6}
+      .span6{grid-column: span 6}
+      .span4{grid-column: span 6}
+      header{position:relative; backdrop-filter:none}
+      nav{justify-content:flex-start}
+      .two{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand" aria-label="Panic Meter">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>Panic Meter</h1>
+          <div class="sub">Support • FAQs • Privacy • Subscriptions</div>
+        </div>
+      </div>
+
+      <nav aria-label="Page navigation">
+        <a href="#support">Support</a>
+        <a href="#faq">FAQ</a>
+        <a href="#subscriptions">Subscriptions</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="support">
+      <div>
+        <h2>Support for Panic Meter</h2>
+        <p>
+          Panic Meter turns short voice or text input into a simple <strong>0–10 panic score</strong> —
+          fast, private, and designed to feel like a premium on-device companion.
+        </p>
+        <p>
+          The app provides descriptive reflection of emotional intensity signals. It does not provide medical advice or diagnosis.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">On-device processing</span>
+          <span class="pill">Voice or text input</span>
+          <span class="pill">Free: score • Pro: context + mood</span>
+          <span class="pill">No accounts</span>
+        </div>
+
+        <div class="cta">
+          <!-- Replace with your App Store link -->
+          <a class="btn primary" href="#" aria-label="Download Panic Meter">
+            Download on the App Store <small>→</small>
+          </a>
+          <a class="btn" href="#contact">Contact Support</a>
+        </div>
+
+        <div class="note" style="margin-top:14px">
+          <strong>Quick help:</strong>
+          If your panic score always shows <span class="k">0</span>, check that you entered text (not empty) and tap <span class="k">Analyze</span> after typing.
+          For voice input, confirm microphone permission is enabled.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="inner">
+          <div class="mock" role="img" aria-label="Panic Meter preview">
+            <div class="scan" aria-hidden="true"></div>
+            <div class="mini-blob" aria-hidden="true"></div>
+            <div class="label">
+              <span class="badge">On device</span>
+              <span class="badge">0–10 panic score</span>
+            </div>
+          </div>
+          <p class="fineprint" style="margin:12px 2px 0">
+            Tip: Use a short sentence like “I’m overwhelmed” or “Everything is fine” to test. Pro adds mood labels and short descriptive notes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <div class="card span4">
+          <div class="inner">
+            <h3>Getting started</h3>
+            <ul class="list">
+              <li>Tap the mic button to record a short entry.</li>
+              <li>Or type directly into the text box.</li>
+              <li>Tap <span class="k">Analyze</span> to view your panic score.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card span4">
+          <div class="inner">
+            <h3>Troubleshooting</h3>
+            <ul class="list">
+              <li>Mic not working? Check <span class="k">Settings → Privacy → Microphone</span>.</li>
+              <li>No result? Ensure your entry isn’t empty.</li>
+              <li>Pro not unlocking? Use <span class="k">Restore Purchases</span>.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card span4">
+          <div class="inner">
+            <h3>What Pro adds</h3>
+            <ul class="list">
+              <li>Descriptive context notes</li>
+              <li>Mood label (tone-based)</li>
+              <li>Ambient listening sessions</li>
+              <li>Theme & UI options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h3>FAQ</h3>
+
+      <details>
+        <summary>Does the app store or upload my voice/text? <span class="chev" aria-hidden="true"></span></summary>
+        <p>
+          Panic Meter is designed for privacy. Processing is intended to run on device. If you choose to share diagnostic logs with support,
+          only the information you explicitly send is shared.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why does my panic score show 0? <span class="chev" aria-hidden="true"></span></summary>
+        <p>
+          Most commonly, the input is empty or not submitted. Type a short entry and tap <span class="k">Analyze</span>.
+          For voice input, confirm microphone permission is enabled and try a longer phrase.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is this medical or diagnostic? <span class="chev" aria-hidden="true"></span></summary>
+        <p>
+          No. Panic Meter provides a descriptive reflection of intensity signals in your input.
+          It does not provide medical advice, diagnosis, or treatment recommendations.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I restore Pro after reinstalling? <span class="chev" aria-hidden="true"></span></summary>
+        <p>
+          Open the app → Paywall → tap <span class="k">Restore Purchases</span>.
+          Make sure you’re signed in with the same Apple ID used to purchase.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I cancel a subscription? <span class="chev" aria-hidden="true"></span></summary>
+        <p>
+          Subscriptions are managed by Apple. Go to <span class="k">Settings → Apple ID → Subscriptions</span> and choose Panic Meter.
+          Cancel anytime (access remains until the end of the billing period).
+        </p>
+      </details>
+    </section>
+
+    <section class="section" id="subscriptions">
+      <div class="grid">
+        <div class="card span6">
+          <div class="inner">
+            <h3>Subscriptions</h3>
+            <p>
+              Pro is optional and provides expanded context, mood labels, ambient listening, and customization.
+              Subscriptions auto-renew unless canceled at least 24 hours before the end of the current period.
+            </p>
+            <div class="note">
+              <strong>Billing & renewal:</strong> Payment is charged to your Apple ID at confirmation of purchase.
+              Renewal is charged within 24 hours prior to the end of the current period.
+            </div>
+          </div>
+        </div>
+
+        <div class="card span6">
+          <div class="inner">
+            <h3>Restore purchases</h3>
+            <p>
+              If Pro doesn’t unlock after purchase, tap <span class="k">Restore Purchases</span> on the paywall.
+              Ensure you’re logged into the same Apple ID.
+            </p>
+            <div class="hr"></div>
+            <p class="fineprint">
+              Terms of Use (EULA): <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple Standard EULA</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="privacy">
+      <div class="card">
+        <div class="inner">
+          <h3>Privacy</h3>
+          <div class="two">
+            <div>
+              <p>
+                Panic Meter is built to feel personal and private. The intended design is on-device analysis of your input and a simple output:
+                a 0–10 score, and (for Pro) a descriptive note and mood label.
+              </p>
+              <p class="fineprint">
+                This app is a reflective tool and does not provide medical advice or diagnosis.
+              </p>
+            </div>
+            <div>
+              <p><strong>Common permission:</strong> Microphone (for voice entry).</p>
+              <p><strong>Recommended:</strong> Keep your iOS updated for best speech recognition accuracy.</p>
+              <p class="fineprint">
+                If you need a full Privacy Policy, add a <span class="k">privacy.html</span> page or link here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="grid">
+        <div class="card span8">
+          <div class="inner">
+            <h3>Contact support</h3>
+            <p>
+              Email us and include: device model, iOS version, and what you expected vs what happened.
+              If you can, attach a screenshot.
+            </p>
+            <!-- Replace email address -->
+            <p><strong>Email:</strong> <a href="mailto:support@cryptopanicguy.com">support@cryptopanicguy.com</a></p>
+            <p class="fineprint">
+              We reply as fast as possible. For subscription issues, include whether you purchased Monthly or Yearly.
+            </p>
+          </div>
+        </div>
+
+        <div class="card span4">
+          <div class="inner">
+            <h3>Links</h3>
+            <ul class="list">
+              <li><a href="#" style="color:rgba(234,240,255,.85)">App Store</a></li>
+              <li><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener" style="color:rgba(234,240,255,.85)">Terms of Use (EULA)</a></li>
+              <li><a href="#privacy" style="color:rgba(234,240,255,.85)">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span>My Panic Meter / EraScopia</span>
+      <span>
+        Contact:
+        <a href="mailto:erascopia@gmail.com">erascopia@gmail.com</a>
+      </span>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </div>
+</body>
+</html>
+
