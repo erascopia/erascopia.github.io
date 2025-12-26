@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#05070D" />
+  <title>cadency — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for cadency — a social posting helper with reminders and planning windows." />
+
+  <style>
+    :root{
+      --bg:#05070D;
+      --card:#0B1020;
+      --card2:#090D18;
+      --ink:#EAF0FF;
+      --muted:#9AA7C2;
+      --line:rgba(255,255,255,.10);
+      --glow1:rgba(120,190,255,.26);
+      --glow2:rgba(154,247,231,.12);
+      --accent:#7BC6FF;
+      --accent2:#9AF7E7;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 600px at 15% 20%, rgba(123,198,255,.14), transparent 65%),
+        radial-gradient(800px 520px at 75% 15%, rgba(154,247,231,.10), transparent 60%),
+        radial-gradient(980px 760px at 50% 95%, rgba(140,120,255,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    .ambient{position:fixed; inset:-40px; pointer-events:none; filter:blur(30px); opacity:.85; transform:translateZ(0)}
+    .blob{
+      position:absolute; width:520px; height:520px; left:50%; top:12%;
+      transform:translate(-50%,0);
+      border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.32), transparent 45%),
+        radial-gradient(circle at 50% 55%, rgba(123,198,255,.22), transparent 55%),
+        radial-gradient(circle at 60% 60%, rgba(154,247,231,.13), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(20,60,140,.22), transparent 65%);
+      animation: float 10s ease-in-out infinite, morph 14s ease-in-out infinite;
+      box-shadow: 0 0 180px rgba(123,198,255,.16);
+      mix-blend-mode: screen;
+    }
+    .blob.b2{width:420px;height:420px; left:18%; top:60%; opacity:.55; animation-duration:13s,18s}
+    .blob.b3{width:360px;height:360px; left:84%; top:62%; opacity:.45; animation-duration:15s,20s}
+    @keyframes float{
+      0%,100%{transform:translate(-50%,0) translateY(0)}
+      50%{transform:translate(-50%,0) translateY(16px)}
+    }
+    @keyframes morph{
+      0%,100%{border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%}
+      50%{border-radius: 58% 42% 48% 52% / 45% 58% 42% 55%}
+    }
+
+    .wrap{width:min(980px, calc(100% - 48px)); margin:0 auto; position:relative; padding: 28px 0 90px;}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      position:sticky; top:0; z-index:10;
+      padding:14px 0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(5,7,13,.78), rgba(5,7,13,.15));
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{
+      width:40px;height:40px;border-radius:14px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.55), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(123,198,255,.28), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(154,247,231,.18), transparent 70%),
+        rgba(12,18,38,.92);
+      box-shadow: 0 10px 36px rgba(0,0,0,.5), 0 0 32px rgba(123,198,255,.20);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brand h1{font-size:14px; letter-spacing:.18em; text-transform:uppercase; margin:0; color:rgba(234,240,255,.92)}
+    .brand .sub{font-size:12px; margin:2px 0 0; color:var(--muted)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      text-decoration:none; color:rgba(234,240,255,.85);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.45);
+      padding:10px 12px; border-radius: 999px;
+      font-size:12px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+    nav a:hover{transform: translateY(-1px); background: rgba(11,16,32,.70); border-color: rgba(123,198,255,.35)}
+
+    .hero{padding: 30px 0 10px; display:grid; grid-template-columns: 1fr; gap: 14px;}
+    .title{margin:0; font-size:40px; line-height:1.05; letter-spacing:-.02em;}
+    .lede{
+      margin:0;
+      color:rgba(234,240,255,.78);
+      font-size:16px;
+      line-height:1.6;
+      max-width: 74ch;
+    }
+    .meta{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 4px;}
+    .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.52);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:12px;
+      color: rgba(234,240,255,.82);
+      box-shadow: 0 14px 40px rgba(0,0,0,.28);
+    }
+    .pill code{
+      font-family:var(--mono);
+      font-size:12px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px;
+      border-radius: 10px;
+      color: rgba(234,240,255,.85);
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(11,16,32,.78), rgba(9,13,24,.72));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(680px 220px at 18% 10%, rgba(123,198,255,.12), transparent 55%),
+        radial-gradient(520px 260px at 90% 45%, rgba(154,247,231,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .inner{position:relative; padding: 18px}
+    .toc{
+      display:grid; grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .toc a{
+      text-decoration:none;
+      color: rgba(234,240,255,.88);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.45);
+      padding:12px 12px;
+      border-radius: 16px;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .toc a:hover{transform: translateY(-1px); border-color: rgba(123,198,255,.35); background: rgba(11,16,32,.65)}
+    .toc small{display:block; color: rgba(154,167,194,.9); margin-top: 4px; line-height: 1.4}
+
+    h2{margin: 0 0 10px; font-size: 18px; letter-spacing: .02em;}
+    p, li{color: rgba(234,240,255,.78); line-height: 1.65; font-size: 14px;}
+    ul{margin: 10px 0 0; padding-left: 18px}
+    .hr{height:1px; background: rgba(255,255,255,.08); margin: 18px 0}
+
+    .callout{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(9,13,24,.55);
+      border-radius: 18px;
+      padding: 14px 14px;
+      color: rgba(234,240,255,.78);
+    }
+    .callout strong{color: rgba(234,240,255,.92)}
+    .k{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color: rgba(234,240,255,.85);
+    }
+
+    footer{
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(154,167,194,.85);
+      font-size: 12px;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    footer a{color: rgba(234,240,255,.78); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media (max-width: 740px){
+      .title{font-size:34px}
+      .toc{grid-template-columns: 1fr}
+      header{position:relative; backdrop-filter:none}
+      nav{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand" aria-label="cadency">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>cadency</h1>
+          <div class="sub">Privacy Policy</div>
+        </div>
+      </div>
+
+      <nav aria-label="Page navigation">
+        <a href="#policy">Policy</a>
+        <a href="#permissions">Permissions</a>
+        <a href="#subscriptions">Subscriptions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1 class="title">Privacy Policy</h1>
+      <p class="lede">
+        cadency is built to help you post consistently. The app works as a planning and reminder tool:
+        you choose platforms and posting windows, and cadency can send gentle notifications when a window opens.
+      </p>
+
+      <div class="meta">
+        <span class="pill">Last updated: <code>December 2025</code></span>
+        <span class="pill">No accounts</span>
+        <span class="pill">No advertising identifiers</span>
+        <span class="pill">No social account access</span>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="inner">
+          <h2>Quick summary</h2>
+          <ul>
+            <li><strong>We do not require accounts</strong> (no sign-up).</li>
+            <li><strong>We do not connect</strong> to your social media accounts.</li>
+            <li><strong>We do not sell</strong> personal data.</li>
+            <li>Your schedule is stored locally on your device (and may sync via iCloud if you enable it in iOS).</li>
+            <li>Subscriptions (if offered) are handled by Apple (we do not receive your payment details).</li>
+          </ul>
+
+          <div class="toc" aria-label="Table of contents">
+            <a href="#policy">What we collect <small>Schedule, optional profile inputs, diagnostics</small></a>
+            <a href="#use">How we use data <small>Reminders, personalization, improvements</small></a>
+            <a href="#permissions">Permissions <small>Notifications</small></a>
+            <a href="#subscriptions">Subscriptions <small>Apple billing</small></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="policy" style="margin-top:18px">
+      <div class="inner">
+        <h2>1) Information you provide</h2>
+        <p>cadency may store the following information on your device:</p>
+        <ul>
+          <li><strong>Platforms you select</strong> (for example: TikTok, Instagram Reels, YouTube Shorts).</li>
+          <li><strong>Posting windows</strong> you create or enable (days and times).</li>
+          <li><strong>Optional preferences</strong> you choose in onboarding (for example: creator focus, creator size).</li>
+          <li><strong>Optional profile details</strong> you provide (for example: age range, interests). You can skip these.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Important:</strong> cadency is a planning and reminder tool. It does not publish your content for you and does not access your social accounts.
+        </div>
+
+        <div class="hr"></div>
+
+        <h2>2) Information we do not collect</h2>
+        <p>cadency does not collect:</p>
+        <ul>
+          <li>Names, email addresses, phone numbers, or contact lists</li>
+          <li>Social media logins, passwords, or tokens</li>
+          <li>Direct messages, comments, followers, or analytics from social platforms</li>
+          <li>Precise location data</li>
+          <li>Advertising identifiers</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="use" style="margin-top:14px">
+      <div class="inner">
+        <h2>3) How we use information</h2>
+        <p>cadency uses your selected platforms, posting windows, and optional preferences to:</p>
+        <ul>
+          <li>show your schedule (weekly or monthly)</li>
+          <li>generate reminders when a posting window opens (if enabled)</li>
+          <li>suggest default windows and small tips to help you stay consistent</li>
+        </ul>
+
+        <div class="hr"></div>
+
+        <h2>4) Storage</h2>
+        <p>
+          By default, your schedule is stored locally on your device.
+          If you enable iCloud backup or iCloud Drive for your device, iOS may include app data in your device backups.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="permissions" style="margin-top:14px">
+      <div class="inner">
+        <h2>5) Permissions</h2>
+        <ul>
+          <li><strong>Notifications:</strong> used only to remind you about posting windows (optional).</li>
+        </ul>
+        <p class="callout">
+          You can manage permissions at any time in <span class="k">iOS Settings → Notifications → cadency</span>.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="subscriptions" style="margin-top:14px">
+      <div class="inner">
+        <h2>6) Subscriptions</h2>
+        <p>
+          If you purchase a Pro subscription, billing is processed by Apple. We do not receive your payment information.
+          Apple may provide us with subscription status (for example, whether Pro is active) so the app can unlock features.
+        </p>
+        <ul>
+          <li>Subscriptions renew automatically unless canceled in your Apple ID settings.</li>
+          <li>You can manage or cancel in <span class="k">Settings → Apple ID → Subscriptions</span>.</li>
+          <li>If Pro does not unlock after reinstalling, use <span class="k">Restore Purchases</span> in the app.</li>
+        </ul>
+
+        <div class="hr"></div>
+
+        <h2>7) Terms of Use</h2>
+        <p>
+          cadency uses Apple’s standard Terms of Use (EULA):
+          <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener" style="color:rgba(234,240,255,.85)">
+            https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="children" style="margin-top:14px">
+      <div class="inner">
+        <h2>8) Children’s privacy</h2>
+        <p>
+          cadency is not designed to collect personal information from children. The app does not require accounts and does not request personal identifiers.
+        </p>
+
+        <div class="hr"></div>
+
+        <h2>9) Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. The “Last updated” date at the top indicates when changes were made.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="contact" style="margin-top:14px">
+      <div class="inner">
+        <h2>Contact</h2>
+        <p>If you have questions about this Privacy Policy, contact us:</p>
+        <p><strong>Email:</strong> <a href="mailto:erascopia@gmail.com" style="color:rgba(234,240,255,.85)">erascopia@gmail.com</a></p>
+
+        <div class="callout">
+          <strong>Tip for faster support:</strong> include your device model, iOS version, and a short description of the issue.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> cadency</div>
+      <div>
+        <a href="#policy">Policy</a> ·
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </div>
+</body>
+</html>
+
