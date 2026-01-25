@@ -1,11 +1,13 @@
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CryptoPanicGuy - iOS apps, books, and calm chaos.">
-  <meta name="theme-color" content="#0b0f14">
-  <meta property="og:title" content="CryptoPanicGuy">
-  <meta property="og:description" content="Calm design. Curious puzzles. A little panic - on purpose.">
-  <meta property="og:type" content="website">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="CryptoPanicGuy - iOS apps, books, and calm chaos." />
+  <meta name="theme-color" content="#0b0f14" />
+  <meta property="og:title" content="CryptoPanicGuy" />
+  <meta property="og:description" content="Calm design. Curious puzzles. A little panic - on purpose." />
+  <meta property="og:type" content="website" />
   <title>CryptoPanicGuy</title>
 
   <style>
@@ -13,8 +15,6 @@
       color-scheme: dark;
       --bg:#070a10;
       --bg2:#0b1220;
-      --surface: rgba(18, 28, 44, .56);
-      --surface2: rgba(12, 18, 28, .72);
       --border: rgba(255,255,255,.10);
       --text:#eaf1ff;
       --muted:#a7b6d6;
@@ -23,15 +23,24 @@
       --panic:#ff7b7b;
 
       --radius: 22px;
-      --radius-sm: 14px;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --max: 1180px;
 
       --font: ui-sans-serif, system-ui, -apple-system, "SF Pro Text", "Inter", Segoe UI, Roboto, Arial, sans-serif;
+
+      /* mobile safe areas (iOS) */
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+
+      /* tap + spacing tuning */
+      --pad: 18px;
+      --gap: 26px;
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior:smooth; }
+    html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     body{
       font-family: var(--font);
       background:
@@ -42,11 +51,21 @@
       color: var(--text);
       min-height: 100vh;
       overflow-x:hidden;
+      padding-bottom: var(--safe-bottom);
     }
 
     a{ color:inherit; text-decoration:none; }
-    img{ display:block; max-width:100%; }
+    img{ display:block; max-width:100%; height:auto; }
     button, input{ font:inherit; }
+    button{ -webkit-tap-highlight-color: transparent; }
+    a, button{ touch-action: manipulation; }
+
+    /* focus styles for keyboard users */
+    :focus-visible{
+      outline: 2px solid rgba(123,223,246,.55);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
 
     .ambient{
       position: fixed;
@@ -92,27 +111,34 @@
 
     header{
       position: sticky;
-      top: 3px; /* sit below progress bar */
+      top: 3px; /* sits below progress bar */
       z-index: 50;
       background: rgba(7,10,16,.72);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
+
     .nav{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 18px;
+      padding:
+        calc(12px + var(--safe-top))
+        calc(var(--pad) + var(--safe-right))
+        12px
+        calc(var(--pad) + var(--safe-left));
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
       flex-wrap:wrap;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap: 10px;
       letter-spacing: .2px;
+      min-width: 180px;
     }
     .brand-dot{
       width: 10px;
@@ -121,6 +147,7 @@
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       box-shadow: 0 0 22px rgba(123,223,246,.35);
       position: relative;
+      flex: 0 0 auto;
     }
     .brand-dot::after{
       content:"";
@@ -133,34 +160,45 @@
     .brand-title{
       font-size: 16px;
       font-weight: 650;
+      white-space: nowrap;
     }
 
     .nav-links{
       display:flex;
       align-items:center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap:wrap;
+      justify-content:flex-end;
+      max-width: 100%;
     }
     .nav-links a{
       color: rgba(234,241,255,.78);
       font-size: 14px;
-      padding: 8px 10px;
+      padding: 10px 12px; /* bigger tap target */
       border-radius: 999px;
       border: 1px solid transparent;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
-    .nav-links a:hover{
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.08);
-      transform: translateY(-1px);
+
+    /* hover only on devices that actually hover */
+    @media (hover:hover) and (pointer:fine){
+      .nav-links a:hover{
+        background: rgba(255,255,255,.06);
+        border-color: rgba(255,255,255,.08);
+        transform: translateY(-1px);
+      }
     }
 
     main{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 30px 18px 80px;
+      padding:
+        30px
+        calc(var(--pad) + var(--safe-right))
+        calc(80px + var(--safe-bottom))
+        calc(var(--pad) + var(--safe-left));
       display:grid;
-      gap: 26px;
+      gap: var(--gap);
     }
 
     .panel{
@@ -173,6 +211,8 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
+      /* avoids blur/overflow jank on iOS when scrolling */
+      transform: translateZ(0);
     }
 
     .hero{
@@ -204,12 +244,13 @@
     }
 
     .hero h1{
-      font-size: clamp(40px, 5.8vw, 62px);
-      line-height: 1.04;
+      font-size: clamp(34px, 7vw, 62px);
+      line-height: 1.05;
       letter-spacing: -0.03em;
       font-weight: 780;
       margin-top: 6px;
-      margin-bottom: 10px; /* wider spacing */
+      margin-bottom: 8px;
+      word-break: keep-all;
     }
 
     .hero .lede{
@@ -243,7 +284,7 @@
       align-items:center;
       justify-content:center;
       gap: 10px;
-      padding: 11px 14px;
+      padding: 12px 14px; /* better for thumb */
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.06);
@@ -251,25 +292,29 @@
       cursor:pointer;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.14);
+      min-height: 44px; /* iOS tap target */
     }
     .btn.primary{
       background: linear-gradient(90deg, rgba(123,223,246,.18), rgba(183,255,221,.14));
       border-color: rgba(123,223,246,.22);
       box-shadow: 0 0 0 1px rgba(123,223,246,.10) inset;
     }
+    @media (hover:hover) and (pointer:fine){
+      .btn:hover{
+        transform: translateY(-1px);
+        background: rgba(255,255,255,.08);
+        border-color: rgba(255,255,255,.14);
+      }
+    }
+    .btn:active{ transform: translateY(0); }
 
     .section{
       padding: 26px 26px 28px;
       display:grid;
-      gap: 16px; /* wider spacing */
+      gap: 16px;
     }
     .section h2{
-      font-size: 32px;
+      font-size: clamp(24px, 4.5vw, 32px);
       letter-spacing: -0.02em;
       font-weight: 740;
       margin-bottom: 6px;
@@ -301,11 +346,14 @@
       padding: 16px;
       transition: transform .16s ease, border-color .16s ease, background .16s ease;
       position: relative;
+      min-height: 120px;
     }
-    a.tile:hover{
-      transform: translateY(-2px);
-      border-color: rgba(123,223,246,.22);
-      background: rgba(12,18,28,.62);
+    @media (hover:hover) and (pointer:fine){
+      a.tile:hover{
+        transform: translateY(-2px);
+        border-color: rgba(123,223,246,.22);
+        background: rgba(12,18,28,.62);
+      }
     }
 
     .tile-top{
@@ -331,6 +379,9 @@
     }
     .icon svg{ width: 22px; height: 22px; opacity: .92; }
 
+    .meta{
+      min-width: 0; /* allows wrapping inside flex */
+    }
     .meta small{
       display:block;
       color: rgba(167,182,214,.75);
@@ -345,11 +396,13 @@
       font-weight: 720;
       letter-spacing: -0.01em;
       margin-bottom: 6px;
+      overflow-wrap: anywhere; /* prevents overflow on mobile */
     }
     .meta p{
       color: rgba(167,182,214,.92);
       font-size: 14px;
       line-height: 1.65;
+      overflow-wrap: anywhere;
     }
 
     .pill-row{
@@ -392,17 +445,21 @@
       background: rgba(255,255,255,.06);
       color: rgba(234,241,255,.90);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      min-height: 44px;
     }
-    .contact-pill:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(123,223,246,.20);
+    @media (hover:hover) and (pointer:fine){
+      .contact-pill:hover{
+        transform: translateY(-1px);
+        background: rgba(255,255,255,.08);
+        border-color: rgba(123,223,246,.20);
+      }
     }
 
+    /* bottom fixed buttons - keep clear of iOS home bar */
     .toast{
       position: fixed;
-      bottom: 18px;
-      right: 18px;
+      bottom: calc(18px + var(--safe-bottom));
+      right: calc(18px + var(--safe-right));
       padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid rgba(123,223,246,.25);
@@ -423,8 +480,8 @@
 
     .top-btn{
       position: fixed;
-      bottom: 18px;
-      left: 18px;
+      bottom: calc(18px + var(--safe-bottom));
+      left: calc(18px + var(--safe-left));
       padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
@@ -435,116 +492,35 @@
       transform: translateY(10px);
       transition: opacity .22s ease, transform .22s ease;
       z-index: 70;
+      min-height: 44px;
     }
     .top-btn.show{ opacity:1; transform: translateY(0); }
+
+    /* mobile-specific tightening */
+    @media (max-width: 520px){
+      :root{ --pad: 14px; --gap: 18px; }
+      .hero{ padding: 22px 16px; }
+      .section{ padding: 18px 16px 20px; }
+      .grid.cols{ grid-template-columns: 1fr; }
+      .nav{
+        gap: 10px;
+        padding:
+          calc(10px + var(--safe-top))
+          calc(var(--pad) + var(--safe-right))
+          10px
+          calc(var(--pad) + var(--safe-left));
+      }
+      .nav-links a{ padding: 10px 10px; }
+      .brand{ min-width: unset; }
+    }
   </style>
-<style id="__wb_font_loader">
-    /* Optimist Extra Light */
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLt.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLt.woff') format('woff');
-      font-weight: 200;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLtIt.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_XLtIt.woff') format('woff');
-      font-weight: 200;
-      font-style: normal;
-    }
-
-    /* Optimist Light */
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Lt.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Lt.woff') format('woff');
-      font-weight: 200;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_LtIt.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_LtIt.woff') format('woff');
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    /* Optimist Regular */
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Rg.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Rg.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_It.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_It.woff') format('woff');
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    /* Optimist SemiBold */
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBd.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBd.woff') format('woff');
-      font-weight: 600;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBdIt.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_SBdIt.woff') format('woff');
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    /* Optimist Bold */
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Bd.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_Bd.woff') format('woff');
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Optimist';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_BdIt.woff2') format('woff2'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/Optimist_W_BdIt.woff') format('woff');
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    /* Wikibuy Icon Font */
-    @font-face {
-      font-family: 'wikibuy-iconfont';
-      src:
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/wikibuy-iconfont.woff') format('woff'),
-        url('chrome-extension://nenlahapcbofgnanklpelkaejcehkggg/assets/font/wikibuy-iconfont.svg') format('svg');
-      font-weight: normal;
-      font-style: normal;
-    }
-  </style></head>
+</head>
 
 <body>
   <div class="ambient" aria-hidden="true"></div>
 
   <div class="progress-wrap" aria-hidden="true">
-    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+    <div class="progress-bar" id="progressBar"></div>
   </div>
 
   <header>
@@ -594,65 +570,23 @@
     <section class="panel section" id="apps">
       <div>
         <h2>things i build</h2>
-        <p class="sub">
-          calm tools for focus, clarity, and everyday chaos.
-        </p>
+        <p class="sub">calm tools for focus, clarity, and everyday chaos.</p>
       </div>
-      <div class="grid cols" id="apps-grid" aria-live="polite"><a class="tile" href="https://apps.apple.com/app/id6749213814" target="_blank" rel="noreferrer" aria-label="EraScopia - History Timeline App FlashCards - open"><div class="tile-top"><div class="meta"><small>app store id - 6749213814</small><h3>EraScopia - History Timeline App FlashCards</h3><p>Timelines, flashcards, and memory support for curious minds.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M7 7h10M7 12h7M7 17h10" stroke="rgba(234,241,255,.92)" stroke-width="1.8" stroke-linecap="round"></path>
-          <path d="M5 5v14" stroke="rgba(123,223,246,.85)" stroke-width="2" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">timelines</span><span class="pill">flashcards</span><span class="pill">memory</span></div></a><a class="tile" href="https://apps.apple.com/app/id6751130495" target="_blank" rel="noreferrer" aria-label="EraScopia - Civics Test - open"><div class="tile-top"><div class="meta"><small>app store id - 6751130495</small><h3>EraScopia - Civics Test</h3><p>US civics practice with clarity-first flows.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M7 4h10v16H7z" stroke="rgba(234,241,255,.92)" stroke-width="1.8"></path>
-          <path d="M9 8h6M9 11h6M9 14h4" stroke="rgba(183,255,221,.85)" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">study</span><span class="pill">practice</span><span class="pill">calm pacing</span></div></a><a class="tile" href="https://apps.apple.com/app/id6757025024" target="_blank" rel="noreferrer" aria-label="cadency - open"><div class="tile-top"><div class="meta"><small>app store id - 6757025024</small><h3>cadency</h3><p>Scheduler and notifier for consistent posting.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M6 16V8m4 10V6m4 12v-7m4 5V7" stroke="rgba(234,241,255,.92)" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">schedule</span><span class="pill">reminders</span><span class="pill">workflow</span></div></a><a class="tile" href="https://apps.apple.com/app/id6748586996" target="_blank" rel="noreferrer" aria-label="LocalSubs - open"><div class="tile-top"><div class="meta"><small>app store id - 6748586996</small><h3>LocalSubs</h3><p>Track subscriptions and recurring costs.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M6 7h12M6 12h12M6 17h12" stroke="rgba(234,241,255,.92)" stroke-width="1.8" stroke-linecap="round"></path>
-          <path d="M9 7v10" stroke="rgba(123,223,246,.85)" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">subscriptions</span><span class="pill">budget</span><span class="pill">clarity</span></div></a><a class="tile" href="https://apps.apple.com/app/id6756220703" target="_blank" rel="noreferrer" aria-label="CryptoPanicMeter - open"><div class="tile-top"><div class="meta"><small>app store id - 6756220703</small><h3>CryptoPanicMeter</h3><p>Mood tracking for crypto swings - without the noise.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 4v7" stroke="rgba(234,241,255,.92)" stroke-width="1.8" stroke-linecap="round"></path>
-          <path d="M12 20a8 8 0 1 0 0-16" stroke="rgba(255,123,123,.85)" stroke-width="1.8" stroke-linecap="round"></path>
-          <path d="M9 14h6" stroke="rgba(183,255,221,.70)" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">mood</span><span class="pill">signals</span><span class="pill">calm UI</span></div></a><a class="tile" href="https://apps.apple.com/app/id6756532562" target="_blank" rel="noreferrer" aria-label="PanicMeter - open"><div class="tile-top"><div class="meta"><small>app store id - 6756532562</small><h3>PanicMeter</h3><p>A simple panic dial for quick resets.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 4v7" stroke="rgba(234,241,255,.92)" stroke-width="1.8" stroke-linecap="round"></path>
-          <path d="M12 20a8 8 0 1 0 0-16" stroke="rgba(255,123,123,.85)" stroke-width="1.8" stroke-linecap="round"></path>
-          <path d="M9 14h6" stroke="rgba(183,255,221,.70)" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">reset</span><span class="pill">minimal</span><span class="pill">fast</span></div></a></div>
+      <div class="grid cols" id="apps-grid" aria-live="polite"></div>
     </section>
 
     <section class="panel section" id="books">
       <div>
         <h2>stories</h2>
-        <p class="sub">
-          one click to Amazon. small stories, calm pacing, tiny heroes.
-        </p>
+        <p class="sub">one click to Amazon. small stories, calm pacing, tiny heroes.</p>
       </div>
-      <div class="grid cols" id="books-grid" aria-live="polite"><a class="tile" href="https://www.amazon.com/dp/B0FQ3S9RVX" target="_blank" rel="noreferrer" aria-label="Ollie Ant’s First Day at the School of Wonders  - open"><div class="tile-top"><div class="meta"><small>book</small><h3>Ollie Ant’s First Day at the School of Wonders </h3><p>A gentle tiny-hero adventure.</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 3l2.6 6.2 6.7.6-5.1 4.3 1.6 6.5L12 17.9 6.2 20.6l1.6-6.5L2.7 9.8l6.7-.6L12 3Z" stroke="rgba(234,241,255,.92)" stroke-width="1.6" fill="rgba(123,223,246,.10)"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">tiny hero</span><span class="pill">gentle</span><span class="pill">adventure</span></div></a><a class="tile" href="https://www.amazon.com/dp/B0FNQMW8R6" target="_blank" rel="noreferrer" aria-label="Ollie Ant and the Lost Egg - open"><div class="tile-top"><div class="meta"><small>book</small><h3>Ollie Ant and the Lost Egg</h3><p>An Inspiring Story of a Brave Little Ant Finding Friendship and Belonging</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M20 4c-7 0-12 5-12 12 0 2 1 4 3 4 7 0 12-5 12-12 0-2-1-4-3-4Z" stroke="rgba(183,255,221,.85)" stroke-width="1.8"></path>
-          <path d="M8 16c3-3 6-5 9-6" stroke="rgba(234,241,255,.92)" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">mystery</span><span class="pill">meadow</span><span class="pill">friendship</span></div></a><a class="tile" href="https://www.amazon.com/dp/B0FNMCZJQB" target="_blank" rel="noreferrer" aria-label="Ollie Ant and the Secret of the Sun - open"><div class="tile-top"><div class="meta"><small>book</small><h3>Ollie Ant and the Secret of the Sun</h3><p>The Ant Who Asked Big Questions</p></div><div class="icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" stroke="rgba(234,241,255,.92)" stroke-width="1.8"></path>
-          <path d="M12 2v3m0 17v-3M2 12h3m17 0h-3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1" stroke="rgba(183,255,221,.80)" stroke-width="1.6" stroke-linecap="round"></path>
-        </svg></div></div><div class="pill-row"><span class="pill live">warm</span><span class="pill">secret</span><span class="pill">wonder</span></div></a></div>
+      <div class="grid cols" id="books-grid" aria-live="polite"></div>
     </section>
 
     <section class="panel section" id="contact">
       <div>
         <h2>contact</h2>
-        <p class="sub">
-          collaborations, partnerships, questions, or support - all here.
-        </p>
+        <p class="sub">collaborations, partnerships, questions, or support - all here.</p>
       </div>
 
       <div class="contacts">
@@ -724,78 +658,18 @@
     };
 
     const apps = [
-      {
-        title: "EraScopia - History Timeline App FlashCards",
-        desc: "Timelines, flashcards, and memory support for curious minds.",
-        appStoreId: "6749213814",
-        link: "https://apps.apple.com/app/id6749213814",
-        icon: "timeline",
-        tags: ["timelines", "flashcards", "memory"]
-      },
-      {
-        title: "EraScopia - Civics Test",
-        desc: "US civics practice with clarity-first flows.",
-        appStoreId: "6751130495",
-        link: "https://apps.apple.com/app/id6751130495",
-        icon: "civics",
-        tags: ["study", "practice", "calm pacing"]
-      },
-      {
-        title: "cadency",
-        desc: "Scheduler and notifier for consistent posting.",
-        appStoreId: "6757025024",
-        link: "https://apps.apple.com/app/id6757025024",
-        icon: "rhythm",
-        tags: ["schedule", "reminders", "workflow"]
-      },
-      {
-        title: "LocalSubs",
-        desc: "Track subscriptions and recurring costs.",
-        appStoreId: "6748586996",
-        link: "https://apps.apple.com/app/id6748586996",
-        icon: "subs",
-        tags: ["subscriptions", "budget", "clarity"]
-      },
-      {
-        title: "CryptoPanicMeter",
-        desc: "Mood tracking for crypto swings - without the noise.",
-        appStoreId: "6756220703",
-        link: "https://apps.apple.com/app/id6756220703",
-        icon: "panic",
-        tags: ["mood", "signals", "calm UI"]
-      },
-      {
-        title: "PanicMeter",
-        desc: "A simple panic dial for quick resets.",
-        appStoreId: "6756532562",
-        link: "https://apps.apple.com/app/id6756532562",
-        icon: "panic",
-        tags: ["reset", "minimal", "fast"]
-      }
+      { title:"EraScopia - History Timeline App FlashCards", desc:"Timelines, flashcards, and memory support for curious minds.", appStoreId:"6749213814", link:"https://apps.apple.com/app/id6749213814", icon:"timeline", tags:["timelines","flashcards","memory"] },
+      { title:"EraScopia - Civics Test", desc:"US civics practice with clarity-first flows.", appStoreId:"6751130495", link:"https://apps.apple.com/app/id6751130495", icon:"civics", tags:["study","practice","calm pacing"] },
+      { title:"cadency", desc:"Scheduler and notifier for consistent posting.", appStoreId:"6757025024", link:"https://apps.apple.com/app/id6757025024", icon:"rhythm", tags:["schedule","reminders","workflow"] },
+      { title:"LocalSubs", desc:"Track subscriptions and recurring costs.", appStoreId:"6748586996", link:"https://apps.apple.com/app/id6748586996", icon:"subs", tags:["subscriptions","budget","clarity"] },
+      { title:"CryptoPanicMeter", desc:"Mood tracking for crypto swings - without the noise.", appStoreId:"6756220703", link:"https://apps.apple.com/app/id6756220703", icon:"panic", tags:["mood","signals","calm UI"] },
+      { title:"PanicMeter", desc:"A simple panic dial for quick resets.", appStoreId:"6756532562", link:"https://apps.apple.com/app/id6756532562", icon:"panic", tags:["reset","minimal","fast"] }
     ];
 
     const books = [
-      {
-        title: "Ollie Ant’s First Day at the School of Wonders ",
-        desc: "A gentle tiny-hero adventure.",
-        link: "https://www.amazon.com/dp/B0FQ3S9RVX",
-        icon: "star",
-        tags: ["tiny hero", "gentle", "adventure"]
-      },
-      {
-        title: "Ollie Ant and the Lost Egg",
-        desc: "An Inspiring Story of a Brave Little Ant Finding Friendship and Belonging",
-        link: "https://www.amazon.com/dp/B0FNQMW8R6",
-        icon: "leaf",
-        tags: ["mystery", "meadow", "friendship"]
-      },
-      {
-        title: "Ollie Ant and the Secret of the Sun",
-        desc: "The Ant Who Asked Big Questions",
-        link: "https://www.amazon.com/dp/B0FNMCZJQB",
-        icon: "sun",
-        tags: ["warm", "secret", "wonder"]
-      }
+      { title:"Ollie Ant’s First Day at the School of Wonders", desc:"A gentle tiny-hero adventure.", link:"https://www.amazon.com/dp/B0FQ3S9RVX", icon:"star", tags:["tiny hero","gentle","adventure"] },
+      { title:"Ollie Ant and the Lost Egg", desc:"An Inspiring Story of a Brave Little Ant Finding Friendship and Belonging", link:"https://www.amazon.com/dp/B0FNQMW8R6", icon:"leaf", tags:["mystery","meadow","friendship"] },
+      { title:"Ollie Ant and the Secret of the Sun", desc:"The Ant Who Asked Big Questions", link:"https://www.amazon.com/dp/B0FNMCZJQB", icon:"sun", tags:["warm","secret","wonder"] }
     ];
 
     const toast = document.getElementById("toast");
@@ -821,9 +695,7 @@
       meta.className = "meta";
 
       const small = document.createElement("small");
-      small.textContent = kind === "app"
-        ? `app store id - ${appStoreId}`
-        : "book";
+      small.textContent = kind === "app" ? `app store id - ${appStoreId}` : "book";
 
       const h3 = document.createElement("h3");
       h3.textContent = title;
@@ -855,18 +727,16 @@
     const render = () => {
       const appsGrid = document.getElementById("apps-grid");
       const booksGrid = document.getElementById("books-grid");
-
       apps.forEach(app => appsGrid.appendChild(makeTile({ ...app, kind: "app" })));
       books.forEach(book => booksGrid.appendChild(makeTile({ ...book, kind: "book" })));
     };
 
-    // copy email button - robust fallback
     document.getElementById("copy-email").addEventListener("click", async () => {
       const email = "erascopia@gmail.com";
-      try {
+      try{
         await navigator.clipboard.writeText(email);
         showToast("email copied");
-      } catch (err) {
+      }catch{
         const ta = document.createElement("textarea");
         ta.value = email;
         ta.setAttribute("readonly", "");
@@ -875,24 +745,22 @@
         ta.style.top = "0";
         document.body.appendChild(ta);
         ta.select();
-        try {
+        try{
           document.execCommand("copy");
           showToast("email copied");
-        } catch (e2) {
+        }catch{
           showToast("copy failed - click the email instead");
         }
         document.body.removeChild(ta);
       }
     });
 
-    // scroll to top button
     const topBtn = document.getElementById("top-btn");
     const toggleTop = () => {
       if (window.scrollY > 700) topBtn.classList.add("show");
       else topBtn.classList.remove("show");
     };
 
-    // progress bar
     const progressBar = document.getElementById("progressBar");
     const updateProgress = () => {
       const doc = document.documentElement;
@@ -906,13 +774,12 @@
 
     window.addEventListener("scroll", () => { toggleTop(); updateProgress(); }, { passive: true });
     window.addEventListener("resize", updateProgress);
-
     topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
     render();
     toggleTop();
     updateProgress();
   </script>
+</body>
+</html>
 
-
-</body></html>
