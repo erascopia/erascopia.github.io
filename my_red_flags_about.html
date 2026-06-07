@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#05070D" />
+  <title>My Red Flags - About</title>
+  <meta name="description" content="About My Red Flags - a private notebook for tracking moments, patterns, and your own reflections." />
+  <style>
+    :root{
+      --bg:#05070D;
+      --card:#0B1020;
+      --card2:#090D18;
+      --ink:#EAF0FF;
+      --muted:#9AA7C2;
+      --line:rgba(255,255,255,.10);
+      --glow1:rgba(123,198,255,.26);
+      --glow2:rgba(154,247,231,.12);
+      --accent:#7BC6FF;
+      --accent2:#9AF7E7;
+      --shadow:0 18px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 600px at 15% 20%, rgba(123,198,255,.14), transparent 65%),
+        radial-gradient(800px 520px at 75% 15%, rgba(154,247,231,.10), transparent 60%),
+        radial-gradient(980px 760px at 50% 95%, rgba(140,120,255,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    .ambient{position:fixed; inset:-40px; pointer-events:none; filter:blur(30px); opacity:.85; transform:translateZ(0)}
+    .blob{
+      position:absolute;
+      width:520px;height:520px;
+      left:50%;top:12%;
+      transform:translate(-50%,0);
+      border-radius:45% 55% 55% 45% / 55% 45% 55% 45%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.32), transparent 45%),
+        radial-gradient(circle at 50% 55%, rgba(123,198,255,.22), transparent 55%),
+        radial-gradient(circle at 60% 60%, rgba(154,247,231,.13), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(20,60,140,.22), transparent 65%);
+      animation:float 10s ease-in-out infinite, morph 14s ease-in-out infinite;
+      box-shadow:0 0 180px rgba(123,198,255,.16);
+      mix-blend-mode:screen;
+    }
+    .blob.b2{width:420px;height:420px; left:18%; top:60%; opacity:.55; animation-duration:13s,18s}
+    .blob.b3{width:360px;height:360px; left:84%; top:62%; opacity:.45; animation-duration:15s,20s}
+    @keyframes float{0%,100%{transform:translate(-50%,0) translateY(0)}50%{transform:translate(-50%,0) translateY(16px)}}
+    @keyframes morph{0%,100%{border-radius:45% 55% 55% 45% / 55% 45% 55% 45%}50%{border-radius:58% 42% 48% 52% / 45% 58% 42% 55%}}
+
+    .wrap{width:min(980px, calc(100% - 48px)); margin:0 auto; position:relative; padding:28px 0 90px;}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      position:sticky; top:0; z-index:10;
+      padding:14px 0;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(5,7,13,.78), rgba(5,7,13,.15));
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .mark{
+      width:40px;height:40px;border-radius:14px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.55), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(123,198,255,.28), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(154,247,231,.18), transparent 70%),
+        rgba(12,18,38,.92);
+      box-shadow:0 10px 36px rgba(0,0,0,.5), 0 0 32px rgba(123,198,255,.20);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brand h1{font-size:14px; letter-spacing:.18em; text-transform:uppercase; margin:0; color:rgba(234,240,255,.92)}
+    .brand .sub{font-size:12px; margin:2px 0 0; color:var(--muted)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      text-decoration:none; color:rgba(234,240,255,.85);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(11,16,32,.45);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:12px;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    nav a:hover{transform:translateY(-1px); background:rgba(11,16,32,.70); border-color:rgba(123,198,255,.35)}
+
+    .hero{
+      padding:30px 0 10px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    .title{margin:0; font-size:40px; line-height:1.05; letter-spacing:-.02em}
+    .lede{margin:0; color:rgba(234,240,255,.78); font-size:16px; line-height:1.6; max-width:70ch}
+    .meta{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:4px}
+    .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(11,16,32,.52);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:12px;
+      color:rgba(234,240,255,.82);
+      box-shadow:0 14px 40px rgba(0,0,0,.28);
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(11,16,32,.78), rgba(9,13,24,.72));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(680px 220px at 18% 10%, rgba(123,198,255,.12), transparent 55%),
+        radial-gradient(520px 260px at 90% 45%, rgba(154,247,231,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .inner{position:relative; padding:18px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    .span6{grid-column:span 6}
+    .span4{grid-column:span 4}
+    .span8{grid-column:span 8}
+    .span12{grid-column:span 12}
+    .section{margin-top:22px}
+    .section h3{margin:0 0 10px; font-size:18px; letter-spacing:.02em}
+    .section p,.section li{color:rgba(234,240,255,.78); line-height:1.6; font-size:14px}
+    .note{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(9,13,24,.55);
+      color:rgba(234,240,255,.78);
+    }
+    .note strong{color:rgba(234,240,255,.92)}
+    .list{margin:0; padding-left:18px}
+    .feature{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(11,16,32,.50);
+      border-radius:16px;
+      padding:12px 14px;
+    }
+    .feature + .feature{margin-top:10px}
+    .feature strong{display:block; color:rgba(234,240,255,.92); margin-bottom:4px}
+    .k{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.25);
+      color:rgba(234,240,255,.85);
+    }
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .hr{height:1px; background:rgba(255,255,255,.08); margin:18px 0}
+    footer{
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(154,167,194,.85);
+      font-size:12px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    footer a{color:rgba(234,240,255,.78); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    .fineprint{color:rgba(154,167,194,.85); font-size:12px; line-height:1.55}
+    @media (max-width: 940px){
+      .hero{padding-top:22px}
+      .grid{grid-template-columns:repeat(6, 1fr)}
+      .span8,.span6,.span4{grid-column:span 6}
+      header{position:relative; backdrop-filter:none}
+      nav{justify-content:flex-start}
+      .two{grid-template-columns:1fr}
+      .title{font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand" aria-label="My Red Flags">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>My Red Flags</h1>
+          <div class="sub">About • Support • Privacy</div>
+        </div>
+      </div>
+
+      <nav aria-label="Page navigation">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#support">Support</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="about">
+      <div>
+        <h2 class="title">A gentle notebook for patterns.</h2>
+        <p class="lede">
+          My Red Flags helps you privately record moments, notice patterns over time, and keep your own history in one place.
+          It is designed to stay calm, simple, and firmly under your control.
+        </p>
+
+        <div class="meta">
+          <span class="pill">Private by default</span>
+          <span class="pill">App Lock support</span>
+          <span class="pill">Export when you choose</span>
+          <span class="pill">Lifetime unlock available</span>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <div class="inner">
+            <h3>What this app is for</h3>
+            <p>
+              My Red Flags is a reflective notebook for your own observations. It helps you capture moments, sort them by category,
+              and review the way things build up across time.
+            </p>
+            <div class="note">
+              <strong>Important:</strong> this app is not therapy, medical advice, legal advice, or relationship counseling.
+              It is a private record-keeping tool for your own notes.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="features">
+      <div class="card span4">
+        <div class="inner">
+          <h3>Private notes</h3>
+          <ul class="list">
+            <li>Your entries are stored locally on your device by default.</li>
+            <li>You can use App Lock to keep the notebook behind Face ID or device authentication.</li>
+            <li>No account is required for the core app experience.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card span4">
+        <div class="inner">
+          <h3>Track patterns</h3>
+          <ul class="list">
+            <li>Log moments with categories and intensity.</li>
+            <li>Review your timeline to spot repeated behavior.</li>
+            <li>Use the dashboard and insights views to look for trends.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card span4">
+        <div class="inner">
+          <h3>Export on your terms</h3>
+          <ul class="list">
+            <li>Export your notes when you want a copy.</li>
+            <li>Keep your own records in a text format you can read.</li>
+            <li>Premium features also include more history and backup tools.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="two section" id="support">
+      <div class="card">
+        <div class="inner">
+          <h3>What the app includes</h3>
+          <div class="feature">
+            <strong>Start-up controls</strong>
+            <span>Choose whether the welcome screen appears every time you launch.</span>
+          </div>
+          <div class="feature">
+            <strong>Mood themes</strong>
+            <span>Pick a background that feels calm and easy to live with.</span>
+          </div>
+          <div class="feature">
+            <strong>Premium access</strong>
+            <span>Unlock lifetime access for deeper history, export, backup, and custom categories.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="inner">
+          <h3>Need help?</h3>
+          <p>
+            If something feels off, check the Settings screen first. You can manage app lock, exports, backups,
+            and purchase restoration from there.
+          </p>
+          <div class="hr"></div>
+          <p class="fineprint">
+            Tip: if premium content does not appear right away, try <span class="k">Restore Purchase</span> in Settings.
+            If you are testing locally, developer overrides may also be available in the app build.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section" id="contact">
+      <div class="inner">
+        <h3>Contact</h3>
+        <p>
+          For questions about the app, the best place to start is:
+        </p>
+        <p><strong>Email:</strong> <a href="mailto:support@example.com" style="color:rgba(234,240,255,.85)">erascopia@gmail.com</a></p>
+        <div class="note">
+          <strong>Suggested subject:</strong> My Red Flags support
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 My Red Flags</span>
+      <span>
+        <a href="./my_red_flags_policy.html">Privacy Policy</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple EULA</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
