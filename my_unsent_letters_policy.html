@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#140F16" />
+  <title>My Unsent Letters - Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for My Unsent Letters - a private offline app for writing letters you do not want to send." />
+  <style>
+    :root{
+      --bg:#140F16;
+      --card:#211722;
+      --card2:#1A131C;
+      --ink:#F8F1F5;
+      --muted:#C5B4BE;
+      --line:rgba(255,255,255,.10);
+      --glow1:rgba(255,180,194,.20);
+      --glow2:rgba(255,216,162,.12);
+      --accent:#F3A7B8;
+      --accent2:#F2C38B;
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(980px 620px at 15% 18%, rgba(243,167,184,.16), transparent 65%),
+        radial-gradient(820px 540px at 78% 15%, rgba(242,195,139,.10), transparent 60%),
+        radial-gradient(980px 760px at 50% 95%, rgba(161,106,140,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    .ambient{position:fixed; inset:-40px; pointer-events:none; filter:blur(30px); opacity:.82; transform:translateZ(0)}
+    .blob{
+      position:absolute;
+      width:520px;height:520px;
+      left:50%;top:12%;
+      transform:translate(-50%,0);
+      border-radius:45% 55% 55% 45% / 55% 45% 55% 45%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.28), transparent 45%),
+        radial-gradient(circle at 50% 55%, rgba(243,167,184,.22), transparent 55%),
+        radial-gradient(circle at 60% 60%, rgba(242,195,139,.14), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(80,34,54,.24), transparent 65%);
+      animation:float 10s ease-in-out infinite, morph 14s ease-in-out infinite;
+      box-shadow:0 0 180px rgba(243,167,184,.16);
+      mix-blend-mode:screen;
+    }
+    .blob.b2{width:420px;height:420px; left:18%; top:60%; opacity:.52; animation-duration:13s,18s}
+    .blob.b3{width:360px;height:360px; left:84%; top:62%; opacity:.42; animation-duration:15s,20s}
+    @keyframes float{0%,100%{transform:translate(-50%,0) translateY(0)}50%{transform:translate(-50%,0) translateY(16px)}}
+    @keyframes morph{0%,100%{border-radius:45% 55% 55% 45% / 55% 45% 55% 45%}50%{border-radius:58% 42% 48% 52% / 45% 58% 42% 55%}}
+
+    .wrap{width:min(980px, calc(100% - 48px)); margin:0 auto; position:relative; padding:28px 0 90px;}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      position:sticky; top:0; z-index:10;
+      padding:14px 0;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(20,15,22,.80), rgba(20,15,22,.15));
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .mark{
+      width:40px;height:40px;border-radius:14px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.50), transparent 45%),
+        radial-gradient(circle at 55% 55%, rgba(243,167,184,.26), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(242,195,139,.16), transparent 70%),
+        rgba(38,23,33,.92);
+      box-shadow:0 10px 36px rgba(0,0,0,.42), 0 0 32px rgba(243,167,184,.20);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brand h1{font-size:14px; letter-spacing:.18em; text-transform:uppercase; margin:0; color:rgba(248,241,245,.92)}
+    .brand .sub{font-size:12px; margin:2px 0 0; color:var(--muted)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      text-decoration:none; color:rgba(248,241,245,.85);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(33,23,34,.48);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:12px;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+    }
+    nav a:hover{transform:translateY(-1px); background:rgba(33,23,34,.70); border-color:rgba(243,167,184,.35)}
+
+    .hero{padding:30px 0 10px; display:grid; grid-template-columns:1fr; gap:14px}
+    .title{margin:0; font-size:40px; line-height:1.05; letter-spacing:-.02em}
+    .lede{margin:0; color:rgba(248,241,245,.78); font-size:16px; line-height:1.6; max-width:70ch}
+    .meta{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:4px}
+    .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(33,23,34,.52);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:12px;
+      color:rgba(248,241,245,.82);
+      box-shadow:0 14px 40px rgba(0,0,0,.26);
+    }
+    .pill code{
+      font-family:var(--mono);
+      font-size:12px;
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px;
+      border-radius:10px;
+      color:rgba(248,241,245,.85);
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(33,23,34,.82), rgba(26,19,28,.72));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(680px 220px at 18% 10%, rgba(243,167,184,.12), transparent 55%),
+        radial-gradient(520px 260px at 90% 45%, rgba(242,195,139,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .inner{position:relative; padding:18px}
+    .toc{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    .toc a{
+      text-decoration:none;
+      color:rgba(248,241,245,.88);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(33,23,34,.45);
+      padding:12px 12px;
+      border-radius:16px;
+      transition:transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .toc a:hover{transform:translateY(-1px); border-color:rgba(243,167,184,.35); background:rgba(33,23,34,.65)}
+    .toc small{display:block; color:rgba(197,180,190,.9); margin-top:4px; line-height:1.4}
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:.02em}
+    p,li{color:rgba(248,241,245,.78); line-height:1.65; font-size:14px}
+    ul{margin:10px 0 0; padding-left:18px}
+    .hr{height:1px; background:rgba(255,255,255,.08); margin:18px 0}
+    .callout{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(26,19,28,.55);
+      border-radius:18px;
+      padding:14px 14px;
+      color:rgba(248,241,245,.78);
+    }
+    .callout strong{color:rgba(248,241,245,.92)}
+    .k{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.25);
+      color:rgba(248,241,245,.85);
+    }
+    footer{
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(197,180,190,.85);
+      font-size:12px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    footer a{color:rgba(248,241,245,.78); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    @media (max-width: 740px){
+      .title{font-size:34px}
+      .toc{grid-template-columns:1fr}
+      header{position:relative; backdrop-filter:none}
+      nav{justify-content:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand" aria-label="My Unsent Letters">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>My Unsent Letters</h1>
+          <div class="sub">Privacy Policy</div>
+        </div>
+      </div>
+
+      <nav aria-label="Page navigation">
+        <a href="./my_unsent_letters_about.html">About</a>
+        <a href="#policy">Policy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1 class="title">Privacy Policy</h1>
+      <p class="lede">
+        My Unsent Letters is built to stay private, quiet, and offline-first. The app stores letters on your device,
+        uses local notifications only when you ask for reminders, and does not require an account.
+      </p>
+
+      <div class="meta">
+        <span class="pill">Last updated: <code>June 8, 2026</code></span>
+        <span class="pill">Local storage first</span>
+        <span class="pill">No account required</span>
+        <span class="pill">No AI or backend</span>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="inner">
+          <h2>Quick summary</h2>
+          <ul>
+            <li><strong>Your letters stay on your device by default.</strong></li>
+            <li><strong>We do not sell your personal data.</strong></li>
+            <li><strong>We do not require login</strong> to use the app.</li>
+            <li><strong>Local reminders only activate if you choose to schedule them.</strong></li>
+          </ul>
+
+          <div class="toc" aria-label="Table of contents">
+            <a href="#policy">What we store <small>Letters, theme choice, and premium flag</small></a>
+            <a href="#notifications">Notifications <small>Local reminders with your permission</small></a>
+            <a href="#premium">Premium placeholder <small>Mock lifetime unlock for future themes</small></a>
+            <a href="#choices">Your choices <small>Edit, delete, export later, and contact</small></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="policy" style="margin-top:18px">
+      <div class="inner">
+        <h2>1) Information you provide</h2>
+        <p>
+          You may write a title, body, category, mood, reminder date, and theme preference for each letter.
+          This information is stored locally on your device using SwiftData.
+        </p>
+        <p>
+          The app may also store lightweight settings such as onboarding status, premium unlock state, and theme selection.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <div class="inner">
+        <h2>2) How your data is stored</h2>
+        <p>
+          The app is designed around on-device storage only. There is no backend server, no account system,
+          and no cloud profile managed by us for core functionality.
+        </p>
+        <ul>
+          <li>Letters are saved locally with SwiftData.</li>
+          <li>Deletion removes the local record from the device.</li>
+          <li>Restarting the app does not erase your letters.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="notifications" style="margin-top:18px">
+      <div class="inner">
+        <h2>3) Local notifications</h2>
+        <p>
+          If you choose to schedule a future reminder, the app may ask for notification permission.
+          Local notifications are used only to remind you that a letter is ready to re-read.
+        </p>
+        <div class="callout">
+          <strong>Reminder details:</strong> notification title: <span class="k">A letter is ready</span>.
+          Notification body: <span class="k">Your unsent letter is waiting for you.</span>
+        </div>
+        <ul>
+          <li>You can disable notifications in iOS Settings at any time.</li>
+          <li>If you edit or remove a reminder date, the previous notification can be canceled and rescheduled.</li>
+          <li>We do not use notifications for marketing or advertising.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="premium" style="margin-top:18px">
+      <div class="inner">
+        <h2>4) Premium placeholder</h2>
+        <p>
+          A future premium experience may unlock extra themes. For V1, premium state is mocked locally with
+          <span class="k">@AppStorage("isPremiumUnlocked")</span> and is not tied to a payment backend.
+        </p>
+        <ul>
+          <li>Free theme: Classic.</li>
+          <li>Premium placeholders: Healing, Breakup, Self-love, Moving on.</li>
+          <li>No payment information is stored by this app.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <div class="inner">
+        <h2>5) Your choices and rights</h2>
+        <p>
+          You can edit or delete letters at any time. You can also change themes, disable reminder permissions,
+          or delete the app to remove local data from your device.
+        </p>
+        <p>
+          Because the app does not use accounts or a server-side profile for core features, there is no online inbox
+          to manage and no login to recover.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="contact" style="margin-top:18px">
+      <div class="inner">
+        <h2>6) Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy as the app evolves. When we do, the effective date at the top of this page will change.
+        </p>
+        <div class="hr"></div>
+        <h2>Contact</h2>
+        <p>
+          If you have questions about this policy, contact the app publisher through the app listing or developer support page.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 My Unsent Letters. Private by design.</span>
+      <span><a href="./my_unsent_letters_about.html">About</a></span>
+    </footer>
+  </div>
+</body>
+</html>
