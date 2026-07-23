@@ -622,6 +622,58 @@
       line-height:1.6;
     }
 
+    .archive-panel{
+      position:relative;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(760px 260px at 12% 0%, rgba(255,255,255,.09), transparent 50%),
+        radial-gradient(520px 220px at 88% 12%, rgba(255,255,255,.06), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      overflow:hidden;
+      padding:18px;
+    }
+
+    .archive-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      border:1px solid rgba(255,255,255,.06);
+      pointer-events:none;
+    }
+
+    .archive-list{
+      list-style:none;
+      margin:16px 0 0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+
+    .archive-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:#d7dce2;
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    .archive-list span{
+      flex:0 0 auto;
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color:#fff;
+      font-size:12px;
+      line-height:1;
+    }
+
     .frames{
       grid-template-columns: 1fr;
     }
@@ -907,6 +959,7 @@
         <a href="#manual">Manual</a>
         <a href="#cctv">CCTV</a>
         <a href="#apps">iOS Apps</a>
+        <a href="#wallpapers">Wallpapers</a>
         <a href="#social">Social</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1101,20 +1154,46 @@
       </div>
     </section>
 
+    <section id="wallpapers" class="section reveal">
+      <div class="section-head">
+        <h2>Wallpaper Archive</h2>
+        <p>
+          A sealed collection of background files kept like recovered evidence. The first bundle lives in archive001, filed as a quiet drop from the larger record.
+        </p>
+      </div>
+      <div class="archive-panel">
+        <div class="manual-kicker">sealed collection</div>
+        <h3 class="manual-title">archive_001</h3>
+        <p class="manual-copy">
+          These wallpapers are presented like secret files: muted light, soft static, and a trace that suggests someone kept cataloging the room after the lights went out.
+        </p>
+        <ul class="archive-list" aria-label="Wallpaper archive details">
+          <li><span>01</span> Wallpaper set archive001, stored in the quiet archive wing.</li>
+          <li><span>02</span> Built for desktop and lock screen use when you want the signal nearby.</li>
+          <li><span>03</span> More sealed bundles can appear here without changing the lock.</li>
+        </ul>
+        <div class="manual-actions">
+          <a class="btn primary" href="https://panicoperator.com/wallpapers/archive001/" target="_blank" rel="noreferrer">Open secret files</a>
+          <a class="btn" href="#social">Return to transmission log</a>
+        </div>
+      </div>
+    </section>
+
     <section id="social" class="section reveal">
       <div class="section-head">
         <h2>Transmission Log</h2>
         <p>
-          The main archive lives on Facebook. TikTok is the backup archive. Patreon helps keep the investigation active when the trail goes quiet.
+          The main archive lives on Facebook. TikTok is the backup archive. Telegram is the secret channel. Patreon helps keep the investigation active when the trail goes quiet.
         </p>
       </div>
       <div class="contact-panel">
         <p>
-          Start with the main archive for the current case record. Use the backup archive for fragments, updates, and signals that have not yet found their place.
+          Start with the main archive for the current case record. Use the backup archive for fragments, updates, and signals that have not yet found their place. The secret channel keeps the quieter drops moving.
         </p>
         <div class="contact-links">
           <a class="btn primary" href="https://www.facebook.com/panicoperator" target="_blank" rel="noreferrer">Main archive</a>
           <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noreferrer">Backup archive</a>
+          <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noreferrer">Secret channel @panic_operator</a>
           <a class="btn" href="https://www.youtube.com/@panicoperator" target="_blank" rel="noreferrer">YouTube ledger</a>
           <a class="btn" href="https://www.instagram.com/panicoperator/" target="_blank" rel="noreferrer">Instagram trace</a>
           <a class="btn" href="https://www.patreon.com/panicoperator" target="_blank" rel="noreferrer">Support the investigator</a>
@@ -1139,6 +1218,7 @@
             <a class="btn primary" href="mailto:erascopia@gmail.com">Send evidence</a>
             <a class="btn" href="https://www.facebook.com/panicoperator" target="_blank" rel="noreferrer">Main archive</a>
             <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noreferrer">Backup archive</a>
+            <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noreferrer">Secret channel @panic_operator</a>
           </div>
         </div>
       </div>
