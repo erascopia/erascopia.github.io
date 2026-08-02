@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Panic Operator is an archive of unexplained CCTV footage, strange signals, and iOS instruments." />
+  <meta name="description" content="Panic Operator is an archive of recovered CCTV cases, recurring signals, iOS tools, and sealed media files." />
   <meta name="theme-color" content="#050608" />
   <meta property="og:title" content="Panic Operator" />
-  <meta property="og:description" content="An open archive of unexplained CCTV footage, strange signals, and iOS instruments." />
+  <meta property="og:description" content="An archive of recovered CCTV cases, recurring signals, iOS tools, and sealed media files." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://panicoperator.com/" />
   <meta property="og:image" content="https://panicoperator.com/intro/intro_2.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Panic Operator" />
-  <meta name="twitter:description" content="An open archive of unexplained CCTV footage, strange signals, and iOS instruments." />
+  <meta name="twitter:description" content="An archive of recovered CCTV cases, recurring signals, iOS tools, and sealed media files." />
   <meta name="twitter:image" content="https://panicoperator.com/intro/intro_2.webp" />
   <link rel="canonical" href="https://panicoperator.com/" />
   <title>Panic Operator</title>
@@ -21,20 +21,19 @@
     :root{
       color-scheme: dark;
       --bg:#050608;
-      --bg2:#0a0d12;
-      --panel: rgba(14, 18, 24, .78);
-      --panel-strong: rgba(9, 12, 16, .92);
+      --bg-2:#0b0f14;
+      --panel: rgba(14, 18, 24, .82);
+      --panel-strong: rgba(10, 13, 18, .94);
       --line: rgba(255,255,255,.10);
       --line-strong: rgba(255,255,255,.16);
       --text:#f2f4f7;
       --muted:#a9b1bb;
-      --muted-2:#7e8793;
-      --accent:#d8dde3;
-      --accent-2:#9aa5b2;
+      --muted-2:#808996;
       --shadow: 0 24px 80px rgba(0,0,0,.42);
-      --radius: 26px;
+      --radius: 28px;
       --radius-sm: 18px;
       --max: 1180px;
+      --hero-copy: clamp(3.6rem, 7vw, 6.8rem);
     }
 
     *{ box-sizing:border-box; }
@@ -46,12 +45,12 @@
       color:var(--text);
       background:
         radial-gradient(900px 560px at 20% 0%, rgba(255,255,255,.08), transparent 62%),
-        radial-gradient(800px 520px at 80% 12%, rgba(255,255,255,.06), transparent 58%),
+        radial-gradient(760px 500px at 80% 12%, rgba(255,255,255,.06), transparent 58%),
         radial-gradient(900px 700px at 50% 100%, rgba(255,255,255,.05), transparent 60%),
         linear-gradient(180deg, #040506 0%, #090b0f 52%, #050608 100%);
       font-family: "SF Pro Text", "SF Pro Display", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     body::before,
@@ -68,11 +67,11 @@
       background:
         linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px) 0 0 / 100% 52px,
         linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 72px 100%;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.08));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.08));
     }
 
     body::after{
-      opacity:.9;
+      opacity:.7;
       background:
         radial-gradient(circle at 18% 18%, rgba(255,255,255,.12), transparent 24%),
         radial-gradient(circle at 82% 12%, rgba(255,255,255,.08), transparent 18%),
@@ -82,6 +81,7 @@
 
     a{ color:inherit; text-decoration:none; }
     img{ display:block; width:100%; height:auto; }
+    button, input, textarea, select{ font:inherit; }
 
     .skip-link{
       position:absolute;
@@ -96,9 +96,7 @@
       transition:top .16s ease;
     }
 
-    .skip-link:focus{
-      top:12px;
-    }
+    .skip-link:focus{ top:12px; }
 
     .wrap{
       width:min(calc(100% - 24px), var(--max));
@@ -122,7 +120,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:14px;
     }
 
     .brand{
@@ -130,13 +128,14 @@
       align-items:center;
       gap:12px;
       min-width:0;
+      flex:0 1 auto;
     }
 
     .brand-mark{
       width:14px;
       height:14px;
       border-radius:50%;
-      background: linear-gradient(180deg, #ffffff 0%, #9fa7b0 100%);
+      background: linear-gradient(180deg, #fff 0%, #9fa7b0 100%);
       box-shadow: 0 0 0 4px rgba(255,255,255,.05), 0 0 26px rgba(255,255,255,.18);
       flex:0 0 auto;
     }
@@ -186,7 +185,6 @@
       color:var(--text);
       background: rgba(255,255,255,.05);
       border-color: rgba(255,255,255,.14);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
     }
 
     a:focus-visible{
@@ -194,17 +192,22 @@
       outline-offset:3px;
     }
 
-    .hero{
+    .hero,
+    .section{
       margin-top:18px;
       padding:18px;
       border:1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), transparent 40%),
-        radial-gradient(900px 420px at 18% 12%, rgba(255,255,255,.11), transparent 52%),
-        linear-gradient(180deg, rgba(16,20,26,.88), rgba(8,10,13,.94));
+      border-radius:var(--radius);
+      background: var(--panel);
       box-shadow: var(--shadow);
       overflow:hidden;
+    }
+
+    .hero{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.055), transparent 40%),
+        radial-gradient(900px 420px at 18% 12%, rgba(255,255,255,.10), transparent 52%),
+        linear-gradient(180deg, rgba(16,20,26,.88), rgba(8,10,13,.94));
     }
 
     .hero-grid{
@@ -234,25 +237,29 @@
       border-radius:50%;
       background: linear-gradient(180deg, #fff, #8d97a4);
       box-shadow: 0 0 16px rgba(255,255,255,.22);
+      flex:0 0 auto;
     }
 
     .hero h1{
-      margin:0;
-      font-size: clamp(40px, 9vw, 84px);
-      line-height: .94;
-      letter-spacing: -.05em;
-      text-wrap: balance;
+      margin:12px 0 0;
+      font-size:var(--hero-copy);
+      line-height:.92;
+      letter-spacing:-.055em;
+      text-wrap:balance;
+      max-width:11ch;
     }
 
     .hero-lead{
-      margin:0;
-      max-width: 64ch;
+      margin:14px 0 0;
+      max-width:68ch;
       color:var(--muted);
-      font-size: 16px;
+      font-size:16px;
       line-height:1.7;
     }
 
-    .cta-row{
+    .cta-row,
+    .section-actions,
+    .contact-links{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
@@ -271,39 +278,47 @@
       color:var(--text);
       font-size:13px;
       letter-spacing:.03em;
-      text-transform:none;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-      transition: border-color .16s ease, background .16s ease, color .16s ease, box-shadow .16s ease;
+      transition: border-color .16s ease, background .16s ease, transform .16s ease, box-shadow .16s ease;
     }
 
     .btn:hover{
       background: rgba(255,255,255,.06);
       border-color: rgba(255,255,255,.18);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+      transform: translateY(-1px);
     }
 
     .btn.primary{
       background: rgba(255,255,255,.11);
       border-color: rgba(255,255,255,.18);
-      color: #fff;
+      color:#fff;
     }
 
-    .social-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:4px;
+    .archive-status{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:10px;
+      margin-top:16px;
     }
 
-    .social-chip{
-      padding:8px 11px;
-      border-radius:12px;
+    .archive-status .chip{
+      padding:11px 12px;
+      border-radius:14px;
       border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
+      background: rgba(255,255,255,.025);
       color:var(--muted);
       font-size:12px;
-      letter-spacing:.04em;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+      line-height:1.45;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .archive-status strong{
+      display:block;
+      color:var(--text);
+      margin-top:3px;
+      font-size:13px;
+      letter-spacing:.12em;
     }
 
     .hero-media{
@@ -312,151 +327,92 @@
     }
 
     .hero-frame{
-      border:1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(0,0,0,.22);
-      overflow:hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,.28);
       position:relative;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 16px 48px rgba(0,0,0,.28);
+      min-height:260px;
     }
 
-    .hero-frame img,
-    .media-card img,
-    .app-card img{
-      filter: grayscale(1) contrast(1.07) brightness(.96);
-      transform: scale(1.001);
-      transition: transform .22s ease;
+    .hero-frame > img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter: grayscale(1) contrast(1.08) brightness(.92);
+      transform: scale(1.01);
     }
 
-    .hero-frame:hover img,
-    .media-card:hover img,
-    .app-card:hover img{
-      transform: scale(1.03);
-    }
-
-    .hero-frame.large{
-      aspect-ratio: 4 / 5;
-    }
-
-    .hero-frame.small{
-      aspect-ratio: 16 / 9;
-    }
-
-    .placeholder-card{
+    .hero-frame.placeholder{
       display:grid;
-      align-content:start;
-      gap:8px;
-      min-height:100%;
-      padding:22px 22px 18px;
-      background:
-        radial-gradient(600px 220px at 18% 20%, rgba(255,255,255,.10), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.42));
     }
 
-    .placeholder-card.alt{
-      background:
-        radial-gradient(540px 210px at 80% 18%, rgba(255,255,255,.10), transparent 52%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.48));
-    }
+    .hero-frame.large{ aspect-ratio: 4 / 5; }
+    .hero-frame.small{ aspect-ratio: 16 / 9; min-height: 166px; }
 
-    .placeholder-card::before{
+    .hero-frame::after,
+    .media-card::after,
+    .app-card::after,
+    .sound-card::after{
       content:"";
       position:absolute;
       inset:0;
-      border-radius:inherit;
-      border:1px solid rgba(255,255,255,.07);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.03),
-        inset 0 -60px 80px rgba(0,0,0,.25);
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), transparent 18%, transparent 72%, rgba(0,0,0,.34)),
+        linear-gradient(90deg, rgba(255,255,255,.03), transparent 16%, transparent 84%, rgba(255,255,255,.03));
+      opacity:.55;
+      mix-blend-mode: screen;
     }
 
-    .placeholder-card strong,
-    .placeholder-card span,
-    .placeholder-kicker{
-      position:relative;
-      z-index:1;
-    }
-
-    .placeholder-kicker{
-      color:var(--muted);
+    .placeholder-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:fit-content;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      color:#d8dde3;
       font-size:11px;
-      letter-spacing:.2em;
+      letter-spacing:.20em;
       text-transform:uppercase;
     }
 
-    .placeholder-card strong{
-      font-size:20px;
-      line-height:1.1;
+    .placeholder-tag::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background: linear-gradient(180deg, #fff, #9198a4);
+    }
+
+    .hero-frame h3{
+      margin:0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height:.95;
       letter-spacing:-.04em;
       max-width:12ch;
     }
 
-    .placeholder-card span{
-      max-width: 32ch;
+    .hero-frame p{
+      margin:10px 0 0;
+      max-width:32ch;
       color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
+      line-height:1.55;
+      font-size:14px;
     }
 
-    .hero-frame.placeholder{
-      display:flex;
-      flex-direction:column;
-      background: rgba(0,0,0,.18);
-    }
-
-    .hero-frame.placeholder .placeholder-card{
-      flex:1;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-frame.placeholder.large .placeholder-card{
-      background:
-        linear-gradient(180deg, rgba(5,6,8,.16), rgba(5,6,8,.52)),
-        url("intro/intro_1.webp") center center / cover no-repeat;
-    }
-
-    .hero-frame.placeholder.small .placeholder-card{
-      background:
-        linear-gradient(180deg, rgba(5,6,8,.16), rgba(5,6,8,.52)),
-        url("intro/intro_2.webp") center center / cover no-repeat;
-    }
-
-    .hero-frame.placeholder .placeholder-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(5,6,8,.22) 0%, rgba(5,6,8,0) 18%, rgba(5,6,8,0) 82%, rgba(5,6,8,.22) 100%),
-        linear-gradient(180deg, rgba(5,6,8,.10) 0%, rgba(5,6,8,0) 20%, rgba(5,6,8,0) 74%, rgba(5,6,8,.60) 100%);
-      pointer-events:none;
-      mix-blend-mode: normal;
-    }
-
-    .hero-frame.placeholder .hero-caption{
-      position:relative;
-      left:auto;
-      right:auto;
-      bottom:auto;
-      margin:0 14px 14px;
-    }
-
-    .hero-frame img,
-    .media-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .hero-caption{
-      position:absolute;
-      left:14px;
-      bottom:14px;
-      right:14px;
+    .hero-frame .frame-caption{
       display:flex;
       justify-content:space-between;
       gap:10px;
       align-items:flex-end;
+      margin-top:12px;
       padding:10px 12px;
       border-radius:16px;
       background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.66));
@@ -464,28 +420,41 @@
       backdrop-filter: blur(10px);
     }
 
-    .hero-caption strong{
+    .hero-frame.placeholder .frame-caption,
+    .hero-frame.placeholder .hero-tagline{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-tagline{
+      display:grid;
+      gap:8px;
+      align-self:start;
+      max-width: 34ch;
+      padding:18px;
+      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.08));
+    }
+
+    .hero-tagline h3{
+      margin:0;
+    }
+
+    .hero-frame .frame-caption strong{
       font-size:13px;
       letter-spacing:.12em;
       text-transform:uppercase;
     }
 
-    .hero-caption span{
-      display:block;
-      margin-top:3px;
+    .hero-frame .frame-caption span{
       color:#d8dde3;
       font-size:12px;
       line-height:1.35;
     }
 
-    .section{
-      margin-top:18px;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      overflow:hidden;
+    .hero-visual{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
 
     .section-head{
@@ -496,82 +465,48 @@
 
     .section-head h2{
       margin:0;
-      font-size: clamp(26px, 5vw, 40px);
+      font-size: clamp(26px, 4vw, 42px);
       line-height:1;
-      letter-spacing:-.04em;
+      letter-spacing:-.045em;
     }
 
     .section-head p{
       margin:0;
-      max-width:72ch;
+      max-width:74ch;
       color:var(--muted);
       line-height:1.7;
       font-size:15px;
     }
 
-    .grid{
-      display:grid;
-      gap:12px;
-    }
-
-    .manual-grid{
-      display:grid;
-      gap:12px;
+    .manual-panel,
+    .archive-panel,
+    .contact-panel,
+    .sound-card,
+    .app-card{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:
+        radial-gradient(760px 260px at 12% 0%, rgba(255,255,255,.08), transparent 50%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      overflow:hidden;
     }
 
     .manual-panel{
-      position:relative;
-      border-radius:22px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(760px 260px at 12% 0%, rgba(255,255,255,.09), transparent 50%),
-        radial-gradient(520px 220px at 88% 12%, rgba(255,255,255,.06), transparent 45%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      overflow:hidden;
       padding:18px;
-    }
-
-    .manual-panel::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      border:1px solid rgba(255,255,255,.06);
-      pointer-events:none;
-    }
-
-    .manual-kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      width:fit-content;
-      margin-bottom:14px;
-      color:#d7dce2;
-      font-size:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-
-    .manual-kicker::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background: linear-gradient(180deg, #fff, #8b94a0);
-      box-shadow: 0 0 14px rgba(255,255,255,.20);
     }
 
     .manual-title{
       margin:0;
-      max-width:14ch;
-      font-size: clamp(28px, 5vw, 46px);
-      line-height:.95;
+      font-size: clamp(28px, 5vw, 48px);
+      line-height:.96;
       letter-spacing:-.05em;
+      max-width:14ch;
     }
 
     .manual-copy{
       margin:14px 0 0;
-      max-width:64ch;
+      max-width:68ch;
       color:var(--muted);
       line-height:1.7;
       font-size:15px;
@@ -579,7 +514,7 @@
 
     .manual-list{
       list-style:none;
-      margin:16px 0 0;
+      margin:18px 0 0;
       padding:0;
       display:grid;
       gap:10px;
@@ -608,13 +543,6 @@
       line-height:1;
     }
 
-    .manual-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:18px;
-    }
-
     .manual-note{
       margin-top:12px;
       color:var(--muted-2);
@@ -622,25 +550,288 @@
       line-height:1.6;
     }
 
-    .archive-panel{
+    .manual-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:fit-content;
+      margin-bottom:12px;
+      color:#d7dce2;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .manual-kicker::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background: linear-gradient(180deg, #fff, #8b94a0);
+      box-shadow: 0 0 14px rgba(255,255,255,.20);
+    }
+
+    .grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .frames{
+      grid-template-columns: 1fr;
+    }
+
+    .media-card{
       position:relative;
+      min-height:320px;
       border-radius:22px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(760px 260px at 12% 0%, rgba(255,255,255,.09), transparent 50%),
-        radial-gradient(520px 220px at 88% 12%, rgba(255,255,255,.06), transparent 45%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 14px 40px rgba(0,0,0,.26);
+      cursor:default;
+    }
+
+    .media-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter: grayscale(1) contrast(1.08) brightness(.95);
+      transform: scale(1.001);
+      transition: transform .22s ease, filter .22s ease;
+    }
+
+    .media-card:hover img{
+      transform: scale(1.03);
+      filter: grayscale(1) contrast(1.12) brightness(1);
+    }
+
+    .media-label{
+      position:absolute;
+      inset:auto 14px 14px 14px;
+      display:grid;
+      gap:4px;
+      padding:10px 12px;
+      border-radius:16px;
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.64));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .media-label strong{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .media-label span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .app-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .app-card{
+      display:grid;
+      width:min(100%, 460px);
+      justify-self:stretch;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .app-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      background:
+        radial-gradient(760px 260px at 12% 0%, rgba(255,255,255,.10), transparent 50%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+    }
+
+    .app-card figure{
+      margin:0;
+      aspect-ratio: 4 / 3;
+      overflow:hidden;
+      background:#0b0d11;
+    }
+
+    .app-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position: var(--focus, center top);
+      filter: grayscale(1) contrast(1.08) brightness(.98);
+      transform: scale(1.001);
+      transition: transform .22s ease;
+    }
+
+    .app-card:hover img{ transform: scale(1.02); }
+
+    .copy{
+      padding:14px 14px 16px;
+      display:grid;
+      gap:10px;
+    }
+
+    .copy h3{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+
+    .copy p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .meta-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .open-hint{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:fit-content;
+      color:#fff;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      opacity:.88;
+    }
+
+    .open-hint::after{
+      content:"";
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.18);
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.92), rgba(255,255,255,.06));
+      box-shadow: 0 0 18px rgba(255,255,255,.16);
+      flex:0 0 auto;
+    }
+
+    .sound-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .sound-card{
+      padding:0;
+      cursor:default;
+    }
+
+    .sound-card figure{
+      margin:0;
+      aspect-ratio: 4 / 3;
+      overflow:hidden;
+      background:#0b0d11;
+    }
+
+    .sound-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position: var(--focus, center center);
+      filter: grayscale(1) contrast(1.08) brightness(.96);
+      transform: scale(1.001);
+      transition: transform .22s ease;
+    }
+
+    .sound-card:hover img{ transform: scale(1.02); }
+
+    .sound-body{
+      display:grid;
+      gap:10px;
+      padding:14px 14px 16px;
+    }
+
+    .sound-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .sound-top h3{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+
+    .sound-id{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .sound-body p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .sound-meta{
+      display:grid;
+      gap:10px;
+    }
+
+    .audio-shell{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      background: rgba(0,0,0,.28);
+      padding:10px;
+    }
+
+    audio{
+      width:100%;
+    }
+
+    .sound-error{
+      margin:0;
+      color:var(--muted-2);
+      font-size:12px;
+      line-height:1.45;
+      min-height:1em;
+    }
+
+    .archive-panel{
       padding:18px;
     }
 
-    .archive-panel::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      border:1px solid rgba(255,255,255,.06);
-      pointer-events:none;
+    .archive-copy{
+      margin:14px 0 0;
+      max-width:66ch;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
     }
 
     .archive-list{
@@ -674,159 +865,6 @@
       line-height:1;
     }
 
-    .frames{
-      grid-template-columns: 1fr;
-    }
-
-    .media-card{
-      position:relative;
-      min-height: 320px;
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.22);
-      box-shadow: 0 14px 40px rgba(0,0,0,.26);
-    }
-
-    .placeholder-frame{
-      background:
-        radial-gradient(600px 320px at 18% 18%, rgba(255,255,255,.10), transparent 52%),
-        radial-gradient(500px 260px at 82% 12%, rgba(255,255,255,.06), transparent 46%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.30));
-    }
-
-    .media-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .media-label{
-      position:absolute;
-      inset:auto 14px 14px 14px;
-      display:grid;
-      gap:4px;
-      padding:10px 12px;
-      border-radius:16px;
-      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.64));
-      border:1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-    }
-
-    .media-label strong{
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-
-    .media-label span{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-    }
-
-    .app-grid{
-      display:grid;
-      gap:12px;
-    }
-
-    .app-card{
-      border:1px solid var(--line);
-      border-radius: 22px;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
-        rgba(255,255,255,.03);
-      box-shadow: 0 14px 38px rgba(0,0,0,.22);
-      display:grid;
-      position:relative;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .app-card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.18);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)),
-        rgba(255,255,255,.04);
-    }
-
-    .app-card figure{
-      margin:0;
-      aspect-ratio: 1 / 1;
-      overflow:hidden;
-      background: #0b0d11;
-    }
-
-    .app-card .copy{
-      padding:14px 14px 16px;
-      display:grid;
-      gap:10px;
-    }
-
-    .app-card .copy h3{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-.02em;
-    }
-
-    .app-card .copy p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .app-card img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      object-position:center top;
-      background:#0b0d11;
-    }
-
-    .meta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-
-    .open-hint{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      width:fit-content;
-      margin-top:2px;
-      color:#fff;
-      font-size:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      opacity:.88;
-    }
-
-    .open-hint::after{
-      content:"";
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.18);
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.9), rgba(255,255,255,.05));
-      box-shadow: 0 0 18px rgba(255,255,255,.16);
-      flex:0 0 auto;
-    }
-
-    .meta-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:12px;
-    }
-
     .contact{
       display:grid;
       gap:14px;
@@ -834,11 +872,6 @@
 
     .contact-panel{
       padding:16px;
-      border-radius:22px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(700px 260px at 20% 10%, rgba(255,255,255,.08), transparent 55%),
-        rgba(255,255,255,.03);
     }
 
     .contact-panel h3{
@@ -854,19 +887,19 @@
       font-size:15px;
     }
 
-    .contact-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
-    }
-
     .footer{
       padding:16px 4px 0;
       color:var(--muted-2);
       font-size:13px;
       line-height:1.6;
       text-align:center;
+    }
+
+    .footer a{
+      color:inherit;
+      text-decoration:underline;
+      text-decoration-thickness:1px;
+      text-underline-offset:2px;
     }
 
     .reveal{
@@ -891,20 +924,13 @@
         padding-bottom:80px;
       }
 
-      .hero{
-        padding:24px;
-      }
-
+      .hero,
       .section{
         padding:24px;
       }
 
-      .manual-grid{
-        grid-template-columns: 1.15fr .85fr;
-      }
-
       .hero-grid{
-        grid-template-columns: 1.15fr .95fr;
+        grid-template-columns: 1.12fr .88fr;
         align-items:start;
       }
 
@@ -914,20 +940,58 @@
 
       .app-grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items:center;
+      }
+
+      .sound-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .manual-panel,
+      .archive-panel,
+      .contact-panel{
+        padding:22px;
       }
     }
 
-    @media (min-width: 1040px){
-      .hero-grid{
-        grid-template-columns: 1.08fr .92fr;
-      }
-
+    @media (min-width: 1160px){
       .frames{
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .app-grid{
+      .sound-grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1380px){
+      .app-grid{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 759px){
+      .topbar-inner{
+        align-items:flex-start;
+        flex-direction:column;
+        padding:12px 0;
+      }
+
+      .nav{
+        justify-content:flex-start;
+      }
+
+      .archive-status{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        max-width:12ch;
+      }
+
+      .app-card,
+      .sound-card{
+        width:100%;
       }
     }
 
@@ -959,6 +1023,7 @@
         <a href="#manual">Manual</a>
         <a href="#cctv">CCTV</a>
         <a href="#apps">iOS Apps</a>
+        <a href="#sounds">Sounds</a>
         <a href="#wallpapers">Wallpapers</a>
         <a href="#social">Social</a>
         <a href="#contact">Contact</a>
@@ -969,82 +1034,84 @@
   <main id="top" class="wrap">
     <section class="hero reveal">
       <div class="hero-grid">
-        <div>
-          <div class="eyebrow">panic operator</div>
-          <h1>Unexplained CCTV footage, strange signals, and a record of what keeps returning.</h1>
-          <p class="hero-lead" style="margin-top:14px;">
-            Panic Operator began with a handful of late-night frames: a figure in a corridor, an empty room that did not behave like one, and timestamps that refused to settle the question. The archive follows those fragments without rushing to explain them.
+        <div class="hero-copy">
+          <div class="eyebrow">Panic Operator Archive</div>
+          <h1>Some recordings are never fully explained.</h1>
+          <p class="hero-lead">
+            Panic Operator preserves fragments that refuse to settle into ordinary explanations: misplaced figures, repeating timestamps, empty rooms that appear to respond, and signals that return after the source is gone.
           </p>
-          <p class="hero-lead" style="margin-top:12px;">
-            Each case is kept with its time, location when known, and the detail that made it return. New sightings continue through the Panic Operator social archives.
+          <p class="hero-lead">
+            Every file begins with something small - a frame, a sound, a detail noticed too late. The archive keeps the record without forcing a conclusion.
+          </p>
+          <p class="hero-lead">
+            Review the footage. Follow the signal. Keep your own conclusion.
           </p>
           <div class="cta-row" style="margin-top:18px;">
-            <a class="btn primary" href="#cctv">Enter The Evidence Room</a>
-            <a class="btn" href="#contact">Submit A Case</a>
+            <a class="btn primary" href="#cctv">Enter the Evidence Room</a>
+            <a class="btn" href="#manual">Read the Operator Manual</a>
+          </div>
+          <div class="archive-status" aria-label="Archive status">
+            <div class="chip">Archive status<strong>Active</strong></div>
+            <div class="chip">Files recovered<strong>04</strong></div>
+            <div class="chip">Signal condition<strong>Unresolved</strong></div>
           </div>
         </div>
 
-        <div class="hero-media">
-          <div class="hero-frame large placeholder">
-            <div class="placeholder-card">
-              <span class="placeholder-kicker">File 01</span>
-              <strong>The first signal</strong>
-              <span>The signal returned after midnight.</span>
+        <div class="hero-visual" aria-label="Archive preview">
+          <article class="hero-frame large placeholder">
+            <img src="intro/intro_1.webp" alt="Archive panel A showing a dark interior frame" width="1200" height="1500" />
+            <div class="hero-tagline">
+              <div class="placeholder-tag">File 01</div>
+              <h3>The first signal</h3>
+              <p>The signal returned after midnight.</p>
             </div>
-          </div>
-          <div class="hero-frame small placeholder">
-            <div class="placeholder-card alt">
-              <span class="placeholder-kicker">File 02</span>
-              <strong>The second trace</strong>
-              <span>Something stayed in frame too long.</span>
+            <div class="frame-caption">
+              <div>
+                <strong>Panel A</strong>
+                <span>Recovered from a quiet hallway feed.</span>
+              </div>
             </div>
-          </div>
+          </article>
+          <article class="hero-frame small placeholder">
+            <img src="intro/intro_2.webp" alt="Archive panel B showing a second recovered frame" width="1600" height="900" />
+            <div class="hero-tagline">
+              <div class="placeholder-tag">File 02</div>
+              <h3>The second trace</h3>
+              <p>Something stayed in frame too long.</p>
+            </div>
+            <div class="frame-caption">
+              <div>
+                <strong>Panel B</strong>
+                <span>Stillness recorded where none was expected.</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="manual" class="section reveal">
       <div class="section-head">
-        <h2>Operator Manual</h2>
+        <div class="eyebrow">Field Reference // Free Release</div>
+        <h2>15 rules for staying calm when the frame changes.</h2>
         <p>
-          A free Panic Operator release built for the moments when the room feels unfamiliar and the right move is to stay measured. Read the 15 rules, keep them close, and return to them when the signal gets loud.
+          The Operator Manual is the full release: all 15 rules collected in one place for moments when the room, recording, or signal no longer behaves as expected. It does not explain the event. It helps you observe it clearly.
         </p>
       </div>
-      <div class="manual-grid">
-        <div class="manual-panel">
-          <div class="manual-kicker">Free release</div>
-          <h3 class="manual-title">15 rules for calm under strange conditions</h3>
-          <p class="manual-copy">
-            The manual is a short field guide for reading uncertainty without losing the thread. It collects the Panic Operator rules in one place and gives the archive a steady center before the next case begins.
-          </p>
-          <ul class="manual-list" aria-label="Manual highlights">
-            <li><span>01</span> Keep your attention on the evidence, not the noise around it.</li>
-            <li><span>02</span> Slow down when the frame changes faster than expected.</li>
-            <li><span>03</span> Trust the record, then verify it again.</li>
-            <li><span>04</span> If the scene feels wrong, document it before you explain it.</li>
-          </ul>
-          <div class="manual-actions">
-            <a class="btn primary" href="https://erascopia.kit.com/15rules" target="_blank" rel="noreferrer">Read the free manual</a>
-            <a class="btn" href="#contact">Send a note</a>
-          </div>
-          <div class="manual-note">
-            Best viewed with the rest of the archive open. Free access, no noise, just the rules.
-          </div>
+      <div class="manual-panel">
+        <div class="manual-kicker">Full release</div>
+        <h3 class="manual-title">About the manual</h3>
+        <p class="manual-copy">
+          This is the complete field reference, not a sample or excerpt. Keep it close when the pattern shifts, the timestamp feels wrong, or the room stops behaving the way it should.
+        </p>
+        <div class="meta-row" style="margin-top:18px;">
+          <span class="meta-pill">15 rules included</span>
+          <span class="meta-pill">Free release</span>
+          <span class="meta-pill">Field reference</span>
         </div>
-        <div class="manual-panel">
-          <div class="manual-kicker">What it is</div>
-          <h3 class="manual-title">A simple companion for the field</h3>
-          <p class="manual-copy">
-            The operator manual is there for focus, reset, and signal tracking. It belongs beside the CCTV archive, the iOS tools, and the social trail as a quiet reference for what to do next.
-          </p>
-          <ul class="manual-list" aria-label="Manual uses">
-            <li><span>15</span> Practical rules arranged for fast reading.</li>
-            <li><span>1</span> Free page with the full Panic Operator manual.</li>
-            <li><span>∞</span> Reusable when things feel unclear or repeated.</li>
-          </ul>
-          <div class="manual-actions">
-            <a class="btn" href="https://erascopia.kit.com/15rules" target="_blank" rel="noreferrer">Open the release</a>
-          </div>
+        <div class="section-actions" style="margin-top:18px;">
+          <a class="btn primary" href="https://erascopia.kit.com/15rules" target="_blank" rel="noopener noreferrer">Read the Free Operator Manual</a>
+          <a class="btn" href="mailto:operator@panicoperator.com">Send a field note</a>
         </div>
       </div>
     </section>
@@ -1053,32 +1120,32 @@
       <div class="section-head">
         <h2>The Evidence Room</h2>
         <p>
-          Each case begins with a frame, a time, and a question. We preserve the detail first, then follow the signal wherever it leads.
+          Each case begins with a frame, a time, and a detail that should not be there. The original record is kept intact. Interpretation remains open.
         </p>
       </div>
       <div class="grid frames">
-        <article class="media-card placeholder-frame">
+        <article class="media-card">
           <img src="cctv/a1.webp" alt="CCTV case frame showing a lone figure in a dark hallway" width="1254" height="1254" loading="lazy" decoding="async" />
           <div class="media-label">
             <strong>Case 01</strong>
             <span>The figure appears at 02:17. No entrance is visible.</span>
           </div>
         </article>
-        <article class="media-card placeholder-frame">
+        <article class="media-card">
           <img src="cctv/a2.webp" alt="CCTV case frame showing an empty room with a chair and window" width="1254" height="1254" loading="lazy" decoding="async" />
           <div class="media-label">
             <strong>Case 02</strong>
             <span>The room is empty. The chair is not where it was.</span>
           </div>
         </article>
-        <article class="media-card placeholder-frame">
+        <article class="media-card">
           <img src="cctv/a3.webp" alt="CCTV case frame showing a long corridor with a distant light" width="1254" height="1254" loading="lazy" decoding="async" />
           <div class="media-label">
             <strong>Case 03</strong>
             <span>The corridor ends where the next frame begins.</span>
           </div>
         </article>
-        <article class="media-card placeholder-frame">
+        <article class="media-card">
           <img src="cctv/a4.webp" alt="CCTV case frame showing a fenced entrance at night in the rain" width="1254" height="1254" loading="lazy" decoding="async" />
           <div class="media-label">
             <strong>Case 04</strong>
@@ -1090,81 +1157,174 @@
 
     <section id="apps" class="section reveal">
       <div class="section-head">
-        <h2>Signal Instruments</h2>
+        <div class="eyebrow">Signal Instruments</div>
+        <h2>Tools for recurring signals.</h2>
         <p>
-          A small selection of iOS instruments for reading the noise, finding a reset, and keeping recurring signals in view.
+          A small collection of independent iOS instruments for tracking pressure, timing, repetition, and the things that are easy to miss.
         </p>
       </div>
       <div class="app-grid">
-        <a class="app-card" href="https://apps.apple.com/app/id6756220703" target="_blank" rel="noreferrer">
+        <a class="app-card" href="https://apps.apple.com/app/id6756220703" target="_blank" rel="noopener noreferrer">
           <figure>
-            <img src="cryptopanicmeter.webp" alt="Crypto Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" />
+            <img src="cryptopanicmeter.webp" alt="Crypto Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
             <h3>Crypto Panic Meter</h3>
-            <p>Read the market mood before the noise gets loud and the room starts moving too fast.</p>
+            <p>A focused reading of market pressure, momentum, and fear.</p>
             <div class="meta-row">
-              <span class="meta-pill">fear signal</span>
+              <span class="meta-pill">Market Signal</span>
             </div>
-            <span class="open-hint">Open in App Store</span>
+            <span class="open-hint">View on the App Store</span>
           </div>
         </a>
 
-        <a class="app-card" href="https://apps.apple.com/app/id6756532562" target="_blank" rel="noreferrer">
+        <a class="app-card" href="https://apps.apple.com/app/id6756532562" target="_blank" rel="noopener noreferrer">
           <figure>
-            <img src="my_panic_meter/panicmeter.webp" alt="Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" />
+            <img src="my_panic_meter/panicmeter.webp" alt="Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
             <h3>Panic Meter</h3>
-            <p>When the internal alarm rises, this is the instrument for finding the reset.</p>
+            <p>A private tool for noticing patterns in stress before they take control.</p>
             <div class="meta-row">
-              <span class="meta-pill">reset tool</span>
+              <span class="meta-pill">Personal Signal</span>
             </div>
-            <span class="open-hint">Open in App Store</span>
+            <span class="open-hint">View on the App Store</span>
           </div>
         </a>
 
-        <a class="app-card" href="https://apps.apple.com/app/id6757025024" target="_blank" rel="noreferrer">
+        <a class="app-card" href="https://apps.apple.com/app/id6757025024" target="_blank" rel="noopener noreferrer">
           <figure>
-            <img src="cadency/cadency.webp" alt="cadency app screenshot" width="1254" height="1254" loading="lazy" decoding="async" />
+            <img src="cadency/cadency.webp" alt="cadency app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
             <h3>cadency</h3>
-            <p>When timing matters, cadence keeps the signal from arriving too late.</p>
+            <p>A timing companion for posting with more consistency and less guesswork.</p>
             <div class="meta-row">
-              <span class="meta-pill">timed drops</span>
+              <span class="meta-pill">Timing Signal</span>
             </div>
-            <span class="open-hint">Open in App Store</span>
+            <span class="open-hint">View on the App Store</span>
           </div>
         </a>
 
-        <a class="app-card" href="https://apps.apple.com/app/id6748586996" target="_blank" rel="noreferrer">
+        <a class="app-card" href="https://apps.apple.com/app/id6748586996" target="_blank" rel="noopener noreferrer">
           <figure>
-            <img src="localsubs/subscription.webp" alt="LocalSubs subscriptions app screenshot" width="1254" height="1254" loading="lazy" decoding="async" />
+            <img src="localsubs/subscription.webp" alt="LocalSubs subscriptions app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
             <h3>LocalSubs - subscriptions</h3>
-            <p>A quiet watch over the charges that return every month.</p>
+            <p>A quiet record of subscriptions and charges that return every month.</p>
             <div class="meta-row">
-              <span class="meta-pill">recurring watch</span>
+              <span class="meta-pill">Recurring Signal</span>
             </div>
-            <span class="open-hint">Open in App Store</span>
+            <span class="open-hint">View on the App Store</span>
           </div>
         </a>
       </div>
     </section>
 
+    <section id="sounds" class="section reveal">
+      <div class="section-head">
+        <div class="eyebrow">Signal Archive</div>
+        <h2>Four recovered transmissions.</h2>
+        <p>
+          Long-form ambient files from the Panic Operator archive. Built for late-night review, empty rooms, and the moments between recorded events.
+        </p>
+      </div>
+      <div class="sound-grid" data-sound-grid>
+        <article class="sound-card" data-sound-item>
+          <figure>
+            <img data-media-cover src="" alt="Cover image for Underdeck Hum" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
+          </figure>
+          <div class="sound-body">
+            <div class="sound-top">
+              <h3>Underdeck Hum</h3>
+              <span class="sound-id">PO-SG-001</span>
+            </div>
+            <p>A low mechanical presence recorded below an empty structure.</p>
+            <div class="sound-meta">
+              <div class="audio-shell">
+                <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
+              <p class="sound-error" aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="sound-card" data-sound-item>
+          <figure>
+            <img data-media-cover src="" alt="Cover image for Corridor Frequency" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
+          </figure>
+          <div class="sound-body">
+            <div class="sound-top">
+              <h3>Corridor Frequency</h3>
+              <span class="sound-id">PO-SG-002</span>
+            </div>
+            <p>A narrow signal that appears to move from room to room.</p>
+            <div class="sound-meta">
+              <div class="audio-shell">
+                <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
+              <p class="sound-error" aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="sound-card" data-sound-item>
+          <figure>
+            <img data-media-cover src="" alt="Cover image for Static After Midnight" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
+          </figure>
+          <div class="sound-body">
+            <div class="sound-top">
+              <h3>Static After Midnight</h3>
+              <span class="sound-id">PO-SG-003</span>
+            </div>
+            <p>The transmission continues after the source is disconnected.</p>
+            <div class="sound-meta">
+              <div class="audio-shell">
+                <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
+              <p class="sound-error" aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="sound-card" data-sound-item>
+          <figure>
+            <img data-media-cover src="" alt="Cover image for Last Known Signal" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
+          </figure>
+          <div class="sound-body">
+            <div class="sound-top">
+              <h3>Last Known Signal</h3>
+              <span class="sound-id">PO-SG-004</span>
+            </div>
+            <p>A distant return from a channel marked inactive.</p>
+            <div class="sound-meta">
+              <div class="audio-shell">
+                <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
+              <p class="sound-error" aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="wallpapers" class="section reveal">
       <div class="section-head">
+        <div class="eyebrow">Sealed Collection</div>
         <h2>Wallpaper Archive</h2>
         <p>
           A sealed collection of background files kept like recovered evidence. The first bundle lives in archive001, filed as a quiet drop from the larger record.
         </p>
       </div>
       <div class="archive-panel">
-        <div class="manual-kicker">sealed collection</div>
-        <h3 class="manual-title">archive_001</h3>
-        <p class="manual-copy">
+        <div class="manual-kicker">Archive batch</div>
+        <h3 class="manual-title" style="max-width:12ch;">archive_001</h3>
+        <p class="archive-copy">
           These wallpapers are presented like secret files: muted light, soft static, and a trace that suggests someone kept cataloging the room after the lights went out.
         </p>
         <ul class="archive-list" aria-label="Wallpaper archive details">
@@ -1172,8 +1332,8 @@
           <li><span>02</span> Built for desktop and lock screen use when you want the signal nearby.</li>
           <li><span>03</span> More sealed bundles can appear here without changing the lock.</li>
         </ul>
-        <div class="manual-actions">
-          <a class="btn primary" href="https://panicoperator.com/wallpapers/archive001/" target="_blank" rel="noreferrer">Open secret files</a>
+        <div class="section-actions" style="margin-top:18px;">
+          <a class="btn primary" href="https://panicoperator.com/wallpapers/archive001/" target="_blank" rel="noopener noreferrer">Open secret files</a>
           <a class="btn" href="#social">Return to transmission log</a>
         </div>
       </div>
@@ -1183,20 +1343,20 @@
       <div class="section-head">
         <h2>Transmission Log</h2>
         <p>
-          The main archive lives on Facebook. TikTok is the backup archive. Telegram is the secret channel. Patreon helps keep the investigation active when the trail goes quiet.
+          The main archive lives on Facebook. TikTok is the backup archive. Telegram is the quiet channel. Patreon helps keep the investigation active when the trail goes quiet.
         </p>
       </div>
       <div class="contact-panel">
         <p>
-          Start with the main archive for the current case record. Use the backup archive for fragments, updates, and signals that have not yet found their place. The secret channel keeps the quieter drops moving.
+          Start with the main archive for the current case record. Use the backup archive for fragments, updates, and signals that have not yet found their place. The quiet channel keeps the smaller drops moving.
         </p>
-        <div class="contact-links">
-          <a class="btn primary" href="https://www.facebook.com/panicoperator" target="_blank" rel="noreferrer">Main archive</a>
-          <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noreferrer">Backup archive</a>
-          <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noreferrer">Secret channel @panic_operator</a>
-          <a class="btn" href="https://www.youtube.com/@panicoperator" target="_blank" rel="noreferrer">YouTube ledger</a>
-          <a class="btn" href="https://www.instagram.com/panicoperator/" target="_blank" rel="noreferrer">Instagram trace</a>
-          <a class="btn" href="https://www.patreon.com/panicoperator" target="_blank" rel="noreferrer">Support the investigator</a>
+        <div class="contact-links" style="margin-top:14px;">
+          <a class="btn primary" href="https://www.facebook.com/panicoperator" target="_blank" rel="noopener noreferrer">Main archive</a>
+          <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noopener noreferrer">Backup archive</a>
+          <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noopener noreferrer">Telegram @panic_operator</a>
+          <a class="btn" href="https://www.youtube.com/@panicoperator" target="_blank" rel="noopener noreferrer">YouTube ledger</a>
+          <a class="btn" href="https://www.instagram.com/panicoperator/" target="_blank" rel="noopener noreferrer">Instagram trace</a>
+          <a class="btn" href="https://www.patreon.com/panicoperator" target="_blank" rel="noopener noreferrer">Support the investigator</a>
         </div>
       </div>
     </section>
@@ -1214,19 +1374,20 @@
           <p>
             Send evidence, notes, links, or a short account of what happened. We cannot promise an explanation, but we will read what you found.
           </p>
-          <div class="contact-links">
+          <div class="contact-links" style="margin-top:14px;">
             <a class="btn primary" href="mailto:operator@panicoperator.com">Send evidence</a>
-            <a class="btn" href="https://www.facebook.com/panicoperator" target="_blank" rel="noreferrer">Main archive</a>
-            <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noreferrer">Backup archive</a>
-            <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noreferrer">Secret channel @panic_operator</a>
+            <a class="btn" href="https://www.facebook.com/panicoperator" target="_blank" rel="noopener noreferrer">Main archive</a>
+            <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noopener noreferrer">Backup archive</a>
+            <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noopener noreferrer">Telegram @panic_operator</a>
           </div>
         </div>
       </div>
     </section>
 
     <div class="footer">
-      Panic Operator keeps the record open for unexplained footage, unusual signals, and instruments for reading the noise.
-      <a href="./panic_operator_privacy_policy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a>
+      Panic Operator keeps the record open for recovered footage, recurring signals, and instruments for reading the noise.
+      <a href="./panic_operator_privacy_policy.html">Privacy Policy</a>
+      <a href="./panic_operator_terms_of_use.html">Terms of Use</a>
     </div>
   </main>
 
@@ -1243,6 +1404,94 @@
     }, { threshold: 0.16 });
 
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    const MEDIA_BASE_URL = 'https://aws-sam-cli-managed-default-samclisourcebucket-caxwqk2gkjbq.s3.us-east-2.amazonaws.com/panic_operator/sound';
+    const PANIC_OPERATOR_MEDIA = [
+      {
+        cover: 'cover_3.jpg',
+        audio: 'sound_1.mp3',
+        alt: 'Cover image for Underdeck Hum',
+        title: 'Underdeck Hum',
+        error: 'Audio file could not be loaded.'
+      },
+      {
+        cover: 'cover_4.jpg',
+        audio: 'sound_2.mp3',
+        alt: 'Cover image for Corridor Frequency',
+        title: 'Corridor Frequency',
+        error: 'Audio file could not be loaded.'
+      },
+      {
+        cover: 'cover_5.jpg',
+        audio: 'sound_3.mp3',
+        alt: 'Cover image for Static After Midnight',
+        title: 'Static After Midnight',
+        error: 'Audio file could not be loaded.'
+      },
+      {
+        cover: 'cover_6.jpg',
+        audio: 'sound_4.mp3',
+        alt: 'Cover image for Last Known Signal',
+        title: 'Last Known Signal',
+        error: 'Audio file could not be loaded.'
+      }
+    ];
+
+    const soundCards = [...document.querySelectorAll('[data-sound-item]')];
+    const audioNodes = [];
+
+    soundCards.forEach((card, index) => {
+      const media = PANIC_OPERATOR_MEDIA[index];
+      const cover = card.querySelector('[data-media-cover]');
+      const audio = card.querySelector('[data-media-audio]');
+      const openLink = card.querySelector('[data-media-open]');
+      const errorNode = card.querySelector('.sound-error');
+      const assetBase = `${MEDIA_BASE_URL}`;
+      const coverUrl = `${assetBase}/${encodeURIComponent(media.cover)}`;
+      const audioUrl = `${assetBase}/${encodeURIComponent(media.audio)}`;
+
+      if (cover) {
+        cover.src = coverUrl;
+        cover.alt = media.alt;
+      }
+
+      if (audio) {
+        audio.src = audioUrl;
+        audio.dataset.title = media.title;
+        audio.dataset.audioUrl = audioUrl;
+        audioNodes.push(audio);
+      }
+
+      if (openLink) {
+        openLink.href = audioUrl;
+      }
+
+      if (errorNode) {
+        errorNode.hidden = true;
+      }
+
+      if (audio) {
+        audio.addEventListener('error', () => {
+          if (!errorNode) return;
+          errorNode.textContent = media.error;
+          errorNode.hidden = false;
+        });
+      }
+    });
+
+    document.addEventListener('play', (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLAudioElement)) {
+        return;
+      }
+
+      for (const audio of audioNodes) {
+        if (audio !== target) {
+          audio.pause();
+        }
+      }
+    }, true);
   </script>
+  <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "42510ac5e2d7406d8ef3912c69949ecd"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
