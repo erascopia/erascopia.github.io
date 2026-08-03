@@ -29,6 +29,8 @@
       --text:#f2f4f7;
       --muted:#a9b1bb;
       --muted-2:#808996;
+      --accent:#7f9a8d;
+      --accent-2:#5d7167;
       --shadow: 0 24px 80px rgba(0,0,0,.42);
       --radius: 28px;
       --radius-sm: 18px;
@@ -135,7 +137,7 @@
       width:14px;
       height:14px;
       border-radius:50%;
-      background: linear-gradient(180deg, #fff 0%, #9fa7b0 100%);
+      background: linear-gradient(180deg, #f7f8f8 0%, var(--accent) 100%);
       box-shadow: 0 0 0 4px rgba(255,255,255,.05), 0 0 26px rgba(255,255,255,.18);
       flex:0 0 auto;
     }
@@ -289,8 +291,8 @@
     }
 
     .btn.primary{
-      background: rgba(255,255,255,.11);
-      border-color: rgba(255,255,255,.18);
+      background: rgba(127,154,141,.14);
+      border-color: rgba(127,154,141,.24);
       color:#fff;
     }
 
@@ -319,6 +321,60 @@
       margin-top:3px;
       font-size:13px;
       letter-spacing:.12em;
+    }
+
+    .archive-map{
+      display:grid;
+      gap:12px;
+    }
+
+    .archive-node{
+      position:relative;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(760px 240px at 12% 0%, rgba(127,154,141,.12), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      overflow:hidden;
+    }
+
+    .archive-node.featured{
+      min-height:100%;
+      display:grid;
+      align-content:space-between;
+      gap:18px;
+      background:
+        radial-gradient(760px 260px at 18% 0%, rgba(127,154,141,.16), transparent 48%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+
+    .archive-node .node-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .archive-node h3{
+      margin:0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height:.96;
+      letter-spacing:-.05em;
+    }
+
+    .archive-node p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+      max-width:48ch;
+    }
+
+    .archive-node .node-action{
+      display:inline-flex;
+      width:fit-content;
+      margin-top:14px;
     }
 
     .hero-media{
@@ -496,6 +552,12 @@
       padding:18px;
     }
 
+    .manual-panel.document{
+      background:
+        radial-gradient(760px 260px at 12% 0%, rgba(127,154,141,.10), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+
     .manual-title{
       margin:0;
       font-size: clamp(28px, 5vw, 48px);
@@ -629,6 +691,91 @@
       line-height:1.4;
     }
 
+    .case-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .case-card{
+      display:grid;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: 0 14px 40px rgba(0,0,0,.26);
+      cursor:default;
+    }
+
+    .case-card figure{
+      margin:0;
+      aspect-ratio: 4 / 3;
+      background:#0b0d11;
+      overflow:hidden;
+    }
+
+    .case-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter: grayscale(1) contrast(1.08) brightness(.95);
+      transform: scale(1.001);
+      transition: transform .22s ease, filter .22s ease;
+    }
+
+    .case-card:hover img{
+      transform: scale(1.03);
+      filter: grayscale(1) contrast(1.12) brightness(1);
+    }
+
+    .case-body{
+      display:grid;
+      gap:10px;
+      padding:14px 14px 16px;
+    }
+
+    .case-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .case-id{
+      color:var(--accent);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:11px;
+      line-height:1.2;
+    }
+
+    .case-title{
+      margin:4px 0 0;
+      font-size:20px;
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+
+    .case-desc{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+
+    .case-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .case-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:4px;
+    }
+
     .app-grid{
       display:grid;
       gap:12px;
@@ -685,6 +832,19 @@
       color:var(--muted);
       line-height:1.6;
       font-size:14px;
+    }
+
+    .copy .lore{
+      color:#c8d0d7;
+    }
+
+    .app-desc{
+      display:grid;
+      gap:10px;
+    }
+
+    .app-desc .lore{
+      color:#c8d0d7;
     }
 
     .meta-row{
@@ -822,6 +982,42 @@
       min-height:1em;
     }
 
+    .transmission-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .transmission-card{
+      padding:0;
+    }
+
+    .transmission-card .sound-body{
+      gap:12px;
+    }
+
+    .transmission-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .transmission-title{
+      margin:0;
+      font-size:20px;
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+
+    .transmission-type{
+      color:var(--accent);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:11px;
+      white-space:nowrap;
+      padding-top:2px;
+    }
+
     .archive-panel{
       padding:18px;
     }
@@ -887,12 +1083,88 @@
       font-size:15px;
     }
 
+    .channel-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .channel-panel{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:
+        radial-gradient(760px 260px at 12% 0%, rgba(127,154,141,.10), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+
+    .channel-list{
+      list-style:none;
+      margin:14px 0 0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+
+    .channel-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:#d7dce2;
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    .channel-list span{
+      flex:0 0 auto;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(127,154,141,.28);
+      background: rgba(127,154,141,.10);
+      color:#edf2ee;
+      font-size:11px;
+    }
+
     .footer{
-      padding:16px 4px 0;
-      color:var(--muted-2);
+      margin-top:18px;
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:
+        radial-gradient(760px 260px at 12% 0%, rgba(127,154,141,.10), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+
+    .footer-grid{
+      display:grid;
+      gap:18px;
+    }
+
+    .footer-copy{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+      max-width:60ch;
+    }
+
+    .footer-note{
+      margin:14px 0 0;
+      color:#d8dfe0;
       font-size:13px;
       line-height:1.6;
-      text-align:center;
+    }
+
+    .footer-links{
+      display:grid;
+      gap:10px;
+    }
+
+    .footer-links .meta-row,
+    .footer-links .contact-links{
+      margin-top:0 !important;
     }
 
     .footer a{
@@ -934,7 +1206,11 @@
         align-items:start;
       }
 
-      .frames{
+      .archive-map{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .case-grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -947,6 +1223,15 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .transmission-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid{
+        grid-template-columns: 1.15fr .85fr;
+        align-items:start;
+      }
+
       .manual-panel,
       .archive-panel,
       .contact-panel{
@@ -955,11 +1240,11 @@
     }
 
     @media (min-width: 1160px){
-      .frames{
+      .case-grid{
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .sound-grid{
+      .transmission-grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -1020,13 +1305,14 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary">
+        <a href="#archive-network">Archive</a>
+        <a href="#cases">Cases</a>
         <a href="#manual">Manual</a>
-        <a href="#cctv">CCTV</a>
-        <a href="#apps">iOS Apps</a>
-        <a href="#sounds">Sounds</a>
+        <a href="#apps">Instruments</a>
+        <a href="#sounds">Transmissions</a>
         <a href="#wallpapers">Wallpapers</a>
-        <a href="#social">Social</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Channel</a>
+        <a class="btn primary" href="#archive-network">Enter Main Archive</a>
       </nav>
     </div>
   </header>
@@ -1035,20 +1321,20 @@
     <section class="hero reveal">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Panic Operator Archive</div>
+          <div class="eyebrow">PANIC OPERATOR ARCHIVE</div>
           <h1>Some recordings are never fully explained.</h1>
           <p class="hero-lead">
-            Panic Operator preserves fragments that refuse to settle into ordinary explanations: misplaced figures, repeating timestamps, empty rooms that appear to respond, and signals that return after the source is gone.
+            Panic Operator is the central archive for recovered footage, recurring signals, field references, sealed wallpaper drops, and iOS instruments built to track what returns.
           </p>
           <p class="hero-lead">
-            Every file begins with something small - a frame, a sound, a detail noticed too late. The archive keeps the record without forcing a conclusion.
+            Every file begins with something small - a frame, a sound, a detail noticed too late. The archive keeps the record without forcing a conclusion, then files the cases, transmissions, manuals, and instruments into one system.
           </p>
           <p class="hero-lead">
             Review the footage. Follow the signal. Keep your own conclusion.
           </p>
           <div class="cta-row" style="margin-top:18px;">
-            <a class="btn primary" href="#cctv">Enter the Evidence Room</a>
-            <a class="btn" href="#manual">Read the Operator Manual</a>
+            <a class="btn primary" href="#archive-network">Enter Main Archive</a>
+            <a class="btn" href="#cases">Review Cases</a>
           </div>
           <div class="archive-status" aria-label="Archive status">
             <div class="chip">Archive status<strong>Active</strong></div>
@@ -1090,6 +1376,69 @@
       </div>
     </section>
 
+    <section id="archive-network" class="section reveal">
+      <div class="section-head">
+        <div class="eyebrow">Archive Network</div>
+        <h2>Canonical routes for the record.</h2>
+        <p>
+          Panic Operator is the canonical hub. The website holds the record; the social layers distribute active files, sightings, and quieter returns inside the same archive world.
+        </p>
+      </div>
+      <div class="archive-map">
+        <article class="archive-node featured">
+          <div>
+            <div class="node-meta">
+              <span class="meta-pill">Website // Canon index</span>
+              <span class="meta-pill">Route // Primary</span>
+            </div>
+            <h3>The central record.</h3>
+            <p>Cases, instruments, transmissions, manuals, and sealed drops resolve here first.</p>
+          </div>
+          <a class="btn primary node-action" href="#cases">Review the canon</a>
+        </article>
+
+        <article class="archive-node featured">
+          <div class="node-meta">
+            <span class="meta-pill">Facebook // Main archive</span>
+            <span class="meta-pill">Route // Most active</span>
+          </div>
+          <h3>Main archive.</h3>
+          <p>Primary log of recovered files, active case updates, and the loudest signal layer.</p>
+          <a class="btn node-action" href="https://www.facebook.com/panicoperator" target="_blank" rel="noopener noreferrer">Open main archive</a>
+        </article>
+
+        <article class="archive-node">
+          <div class="node-meta">
+            <span class="meta-pill">TikTok // Fragments</span>
+            <span class="meta-pill">Route // Public trace</span>
+          </div>
+          <h3>Fragments and sightings.</h3>
+          <p>Short public traces, partial returns, and small pieces of the wider record.</p>
+          <a class="btn node-action" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noopener noreferrer">Open fragments</a>
+        </article>
+
+        <article class="archive-node">
+          <div class="node-meta">
+            <span class="meta-pill">Telegram // Quiet drops</span>
+            <span class="meta-pill">Route // Side channel</span>
+          </div>
+          <h3>Quiet drops.</h3>
+          <p>Less stable returns, side-channel notes, and softer signals that do not belong in the main log.</p>
+          <a class="btn node-action" href="https://t.me/panic_operator" target="_blank" rel="noopener noreferrer">Open quiet channel</a>
+        </article>
+
+        <article class="archive-node">
+          <div class="node-meta">
+            <span class="meta-pill">Patreon // Sealed support</span>
+            <span class="meta-pill">Route // Closed layer</span>
+          </div>
+          <h3>Support archive.</h3>
+          <p>Sealed materials and support for keeping the record active when the trail thins out.</p>
+          <a class="btn node-action" href="https://www.patreon.com/panicoperator" target="_blank" rel="noopener noreferrer">Open sealed support</a>
+        </article>
+      </div>
+    </section>
+
     <section id="manual" class="section reveal">
       <div class="section-head">
         <div class="eyebrow">Field Reference // Free Release</div>
@@ -1098,58 +1447,121 @@
           The Operator Manual is the full release: all 15 rules collected in one place for moments when the room, recording, or signal no longer behaves as expected. It does not explain the event. It helps you observe it clearly.
         </p>
       </div>
-      <div class="manual-panel">
-        <div class="manual-kicker">Full release</div>
-        <h3 class="manual-title">About the manual</h3>
+      <div class="manual-panel document">
+        <div class="manual-kicker">Field Reference // Free Release</div>
+        <h3 class="manual-title">Official manual release</h3>
         <p class="manual-copy">
-          This is the complete field reference, not a sample or excerpt. Keep it close when the pattern shifts, the timestamp feels wrong, or the room stops behaving the way it should.
+          The full 15-rule field reference is filed here for moments when the room, recording, or signal no longer behaves as expected. It does not explain the event. It helps you observe it clearly.
         </p>
         <div class="meta-row" style="margin-top:18px;">
-          <span class="meta-pill">15 rules included</span>
-          <span class="meta-pill">Free release</span>
-          <span class="meta-pill">Field reference</span>
+          <span class="meta-pill">Format // Manual</span>
+          <span class="meta-pill">Rules Included // 15</span>
+          <span class="meta-pill">Status // Free Release</span>
         </div>
         <div class="section-actions" style="margin-top:18px;">
-          <a class="btn primary" href="https://erascopia.kit.com/15rules" target="_blank" rel="noopener noreferrer">Read the Free Operator Manual</a>
+          <a class="btn primary" href="https://erascopia.kit.com/15rules" target="_blank" rel="noopener noreferrer">Access manual</a>
           <a class="btn" href="mailto:operator@panicoperator.com">Send a field note</a>
         </div>
       </div>
     </section>
 
-    <section id="cctv" class="section reveal">
+    <section id="cases" class="section reveal">
       <div class="section-head">
         <h2>The Evidence Room</h2>
         <p>
           Each case begins with a frame, a time, and a detail that should not be there. The original record is kept intact. Interpretation remains open.
         </p>
       </div>
-      <div class="grid frames">
-        <article class="media-card">
-          <img src="cctv/a1.webp" alt="CCTV case frame showing a lone figure in a dark hallway" width="1254" height="1254" loading="lazy" decoding="async" />
-          <div class="media-label">
-            <strong>Case 01</strong>
-            <span>The figure appears at 02:17. No entrance is visible.</span>
+      <div class="case-grid">
+        <article class="case-card">
+          <figure>
+            <img src="cctv/a1.webp" alt="CCTV case frame showing a lone figure in a dark hallway" width="1254" height="1254" loading="lazy" decoding="async" />
+          </figure>
+          <div class="case-body">
+            <div class="case-top">
+              <div>
+                <div class="case-id">Case 01 // First Signal</div>
+                <h3 class="case-title">Recovered at 02:17</h3>
+              </div>
+              <span class="meta-pill">Unresolved</span>
+            </div>
+            <p class="case-desc">The figure appears at 02:17. No entrance is visible.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Timestamp // 02:17</span>
+              <span class="meta-pill">Source // Hallway feed</span>
+            </div>
+            <div class="case-actions">
+              <a class="btn primary" href="#contact">Review file</a>
+            </div>
           </div>
         </article>
-        <article class="media-card">
-          <img src="cctv/a2.webp" alt="CCTV case frame showing an empty room with a chair and window" width="1254" height="1254" loading="lazy" decoding="async" />
-          <div class="media-label">
-            <strong>Case 02</strong>
-            <span>The room is empty. The chair is not where it was.</span>
+
+        <article class="case-card">
+          <figure>
+            <img src="cctv/a2.webp" alt="CCTV case frame showing an empty room with a chair and window" width="1254" height="1254" loading="lazy" decoding="async" />
+          </figure>
+          <div class="case-body">
+            <div class="case-top">
+              <div>
+                <div class="case-id">Case 02 // Second Trace</div>
+                <h3 class="case-title">The room shifted</h3>
+              </div>
+              <span class="meta-pill">Filed</span>
+            </div>
+            <p class="case-desc">The room is empty. The chair is not where it was.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Source // Interior room</span>
+              <span class="meta-pill">Status // Filed</span>
+            </div>
+            <div class="case-actions">
+              <a class="btn primary" href="#contact">Review file</a>
+            </div>
           </div>
         </article>
-        <article class="media-card">
-          <img src="cctv/a3.webp" alt="CCTV case frame showing a long corridor with a distant light" width="1254" height="1254" loading="lazy" decoding="async" />
-          <div class="media-label">
-            <strong>Case 03</strong>
-            <span>The corridor ends where the next frame begins.</span>
+
+        <article class="case-card">
+          <figure>
+            <img src="cctv/a3.webp" alt="CCTV case frame showing a long corridor with a distant light" width="1254" height="1254" loading="lazy" decoding="async" />
+          </figure>
+          <div class="case-body">
+            <div class="case-top">
+              <div>
+                <div class="case-id">Case 03 // Corridor Return</div>
+                <h3 class="case-title">The corridor ended early</h3>
+              </div>
+              <span class="meta-pill">Observed</span>
+            </div>
+            <p class="case-desc">The corridor ends where the next frame begins.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Source // Hallway feed</span>
+              <span class="meta-pill">Status // Observed</span>
+            </div>
+            <div class="case-actions">
+              <a class="btn primary" href="#contact">Review file</a>
+            </div>
           </div>
         </article>
-        <article class="media-card">
-          <img src="cctv/a4.webp" alt="CCTV case frame showing a fenced entrance at night in the rain" width="1254" height="1254" loading="lazy" decoding="async" />
-          <div class="media-label">
-            <strong>Case 04</strong>
-            <span>The gate is open at 04:50. No movement follows.</span>
+
+        <article class="case-card">
+          <figure>
+            <img src="cctv/a4.webp" alt="CCTV case frame showing a fenced entrance at night in the rain" width="1254" height="1254" loading="lazy" decoding="async" />
+          </figure>
+          <div class="case-body">
+            <div class="case-top">
+              <div>
+                <div class="case-id">Case 04 // Open Gate</div>
+                <h3 class="case-title">The gate stayed open</h3>
+              </div>
+              <span class="meta-pill">Unresolved</span>
+            </div>
+            <p class="case-desc">The gate is open at 04:50. No movement follows.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Timestamp // 04:50</span>
+              <span class="meta-pill">Source // Exterior gate</span>
+            </div>
+            <div class="case-actions">
+              <a class="btn primary" href="#contact">Review file</a>
+            </div>
           </div>
         </article>
       </div>
@@ -1160,7 +1572,7 @@
         <div class="eyebrow">Signal Instruments</div>
         <h2>Tools for recurring signals.</h2>
         <p>
-          A small collection of independent iOS instruments for tracking pressure, timing, repetition, and the things that are easy to miss.
+          Not every signal arrives as footage. Some return as pressure, repetition, timing, or drift. These iOS instruments track those patterns before they become routine.
         </p>
       </div>
       <div class="app-grid">
@@ -1169,10 +1581,16 @@
             <img src="cryptopanicmeter.webp" alt="Crypto Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
-            <h3>Crypto Panic Meter</h3>
-            <p>A focused reading of market pressure, momentum, and fear.</p>
             <div class="meta-row">
-              <span class="meta-pill">Market Signal</span>
+              <span class="meta-pill">Instrument // IOS-01</span>
+              <span class="meta-pill">Signal Type // Market Pressure</span>
+            </div>
+            <h3>Crypto Panic Meter</h3>
+            <p>Tracks fear, momentum, and emotional pressure in crypto markets.</p>
+            <p class="lore">Built for moments when the signal turns emotional before it turns obvious.</p>
+            <div class="meta-row">
+              <span class="meta-pill">Status // Active</span>
+              <span class="meta-pill">Platform // iPhone</span>
             </div>
             <span class="open-hint">View on the App Store</span>
           </div>
@@ -1183,10 +1601,16 @@
             <img src="my_panic_meter/panicmeter.webp" alt="Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
-            <h3>Panic Meter</h3>
-            <p>A private tool for noticing patterns in stress before they take control.</p>
             <div class="meta-row">
-              <span class="meta-pill">Personal Signal</span>
+              <span class="meta-pill">Instrument // IOS-02</span>
+              <span class="meta-pill">Signal Type // Personal Stress</span>
+            </div>
+            <h3>Panic Meter</h3>
+            <p>Helps notice stress patterns before they become routine.</p>
+            <p class="lore">For operators trying to catch the shift before it takes control.</p>
+            <div class="meta-row">
+              <span class="meta-pill">Status // Active</span>
+              <span class="meta-pill">Platform // iPhone</span>
             </div>
             <span class="open-hint">View on the App Store</span>
           </div>
@@ -1197,10 +1621,16 @@
             <img src="cadency/cadency.webp" alt="cadency app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
-            <h3>cadency</h3>
-            <p>A timing companion for posting with more consistency and less guesswork.</p>
             <div class="meta-row">
-              <span class="meta-pill">Timing Signal</span>
+              <span class="meta-pill">Instrument // IOS-03</span>
+              <span class="meta-pill">Signal Type // Timing Rhythm</span>
+            </div>
+            <h3>cadency</h3>
+            <p>Helps maintain consistent posting cadence with less guesswork.</p>
+            <p class="lore">Built for signals that only stabilize when timing is observed.</p>
+            <div class="meta-row">
+              <span class="meta-pill">Status // Active</span>
+              <span class="meta-pill">Platform // iPhone</span>
             </div>
             <span class="open-hint">View on the App Store</span>
           </div>
@@ -1211,10 +1641,16 @@
             <img src="localsubs/subscription.webp" alt="LocalSubs subscriptions app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
           </figure>
           <div class="copy">
-            <h3>LocalSubs - subscriptions</h3>
-            <p>A quiet record of subscriptions and charges that return every month.</p>
             <div class="meta-row">
-              <span class="meta-pill">Recurring Signal</span>
+              <span class="meta-pill">Instrument // IOS-04</span>
+              <span class="meta-pill">Signal Type // Recurring Charge</span>
+            </div>
+            <h3>LocalSubs - subscriptions</h3>
+            <p>Records subscriptions and repeating monthly charges.</p>
+            <p class="lore">Reveals patterns that keep returning when no one is watching.</p>
+            <div class="meta-row">
+              <span class="meta-pill">Status // Active</span>
+              <span class="meta-pill">Platform // iPhone</span>
             </div>
             <span class="open-hint">View on the App Store</span>
           </div>
@@ -1225,25 +1661,35 @@
     <section id="sounds" class="section reveal">
       <div class="section-head">
         <div class="eyebrow">Signal Archive</div>
-        <h2>Four recovered transmissions.</h2>
+        <h2>Recovered transmissions.</h2>
         <p>
           Long-form ambient files from the Panic Operator archive. Built for late-night review, empty rooms, and the moments between recorded events.
         </p>
       </div>
-      <div class="sound-grid" data-sound-grid>
-        <article class="sound-card" data-sound-item>
+      <div class="transmission-grid" data-sound-grid>
+        <article class="sound-card transmission-card" data-sound-item>
           <figure>
             <img data-media-cover src="" alt="Cover image for Underdeck Hum" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
           </figure>
           <div class="sound-body">
-            <div class="sound-top">
-              <h3>Underdeck Hum</h3>
-              <span class="sound-id">PO-SG-001</span>
+            <div class="transmission-top">
+              <div>
+                <div class="case-id">PO-SG-001</div>
+                <h3 class="transmission-title">Underdeck Hum</h3>
+              </div>
+              <span class="transmission-type">Ambient File</span>
             </div>
-            <p>A low mechanical presence recorded below an empty structure.</p>
+            <p class="sound-desc">A low mechanical presence recorded below an empty structure.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Archive Audio</span>
+              <span class="meta-pill">Status // Active</span>
+            </div>
             <div class="sound-meta">
               <div class="audio-shell">
                 <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <div class="case-actions">
+                <a class="btn primary" data-media-open href="" target="_blank" rel="noopener noreferrer">Monitor transmission</a>
               </div>
               <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
               <p class="sound-error" aria-live="polite"></p>
@@ -1251,19 +1697,29 @@
           </div>
         </article>
 
-        <article class="sound-card" data-sound-item>
+        <article class="sound-card transmission-card" data-sound-item>
           <figure>
             <img data-media-cover src="" alt="Cover image for Corridor Frequency" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
           </figure>
           <div class="sound-body">
-            <div class="sound-top">
-              <h3>Corridor Frequency</h3>
-              <span class="sound-id">PO-SG-002</span>
+            <div class="transmission-top">
+              <div>
+                <div class="case-id">PO-SG-002</div>
+                <h3 class="transmission-title">Corridor Frequency</h3>
+              </div>
+              <span class="transmission-type">Signal Archive</span>
             </div>
-            <p>A narrow signal that appears to move from room to room.</p>
+            <p class="sound-desc">A narrow signal that appears to move from room to room.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Archive Audio</span>
+              <span class="meta-pill">Status // Active</span>
+            </div>
             <div class="sound-meta">
               <div class="audio-shell">
                 <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <div class="case-actions">
+                <a class="btn primary" data-media-open href="" target="_blank" rel="noopener noreferrer">Monitor transmission</a>
               </div>
               <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
               <p class="sound-error" aria-live="polite"></p>
@@ -1271,19 +1727,29 @@
           </div>
         </article>
 
-        <article class="sound-card" data-sound-item>
+        <article class="sound-card transmission-card" data-sound-item>
           <figure>
             <img data-media-cover src="" alt="Cover image for Static After Midnight" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
           </figure>
           <div class="sound-body">
-            <div class="sound-top">
-              <h3>Static After Midnight</h3>
-              <span class="sound-id">PO-SG-003</span>
+            <div class="transmission-top">
+              <div>
+                <div class="case-id">PO-SG-003</div>
+                <h3 class="transmission-title">Static After Midnight</h3>
+              </div>
+              <span class="transmission-type">Archive Audio</span>
             </div>
-            <p>The transmission continues after the source is disconnected.</p>
+            <p class="sound-desc">The transmission continues after the source is disconnected.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Archive Audio</span>
+              <span class="meta-pill">Status // Active</span>
+            </div>
             <div class="sound-meta">
               <div class="audio-shell">
                 <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <div class="case-actions">
+                <a class="btn primary" data-media-open href="" target="_blank" rel="noopener noreferrer">Monitor transmission</a>
               </div>
               <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
               <p class="sound-error" aria-live="polite"></p>
@@ -1291,19 +1757,29 @@
           </div>
         </article>
 
-        <article class="sound-card" data-sound-item>
+        <article class="sound-card transmission-card" data-sound-item>
           <figure>
             <img data-media-cover src="" alt="Cover image for Last Known Signal" width="1200" height="900" loading="lazy" decoding="async" style="--focus:center center;" />
           </figure>
           <div class="sound-body">
-            <div class="sound-top">
-              <h3>Last Known Signal</h3>
-              <span class="sound-id">PO-SG-004</span>
+            <div class="transmission-top">
+              <div>
+                <div class="case-id">PO-SG-004</div>
+                <h3 class="transmission-title">Last Known Signal</h3>
+              </div>
+              <span class="transmission-type">Signal Archive</span>
             </div>
-            <p>A distant return from a channel marked inactive.</p>
+            <p class="sound-desc">A distant return from a channel marked inactive.</p>
+            <div class="case-meta">
+              <span class="meta-pill">Archive Audio</span>
+              <span class="meta-pill">Status // Active</span>
+            </div>
             <div class="sound-meta">
               <div class="audio-shell">
                 <audio controls preload="none" data-media-audio></audio>
+              </div>
+              <div class="case-actions">
+                <a class="btn primary" data-media-open href="" target="_blank" rel="noopener noreferrer">Monitor transmission</a>
               </div>
               <a class="btn" data-media-open href="" target="_blank" rel="noopener noreferrer">Open audio file</a>
               <p class="sound-error" aria-live="polite"></p>
@@ -1316,7 +1792,7 @@
     <section id="wallpapers" class="section reveal">
       <div class="section-head">
         <div class="eyebrow">Sealed Collection</div>
-        <h2>Wallpaper Archive</h2>
+        <h2>Sealed Wallpaper Archive.</h2>
         <p>
           A sealed collection of background files kept like recovered evidence. The first bundle lives in archive001, filed as a quiet drop from the larger record.
         </p>
@@ -1327,36 +1803,19 @@
         <p class="archive-copy">
           These wallpapers are presented like secret files: muted light, soft static, and a trace that suggests someone kept cataloging the room after the lights went out.
         </p>
+        <div class="meta-row" style="margin-top:18px;">
+          <span class="meta-pill">Archive Batch // 001</span>
+          <span class="meta-pill">Status // Sealed</span>
+          <span class="meta-pill">Format // Wallpaper Files</span>
+        </div>
         <ul class="archive-list" aria-label="Wallpaper archive details">
           <li><span>01</span> Wallpaper set archive001, stored in the quiet archive wing.</li>
           <li><span>02</span> Built for desktop and lock screen use when you want the signal nearby.</li>
           <li><span>03</span> More sealed bundles can appear here without changing the lock.</li>
         </ul>
         <div class="section-actions" style="margin-top:18px;">
-          <a class="btn primary" href="https://panicoperator.com/wallpapers/archive001/" target="_blank" rel="noopener noreferrer">Open secret files</a>
-          <a class="btn" href="#social">Return to transmission log</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="social" class="section reveal">
-      <div class="section-head">
-        <h2>Transmission Log</h2>
-        <p>
-          The main archive lives on Facebook. TikTok is the backup archive. Telegram is the quiet channel. Patreon helps keep the investigation active when the trail goes quiet.
-        </p>
-      </div>
-      <div class="contact-panel">
-        <p>
-          Start with the main archive for the current case record. Use the backup archive for fragments, updates, and signals that have not yet found their place. The quiet channel keeps the smaller drops moving.
-        </p>
-        <div class="contact-links" style="margin-top:14px;">
-          <a class="btn primary" href="https://www.facebook.com/panicoperator" target="_blank" rel="noopener noreferrer">Main archive</a>
-          <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noopener noreferrer">Backup archive</a>
-          <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noopener noreferrer">Telegram @panic_operator</a>
-          <a class="btn" href="https://www.youtube.com/@panicoperator" target="_blank" rel="noopener noreferrer">YouTube ledger</a>
-          <a class="btn" href="https://www.instagram.com/panicoperator/" target="_blank" rel="noopener noreferrer">Instagram trace</a>
-          <a class="btn" href="https://www.patreon.com/panicoperator" target="_blank" rel="noopener noreferrer">Support the investigator</a>
+          <a class="btn primary" href="https://panicoperator.com/wallpapers/archive001/" target="_blank" rel="noopener noreferrer">Access sealed batch</a>
+          <a class="btn" href="#contact">Return to channel</a>
         </div>
       </div>
     </section>
@@ -1365,30 +1824,64 @@
       <div class="section-head">
         <h2>Open Channel</h2>
         <p>
-          Have a strange frame, an unexplained sighting, or a case that needs another look? Send it through the open channel. Useful details include the time, place, source, and what first felt wrong.
+          Have a strange frame, unexplained sighting, or unstable signal? Send the record through the open channel.
         </p>
       </div>
-      <div class="contact">
-        <div class="contact-panel">
+      <div class="channel-grid">
+        <div class="channel-panel">
           <h3>operator@panicoperator.com</h3>
           <p>
             Send evidence, notes, links, or a short account of what happened. We cannot promise an explanation, but we will read what you found.
           </p>
-          <div class="contact-links" style="margin-top:14px;">
+          <ul class="channel-list" aria-label="What to send">
+            <li><span>1</span> Time</li>
+            <li><span>2</span> Place</li>
+            <li><span>3</span> Source</li>
+            <li><span>4</span> Link or file</li>
+            <li><span>5</span> What first felt wrong</li>
+          </ul>
+          <div class="section-actions" style="margin-top:18px;">
             <a class="btn primary" href="mailto:operator@panicoperator.com">Send evidence</a>
             <a class="btn" href="https://www.facebook.com/panicoperator" target="_blank" rel="noopener noreferrer">Main archive</a>
-            <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noopener noreferrer">Backup archive</a>
             <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noopener noreferrer">Telegram @panic_operator</a>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="footer">
-      Panic Operator keeps the record open for recovered footage, recurring signals, and instruments for reading the noise.
-      <a href="./panic_operator_privacy_policy.html">Privacy Policy</a>
-      <a href="./panic_operator_terms_of_use.html">Terms of Use</a>
-    </div>
+    <footer class="footer reveal">
+      <div class="footer-grid">
+        <div>
+          <h2 style="margin:0 0 10px; font-size:clamp(24px, 4vw, 32px); line-height:1; letter-spacing:-.04em;">Panic Operator keeps the record open.</h2>
+          <p class="footer-copy">
+            A living archive of unexplained footage, recurring signals, field references, sealed wallpaper drops, and instruments for tracking what returns.
+          </p>
+          <p class="footer-note">The archive keeps the record without forcing a conclusion.</p>
+        </div>
+        <div class="footer-links">
+          <div class="meta-row">
+            <a class="btn" href="#archive-network">Archive</a>
+            <a class="btn" href="#cases">Cases</a>
+            <a class="btn" href="#manual">Manual</a>
+            <a class="btn" href="#apps">Instruments</a>
+            <a class="btn" href="#sounds">Transmissions</a>
+            <a class="btn" href="#wallpapers">Wallpapers</a>
+            <a class="btn" href="#contact">Channel</a>
+          </div>
+          <div class="meta-row">
+            <a class="btn" href="https://www.facebook.com/panicoperator" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="btn" href="https://www.tiktok.com/@panicoperator" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a class="btn" href="https://t.me/panic_operator" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a class="btn" href="https://www.patreon.com/panicoperator" target="_blank" rel="noopener noreferrer">Patreon</a>
+            <a class="btn" href="mailto:operator@panicoperator.com">operator@panicoperator.com</a>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:18px; color:var(--muted-2); font-size:13px; line-height:1.6;">
+        <a href="./panic_operator_privacy_policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a>
+        <a href="./panic_operator_terms_of_use.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Terms of Use</a>
+      </div>
+    </footer>
   </main>
 
   <script>
