@@ -3,19 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Panic Operator is an archive of recovered CCTV cases, recurring signals, iOS tools, and sealed media files." />
+  <meta name="description" content="Enter the Panic Operator archive. Explore unexplained CCTV cases, recovered evidence, transmissions, the official Panic Operator iOS app, and Archive Files — Vol. I." />
   <meta name="theme-color" content="#050608" />
-  <meta property="og:title" content="Panic Operator" />
-  <meta property="og:description" content="An archive of recovered CCTV cases, recurring signals, iOS tools, and sealed media files." />
+  <meta property="og:title" content="Panic Operator — Unexplained Archive, iOS App &amp; Archive Files" />
+  <meta property="og:description" content="Enter the Panic Operator archive. Explore unexplained CCTV cases, recovered evidence, transmissions, the official Panic Operator iOS app, and Archive Files — Vol. I." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://panicoperator.com/" />
-  <meta property="og:image" content="https://panicoperator.com/intro/intro_2.webp" />
+  <meta property="og:image" content="https://panicoperator.com/book-cover.jpg" />
+  <meta property="og:image:alt" content="Panic Operator: Archive Files — Vol. I book cover" />
+  <meta property="og:site_name" content="Panic Operator" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Panic Operator" />
-  <meta name="twitter:description" content="An archive of recovered CCTV cases, recurring signals, iOS tools, and sealed media files." />
-  <meta name="twitter:image" content="https://panicoperator.com/intro/intro_2.webp" />
+  <meta name="twitter:title" content="Panic Operator — Unexplained Archive, iOS App &amp; Archive Files" />
+  <meta name="twitter:description" content="Enter the Panic Operator archive. Explore unexplained CCTV cases, recovered evidence, transmissions, the official Panic Operator iOS app, and Archive Files — Vol. I." />
+  <meta name="twitter:image" content="https://panicoperator.com/book-cover.jpg" />
   <link rel="canonical" href="https://panicoperator.com/" />
-  <title>Panic Operator</title>
+  <link rel="preload" as="image" href="/book-cover.jpg" />
+  <!-- Keep the book cover for social previews until a dedicated site image exists. -->
+  <title>Panic Operator — Unexplained Archive, iOS App &amp; Archive Files</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Book",
+          "name": "Panic Operator: Archive Files — Vol. I",
+          "description": "Twenty recovered cases. CCTV records, witness notes, evidence, anomalies, and files that were never fully explained.",
+          "url": "https://panicoperator.com/",
+          "image": "https://panicoperator.com/book-cover.jpg",
+          "bookFormat": "https://schema.org/Hardcover",
+          "inLanguage": "en",
+          "publisher": { "@type": "Organization", "name": "Panic Operator" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Panic Operator",
+          "operatingSystem": "iOS",
+          "url": "https://apps.apple.com/app/id6794790065"
+        }
+      ]
+    }
+  </script>
 
   <style>
     :root{
@@ -259,6 +286,14 @@
       line-height:1.7;
     }
 
+    .hero-summary{
+      margin:18px 0 0;
+      max-width:52ch;
+      color:#d6dbe1;
+      line-height:1.65;
+      font-size:15px;
+    }
+
     .cta-row,
     .section-actions,
     .contact-links{
@@ -294,6 +329,31 @@
       background: rgba(127,154,141,.14);
       border-color: rgba(127,154,141,.24);
       color:#fff;
+    }
+
+    .btn.amazon{
+      min-height:48px;
+      padding:12px 18px;
+      border-color: rgba(205, 162, 104, .32);
+      background:
+        linear-gradient(180deg, rgba(205,162,104,.18), rgba(120,78,34,.10)),
+        rgba(255,255,255,.03);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 12px 30px rgba(0,0,0,.30);
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .btn.amazon:hover{
+      background:
+        linear-gradient(180deg, rgba(205,162,104,.24), rgba(120,78,34,.14)),
+        rgba(255,255,255,.05);
+      border-color: rgba(226, 188, 129, .42);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 16px 38px rgba(0,0,0,.34);
     }
 
     .archive-status{
@@ -505,6 +565,233 @@
       color:#d8dde3;
       font-size:12px;
       line-height:1.35;
+    }
+
+    .book-section{
+      scroll-margin-top:96px;
+    }
+
+    .book-layout{
+      display:grid;
+      gap:18px;
+      align-items:center;
+    }
+
+    .book-visual{
+      position:relative;
+      display:grid;
+      justify-items:center;
+      padding:10px 8px 6px;
+      isolation:isolate;
+    }
+
+    .book-visual::before{
+      content:"";
+      position:absolute;
+      inset:14% 16% 6% 16%;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(205,162,104,.18), transparent 52%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.09), transparent 58%);
+      filter: blur(26px);
+      opacity:.9;
+      z-index:0;
+    }
+
+    .book-visual::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.06), transparent 34%),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.18));
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .book-scan{
+      display:grid;
+      gap:8px;
+      width:100%;
+      margin-bottom:14px;
+      color:var(--muted-2);
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .book-scan-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .book-scan-row span{
+      padding:7px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(8px);
+    }
+
+    .book-cover-shell{
+      position:relative;
+      width:min(100%, 430px);
+      transform: perspective(1200px) rotateY(-7deg) rotateX(2deg) translateY(0);
+      transform-origin:center;
+      filter: drop-shadow(0 32px 55px rgba(0,0,0,.50));
+      z-index:1;
+      transition: transform .24s ease, filter .24s ease;
+    }
+
+    .book-cover-shell:hover{
+      transform: perspective(1200px) rotateY(-3deg) rotateX(0deg) translateY(-2px);
+      filter: drop-shadow(0 36px 60px rgba(0,0,0,.56));
+    }
+
+    .book-cover-shell::before{
+      content:"";
+      position:absolute;
+      inset:-12px -10px -18px -10px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(205,162,104,.24), transparent 58%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.07), transparent 72%);
+      opacity:.75;
+      filter: blur(20px);
+      z-index:-1;
+    }
+
+    .book-cover-shell figure{
+      margin:0;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:#090b0f;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 18px 48px rgba(0,0,0,.34);
+    }
+
+    .book-cover-shell img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:cover;
+    }
+
+    .book-note{
+      margin:12px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      max-width:36ch;
+    }
+
+    .book-content{
+      display:grid;
+      gap:16px;
+    }
+
+    .book-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:fit-content;
+      color:#d9dfe4;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .book-eyebrow::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background: linear-gradient(180deg, #fff, #9c8160);
+      box-shadow: 0 0 16px rgba(205,162,104,.25);
+      flex:0 0 auto;
+    }
+
+    .book-title{
+      margin:0;
+      font-size: clamp(30px, 4.5vw, 56px);
+      line-height:.95;
+      letter-spacing:-.05em;
+      text-wrap:balance;
+      max-width:12ch;
+    }
+
+    .book-copy{
+      margin:0;
+      max-width:62ch;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .book-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .book-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .book-metadata{
+      display:grid;
+      gap:10px;
+      margin-top:4px;
+    }
+
+    .book-stamp{
+      display:grid;
+      gap:4px;
+      align-content:start;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.025);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+      color:#d7dce2;
+    }
+
+    .book-stamp strong{
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .book-stamp span{
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .book-callout{
+      display:grid;
+      gap:12px;
+    }
+
+    .book-callout h2{
+      margin:0;
+      font-size: clamp(24px, 3.8vw, 34px);
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+
+    .book-callout p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+      max-width:42ch;
     }
 
     .hero-visual{
@@ -775,6 +1062,194 @@
       gap:10px;
       margin-top:4px;
     }
+
+    .official-app-section{
+      scroll-margin-top:96px;
+      background:
+        radial-gradient(900px 420px at 82% 16%, rgba(127,154,141,.14), transparent 58%),
+        linear-gradient(180deg, rgba(16,22,22,.90), rgba(8,11,13,.96));
+    }
+
+    .official-app-layout{
+      display:grid;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .official-app-copy{
+      display:grid;
+      align-content:center;
+      gap:16px;
+    }
+
+    .official-app-copy h2{
+      margin:0;
+      max-width:11ch;
+      font-size:clamp(34px, 5vw, 62px);
+      line-height:.94;
+      letter-spacing:-.055em;
+    }
+
+    .official-app-name{
+      margin:0;
+      color:#dfe7e2;
+      font-size:18px;
+      letter-spacing:.02em;
+    }
+
+    .official-app-copy > p:not(.official-app-name){
+      margin:0;
+      max-width:54ch;
+      color:var(--muted);
+      line-height:1.72;
+      font-size:15px;
+    }
+
+    .official-app-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .btn.app-store{
+      min-height:50px;
+      padding:13px 18px;
+      border-color:rgba(127,154,141,.48);
+      background:
+        linear-gradient(180deg, rgba(127,154,141,.26), rgba(65,86,77,.16)),
+        rgba(255,255,255,.04);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 14px 34px rgba(0,0,0,.34);
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .btn.app-store:hover{
+      border-color:rgba(171,201,185,.62);
+      background:
+        linear-gradient(180deg, rgba(127,154,141,.34), rgba(65,86,77,.22)),
+        rgba(255,255,255,.06);
+    }
+
+    .ios-app-visual{
+      min-width:0;
+      display:grid;
+      place-items:center;
+    }
+
+    .ios-app-image-shell{
+      position:relative;
+      width:min(100%, 520px);
+      aspect-ratio:4 / 5;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border:1px solid rgba(127,154,141,.30);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(127,154,141,.20), transparent 42%),
+        linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.015) 52%, rgba(127,154,141,.08));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 24px 70px rgba(0,0,0,.42);
+      isolation:isolate;
+    }
+
+    .ios-app-image-shell::before,
+    .ios-app-image-shell::after{
+      content:"";
+      position:absolute;
+      pointer-events:none;
+    }
+
+    .ios-app-image-shell::before{
+      inset:10%;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      background:linear-gradient(transparent 49.8%, rgba(255,255,255,.07) 50%, transparent 50.2%);
+      opacity:.75;
+    }
+
+    .ios-app-image-shell::after{
+      inset:0;
+      background:linear-gradient(90deg, transparent 48%, rgba(127,154,141,.18) 50%, transparent 52%);
+      opacity:.45;
+    }
+
+    .ios-app-image-shell > img{
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      filter:contrast(1.03) brightness(.96);
+    }
+
+    .ios-app-image-placeholder{
+      position:relative;
+      z-index:1;
+      display:grid;
+      gap:12px;
+      width:min(72%, 300px);
+      padding:18px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      background:rgba(5,8,9,.48);
+      color:#dbe4df;
+      text-align:center;
+      box-shadow:0 16px 40px rgba(0,0,0,.28);
+    }
+
+    .ios-app-image-placeholder strong{
+      font-size:13px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .ios-app-image-placeholder span{
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .secondary-apps{
+      margin-top:20px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .secondary-apps h3{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+
+    .secondary-apps > p{
+      margin:7px 0 14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .secondary-app-grid{
+      display:grid;
+      gap:8px;
+    }
+
+    .secondary-app{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      padding:11px 12px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .secondary-app strong{ font-size:13px; }
+    .secondary-app span{ color:var(--muted-2); font-size:12px; }
+    .secondary-app:hover{ border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.05); }
 
     .app-grid{
       display:grid;
@@ -1206,6 +1681,24 @@
         align-items:start;
       }
 
+      .book-layout{
+        grid-template-columns: minmax(320px, .86fr) minmax(320px, 1.14fr);
+        gap:24px;
+      }
+
+      .book-visual{
+        padding:18px 8px;
+      }
+
+      .book-content{
+        gap:18px;
+      }
+
+      .official-app-layout{
+        grid-template-columns:minmax(320px, 1fr) minmax(360px, .92fr);
+        gap:30px;
+      }
+
       .archive-map{
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1217,6 +1710,10 @@
       .app-grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-items:center;
+      }
+
+      .secondary-app-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
       }
 
       .sound-grid{
@@ -1249,12 +1746,6 @@
       }
     }
 
-    @media (min-width: 1380px){
-      .app-grid{
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-    }
-
     @media (max-width: 759px){
       .topbar-inner{
         align-items:flex-start;
@@ -1272,6 +1763,30 @@
 
       .hero h1{
         max-width:12ch;
+      }
+
+      .book-title{
+        max-width:14ch;
+      }
+
+      .book-cover-shell{
+        width:min(100%, 380px);
+      }
+
+      .book-actions .btn.amazon{
+        width:100%;
+      }
+
+      .official-app-copy .cta-row{
+        display:grid;
+      }
+
+      .official-app-copy .app-store{
+        width:100%;
+      }
+
+      .ios-app-image-shell{
+        width:min(100%, 390px);
       }
 
       .app-card,
@@ -1301,18 +1816,19 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-text">
           <strong>Panic Operator</strong>
-          <span>cctv investigations and iOS apps</span>
+          <span>unexplained archive // official iOS app</span>
         </span>
       </a>
       <nav class="nav" aria-label="Primary">
+        <a href="#book">Book</a>
+        <a href="#apps">iOS App</a>
         <a href="#archive-network">Archive</a>
         <a href="#cases">Cases</a>
-        <a href="#manual">Manual</a>
-        <a href="#apps">Instruments</a>
         <a href="#sounds">Transmissions</a>
+        <a href="#manual">Manual</a>
         <a href="#wallpapers">Wallpapers</a>
         <a href="#contact">Channel</a>
-        <a class="btn primary" href="#archive-network">Enter Main Archive</a>
+        <a class="btn app-store" href="https://apps.apple.com/app/id6794790065" target="_blank" rel="noopener noreferrer">Get the iOS App</a>
       </nav>
     </div>
   </header>
@@ -1323,18 +1839,13 @@
         <div class="hero-copy">
           <div class="eyebrow">PANIC OPERATOR ARCHIVE</div>
           <h1>Some recordings are never fully explained.</h1>
+          <p class="hero-summary">Recovered footage. Unresolved cases. Physical archive records.</p>
           <p class="hero-lead">
-            Panic Operator is the central archive for recovered footage, recurring signals, field references, sealed wallpaper drops, and iOS instruments built to track what returns.
-          </p>
-          <p class="hero-lead">
-            Every file begins with something small - a frame, a sound, a detail noticed too late. The archive keeps the record without forcing a conclusion, then files the cases, transmissions, manuals, and instruments into one system.
-          </p>
-          <p class="hero-lead">
-            Review the footage. Follow the signal. Keep your own conclusion.
+            Panic Operator keeps the record open: a dark archive of CCTV fragments, witness notes, transmissions, a field app, physical records, and sealed materials that return with no clean explanation.
           </p>
           <div class="cta-row" style="margin-top:18px;">
-            <a class="btn primary" href="#archive-network">Enter Main Archive</a>
-            <a class="btn" href="#cases">Review Cases</a>
+            <a class="btn app-store" href="https://apps.apple.com/app/id6794790065" target="_blank" rel="noopener noreferrer">Get the iOS App</a>
+            <a class="btn" href="#archive-network">Enter the Archive</a>
           </div>
           <div class="archive-status" aria-label="Archive status">
             <div class="chip">Archive status<strong>Active</strong></div>
@@ -1376,12 +1887,87 @@
       </div>
     </section>
 
+    <section id="apps" class="section reveal official-app-section">
+      <div class="official-app-layout">
+        <div class="official-app-copy">
+          <div class="eyebrow">OFFICIAL IOS APP // PANIC OPERATOR</div>
+          <h2>Carry the archive with you.</h2>
+          <p class="official-app-name">Panic Operator for iPhone</p>
+          <p>The Panic Operator archive now has a permanent field terminal. Explore recovered cases, transmissions, saved evidence, wallpapers, operator logs, and the wider archive from your iPhone.</p>
+          <div class="official-app-meta" aria-label="Panic Operator app contents">
+            <span class="meta-pill">ARCHIVE // ACTIVE</span>
+            <span class="meta-pill">TRANSMISSIONS // AVAILABLE</span>
+            <span class="meta-pill">SAVED FILES // LOCAL</span>
+            <span class="meta-pill">OPERATOR LOGS // OPEN</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn app-store" href="https://apps.apple.com/app/id6794790065" target="_blank" rel="noopener noreferrer">View on the App Store <span aria-hidden="true">↗</span></a>
+            <a class="btn" href="#archive-network">Explore the Archive</a>
+          </div>
+        </div>
+        <div class="ios-app-visual" aria-label="Panic Operator iOS app promotional image placeholder">
+          <div class="ios-app-image-shell">
+            <img src="ios_app.png" alt="Panic Operator iOS app promotional cover" width="1070" height="1470" loading="eager" fetchpriority="high" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" class="section reveal book-section">
+      <div class="book-layout">
+        <div class="book-visual" aria-label="Featured physical archive book">
+          <div class="book-scan" aria-hidden="true">
+            <div class="book-scan-row">
+              <span>CASE FILE</span>
+              <span>VOL. I</span>
+              <span>RECOVERED RECORD</span>
+              <span>AUTHORIZED RELEASE</span>
+            </div>
+          </div>
+          <div class="book-cover-shell">
+            <figure>
+              <img src="book-cover.jpg" alt="Panic Operator: Archive Files — Vol. I book cover" width="1400" height="1760" loading="eager" fetchpriority="high" decoding="async" />
+            </figure>
+          </div>
+          <p class="book-note">A physical artifact recovered from the Panic Operator archive, now filed for readers who need the record in hand.</p>
+        </div>
+
+        <div class="book-content">
+          <div>
+            <div class="book-eyebrow">PHYSICAL ARCHIVE // VOLUME I</div>
+            <h2 class="book-title">Panic Operator: Archive Files — Vol. I</h2>
+          </div>
+          <p class="book-copy">
+            Twenty recovered cases. CCTV records, witness notes, evidence, anomalies, and files that were never fully explained.
+          </p>
+          <p class="book-copy">
+            This is the first physical volume of the Panic Operator archive.
+          </p>
+          <div class="book-actions">
+            <a class="btn amazon" href="https://a.co/d/0011kmRc" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+            <a class="btn" href="#cases">Continue to cases</a>
+          </div>
+          <div class="book-metadata" aria-label="Book metadata">
+            <div class="book-meta">
+              <span class="meta-pill">ARCHIVE // VOL. I</span>
+              <span class="meta-pill">FORMAT // PRINT</span>
+              <span class="meta-pill">STATUS // AVAILABLE</span>
+            </div>
+            <div class="book-stamp">
+              <strong>Recovered from the archive</strong>
+              <span>Physical volume // Authorized release</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="archive-network" class="section reveal">
       <div class="section-head">
         <div class="eyebrow">Archive Network</div>
-        <h2>Canonical routes for the record.</h2>
+        <h2>Supporting routes for the record.</h2>
         <p>
-          Panic Operator is the canonical hub. The website holds the record; the social layers distribute active files, sightings, and quieter returns inside the same archive world.
+          Panic Operator is still the hub. The book now leads the archive, while the website keeps the wider routes for active files, sightings, and quieter returns inside the same world.
         </p>
       </div>
       <div class="archive-map">
@@ -1392,7 +1978,7 @@
               <span class="meta-pill">Route // Primary</span>
             </div>
             <h3>The central record.</h3>
-            <p>Cases, instruments, transmissions, manuals, and sealed drops resolve here first.</p>
+            <p>Cases, instruments, transmissions, manuals, and sealed drops still resolve here first, but the book now anchors the system.</p>
           </div>
           <a class="btn primary node-action" href="#cases">Review the canon</a>
         </article>
@@ -1567,94 +2153,17 @@
       </div>
     </section>
 
-    <section id="apps" class="section reveal">
+    <section id="other-apps" class="section reveal">
       <div class="section-head">
-        <div class="eyebrow">Signal Instruments</div>
-        <h2>Tools for recurring signals.</h2>
-        <p>
-          Not every signal arrives as footage. Some return as pressure, repetition, timing, or drift. These iOS instruments track those patterns before they become routine.
-        </p>
+        <div class="eyebrow">Developer Shelf // Secondary</div>
+        <h2>Other apps by the developer.</h2>
+        <p>Independent iOS utilities and experiments from the developer behind Panic Operator.</p>
       </div>
-      <div class="app-grid">
-        <a class="app-card" href="https://apps.apple.com/app/id6756220703" target="_blank" rel="noopener noreferrer">
-          <figure>
-            <img src="cryptopanicmeter.webp" alt="Crypto Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
-          </figure>
-          <div class="copy">
-            <div class="meta-row">
-              <span class="meta-pill">Instrument // IOS-01</span>
-              <span class="meta-pill">Signal Type // Market Pressure</span>
-            </div>
-            <h3>Crypto Panic Meter</h3>
-            <p>Tracks fear, momentum, and emotional pressure in crypto markets.</p>
-            <p class="lore">Built for moments when the signal turns emotional before it turns obvious.</p>
-            <div class="meta-row">
-              <span class="meta-pill">Status // Active</span>
-              <span class="meta-pill">Platform // iPhone</span>
-            </div>
-            <span class="open-hint">View on the App Store</span>
-          </div>
-        </a>
-
-        <a class="app-card" href="https://apps.apple.com/app/id6756532562" target="_blank" rel="noopener noreferrer">
-          <figure>
-            <img src="my_panic_meter/panicmeter.webp" alt="Panic Meter app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
-          </figure>
-          <div class="copy">
-            <div class="meta-row">
-              <span class="meta-pill">Instrument // IOS-02</span>
-              <span class="meta-pill">Signal Type // Personal Stress</span>
-            </div>
-            <h3>Panic Meter</h3>
-            <p>Helps notice stress patterns before they become routine.</p>
-            <p class="lore">For operators trying to catch the shift before it takes control.</p>
-            <div class="meta-row">
-              <span class="meta-pill">Status // Active</span>
-              <span class="meta-pill">Platform // iPhone</span>
-            </div>
-            <span class="open-hint">View on the App Store</span>
-          </div>
-        </a>
-
-        <a class="app-card" href="https://apps.apple.com/app/id6757025024" target="_blank" rel="noopener noreferrer">
-          <figure>
-            <img src="cadency/cadency.webp" alt="cadency app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
-          </figure>
-          <div class="copy">
-            <div class="meta-row">
-              <span class="meta-pill">Instrument // IOS-03</span>
-              <span class="meta-pill">Signal Type // Timing Rhythm</span>
-            </div>
-            <h3>cadency</h3>
-            <p>Helps maintain consistent posting cadence with less guesswork.</p>
-            <p class="lore">Built for signals that only stabilize when timing is observed.</p>
-            <div class="meta-row">
-              <span class="meta-pill">Status // Active</span>
-              <span class="meta-pill">Platform // iPhone</span>
-            </div>
-            <span class="open-hint">View on the App Store</span>
-          </div>
-        </a>
-
-        <a class="app-card" href="https://apps.apple.com/app/id6748586996" target="_blank" rel="noopener noreferrer">
-          <figure>
-            <img src="localsubs/subscription.webp" alt="LocalSubs subscriptions app screenshot" width="1254" height="1254" loading="lazy" decoding="async" style="--focus:center top;" />
-          </figure>
-          <div class="copy">
-            <div class="meta-row">
-              <span class="meta-pill">Instrument // IOS-04</span>
-              <span class="meta-pill">Signal Type // Recurring Charge</span>
-            </div>
-            <h3>LocalSubs - subscriptions</h3>
-            <p>Records subscriptions and repeating monthly charges.</p>
-            <p class="lore">Reveals patterns that keep returning when no one is watching.</p>
-            <div class="meta-row">
-              <span class="meta-pill">Status // Active</span>
-              <span class="meta-pill">Platform // iPhone</span>
-            </div>
-            <span class="open-hint">View on the App Store</span>
-          </div>
-        </a>
+      <div class="secondary-app-grid">
+        <a class="secondary-app" href="https://apps.apple.com/app/id6756220703" target="_blank" rel="noopener noreferrer"><strong>Crypto Panic Meter</strong><span>App Store ↗</span></a>
+        <a class="secondary-app" href="https://apps.apple.com/app/id6756532562" target="_blank" rel="noopener noreferrer"><strong>Panic Meter</strong><span>App Store ↗</span></a>
+        <a class="secondary-app" href="https://apps.apple.com/app/id6757025024" target="_blank" rel="noopener noreferrer"><strong>cadency</strong><span>App Store ↗</span></a>
+        <a class="secondary-app" href="https://apps.apple.com/app/id6748586996" target="_blank" rel="noopener noreferrer"><strong>LocalSubs - subscriptions</strong><span>App Store ↗</span></a>
       </div>
     </section>
 
@@ -1820,6 +2329,15 @@
       </div>
     </section>
 
+    <section class="section reveal book-callout" aria-label="Book callout">
+      <div class="eyebrow">PHYSICAL ARCHIVE // VOL. I</div>
+      <h2>Panic Operator: Archive Files — Vol. I</h2>
+      <p>The archive exists outside the screen now.</p>
+      <div class="section-actions">
+        <a class="btn amazon" href="https://a.co/d/0011kmRc" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+      </div>
+    </section>
+
     <section id="contact" class="section reveal">
       <div class="section-head">
         <h2>Open Channel</h2>
@@ -1854,17 +2372,23 @@
         <div>
           <h2 style="margin:0 0 10px; font-size:clamp(24px, 4vw, 32px); line-height:1; letter-spacing:-.04em;">Panic Operator keeps the record open.</h2>
           <p class="footer-copy">
-            A living archive of unexplained footage, recurring signals, field references, sealed wallpaper drops, and instruments for tracking what returns.
+            A living archive of unexplained footage, recurring signals, physical case records, sealed wallpaper drops, and the official Panic Operator field app.
           </p>
           <p class="footer-note">The archive keeps the record without forcing a conclusion.</p>
+          <div class="section-actions" style="margin-top:18px;">
+            <a class="btn amazon" href="https://a.co/d/0011kmRc" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+          </div>
         </div>
         <div class="footer-links">
           <div class="meta-row">
+            <a class="btn app-store" href="https://apps.apple.com/app/id6794790065" target="_blank" rel="noopener noreferrer">Panic Operator for iOS</a>
+            <a class="btn" href="#book">Book</a>
             <a class="btn" href="#archive-network">Archive</a>
             <a class="btn" href="#cases">Cases</a>
-            <a class="btn" href="#manual">Manual</a>
-            <a class="btn" href="#apps">Instruments</a>
             <a class="btn" href="#sounds">Transmissions</a>
+            <a class="btn" href="#apps">iOS App</a>
+            <a class="btn" href="#other-apps">Other Apps</a>
+            <a class="btn" href="#manual">Manual</a>
             <a class="btn" href="#wallpapers">Wallpapers</a>
             <a class="btn" href="#contact">Channel</a>
           </div>
