@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Enter the Panic Operator archive. Explore unexplained CCTV cases, recovered evidence, transmissions, the official Panic Operator iOS app, and Archive Files — Vol. I." />
+  <meta name="description" content="Panic Operator is an interactive anomaly archive universe of mysterious CCTV-style case files, unexplained incidents, recovered evidence, transmissions, and the Archive Files book series." />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#050608" />
   <meta property="og:title" content="Panic Operator — Unexplained Archive, iOS App &amp; Archive Files" />
-  <meta property="og:description" content="Enter the Panic Operator archive. Explore unexplained CCTV cases, recovered evidence, transmissions, the official Panic Operator iOS app, and Archive Files — Vol. I." />
+  <meta property="og:description" content="Panic Operator is an interactive anomaly archive universe of mysterious CCTV-style case files, unexplained incidents, recovered evidence, transmissions, and the Archive Files book series." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://panicoperator.com/" />
   <meta property="og:image" content="https://panicoperator.com/book-cover.jpg" />
-  <meta property="og:image:alt" content="Panic Operator: Archive Files — Vol. I book cover" />
+  <meta property="og:image:alt" content="Panic Operator Archive Files book cover" />
   <meta property="og:site_name" content="Panic Operator" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Panic Operator — Unexplained Archive, iOS App &amp; Archive Files" />
-  <meta name="twitter:description" content="Enter the Panic Operator archive. Explore unexplained CCTV cases, recovered evidence, transmissions, the official Panic Operator iOS app, and Archive Files — Vol. I." />
+  <meta name="twitter:description" content="Panic Operator is an interactive anomaly archive universe of mysterious CCTV-style case files, unexplained incidents, recovered evidence, transmissions, and the Archive Files book series." />
   <meta name="twitter:image" content="https://panicoperator.com/book-cover.jpg" />
   <link rel="canonical" href="https://panicoperator.com/" />
   <link rel="preload" as="image" href="/book-cover.jpg" />
@@ -25,6 +26,30 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "@id": "https://panicoperator.com/#organization",
+          "name": "Panic Operator",
+          "url": "https://panicoperator.com/",
+          "sameAs": [
+            "https://www.facebook.com/panicoperator",
+            "https://www.tiktok.com/@panicoperator",
+            "https://t.me/panic_operator",
+            "https://www.patreon.com/panicoperator",
+            "https://apps.apple.com/app/id6794790065",
+            "https://a.co/d/0011kmRc",
+            "https://a.co/d/017BkD9j"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://panicoperator.com/#website",
+          "url": "https://panicoperator.com/",
+          "name": "Panic Operator",
+          "publisher": {
+            "@id": "https://panicoperator.com/#organization"
+          }
+        },
+        {
           "@type": "Book",
           "name": "Panic Operator: Archive Files — Vol. I",
           "description": "Twenty recovered cases. CCTV records, witness notes, evidence, anomalies, and files that were never fully explained.",
@@ -32,7 +57,18 @@
           "image": "https://panicoperator.com/book-cover.jpg",
           "bookFormat": "https://schema.org/Hardcover",
           "inLanguage": "en",
-          "publisher": { "@type": "Organization", "name": "Panic Operator" }
+          "publisher": {
+            "@id": "https://panicoperator.com/#organization"
+          }
+        },
+        {
+          "@type": "Book",
+          "name": "Panic Operator: Archive of the Unknown: Volume Two",
+          "url": "https://a.co/d/017BkD9j",
+          "inLanguage": "en",
+          "publisher": {
+            "@id": "https://panicoperator.com/#organization"
+          }
         },
         {
           "@type": "SoftwareApplication",
@@ -1820,7 +1856,7 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="#book">Book</a>
+        <a href="#book">Books</a>
         <a href="#apps">iOS App</a>
         <a href="#archive-network">Archive</a>
         <a href="#cases">Cases</a>
@@ -1915,7 +1951,7 @@
 
     <section id="book" class="section reveal book-section">
       <div class="book-layout">
-        <div class="book-visual" aria-label="Featured physical archive book">
+          <div class="book-visual" aria-label="Featured physical archive books">
           <div class="book-scan" aria-hidden="true">
             <div class="book-scan-row">
               <span>CASE FILE</span>
@@ -1926,36 +1962,37 @@
           </div>
           <div class="book-cover-shell">
             <figure>
-              <img src="book-cover.jpg" alt="Panic Operator: Archive Files — Vol. I book cover" width="1400" height="1760" loading="eager" fetchpriority="high" decoding="async" />
+              <img src="book-cover.jpg" alt="Panic Operator Archive Files book cover" width="1400" height="1760" loading="eager" fetchpriority="high" decoding="async" />
             </figure>
           </div>
-          <p class="book-note">A physical artifact recovered from the Panic Operator archive, now filed for readers who need the record in hand.</p>
+          <p class="book-note">Physical artifacts recovered from the Panic Operator archive, now filed for readers who need the record in hand.</p>
         </div>
 
         <div class="book-content">
           <div>
-            <div class="book-eyebrow">PHYSICAL ARCHIVE // VOLUME I</div>
-            <h2 class="book-title">Panic Operator: Archive Files — Vol. I</h2>
+            <div class="book-eyebrow">PHYSICAL ARCHIVE // BOOK SERIES</div>
+            <h2 class="book-title">Panic Operator: Archive Files</h2>
           </div>
           <p class="book-copy">
             Twenty recovered cases. CCTV records, witness notes, evidence, anomalies, and files that were never fully explained.
           </p>
           <p class="book-copy">
-            This is the first physical volume of the Panic Operator archive.
+            Explore the growing book series that extends the Panic Operator archive beyond the screen.
           </p>
           <div class="book-actions">
             <a class="btn amazon" href="https://a.co/d/0011kmRc" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+            <a class="btn amazon" href="https://a.co/d/017BkD9j" target="_blank" rel="noopener noreferrer">View Volume Two on Amazon</a>
             <a class="btn" href="#cases">Continue to cases</a>
           </div>
           <div class="book-metadata" aria-label="Book metadata">
             <div class="book-meta">
-              <span class="meta-pill">ARCHIVE // VOL. I</span>
+              <span class="meta-pill">ARCHIVE // BOOK SERIES</span>
               <span class="meta-pill">FORMAT // PRINT</span>
               <span class="meta-pill">STATUS // AVAILABLE</span>
             </div>
             <div class="book-stamp">
               <strong>Recovered from the archive</strong>
-              <span>Physical volume // Authorized release</span>
+              <span>Physical books // Authorized releases</span>
             </div>
           </div>
         </div>
@@ -1967,7 +2004,7 @@
         <div class="eyebrow">Archive Network</div>
         <h2>Supporting routes for the record.</h2>
         <p>
-          Panic Operator is still the hub. The book now leads the archive, while the website keeps the wider routes for active files, sightings, and quieter returns inside the same world.
+          Panic Operator is still the hub. The books now extend the archive, while the website keeps the wider routes for active files, sightings, and quieter returns inside the same world.
         </p>
       </div>
       <div class="archive-map">
@@ -1978,7 +2015,7 @@
               <span class="meta-pill">Route // Primary</span>
             </div>
             <h3>The central record.</h3>
-            <p>Cases, instruments, transmissions, manuals, and sealed drops still resolve here first, but the book now anchors the system.</p>
+            <p>Cases, instruments, transmissions, manuals, and sealed drops still resolve here first, while the books anchor the physical side of the system.</p>
           </div>
           <a class="btn primary node-action" href="#cases">Review the canon</a>
         </article>
@@ -2329,12 +2366,13 @@
       </div>
     </section>
 
-    <section class="section reveal book-callout" aria-label="Book callout">
-      <div class="eyebrow">PHYSICAL ARCHIVE // VOL. I</div>
-      <h2>Panic Operator: Archive Files — Vol. I</h2>
-      <p>The archive exists outside the screen now.</p>
+    <section class="section reveal book-callout" aria-label="Books callout">
+      <div class="eyebrow">PHYSICAL ARCHIVE // BOOK SERIES</div>
+      <h2>Panic Operator: Archive Files</h2>
+      <p>The archive exists outside the screen now, across a growing series of books.</p>
       <div class="section-actions">
         <a class="btn amazon" href="https://a.co/d/0011kmRc" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+        <a class="btn amazon" href="https://a.co/d/017BkD9j" target="_blank" rel="noopener noreferrer">View Volume Two on Amazon</a>
       </div>
     </section>
 
@@ -2377,12 +2415,13 @@
           <p class="footer-note">The archive keeps the record without forcing a conclusion.</p>
           <div class="section-actions" style="margin-top:18px;">
             <a class="btn amazon" href="https://a.co/d/0011kmRc" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+            <a class="btn amazon" href="https://a.co/d/017BkD9j" target="_blank" rel="noopener noreferrer">View Volume Two on Amazon</a>
           </div>
         </div>
         <div class="footer-links">
           <div class="meta-row">
             <a class="btn app-store" href="https://apps.apple.com/app/id6794790065" target="_blank" rel="noopener noreferrer">Panic Operator for iOS</a>
-            <a class="btn" href="#book">Book</a>
+            <a class="btn" href="#book">Books</a>
             <a class="btn" href="#archive-network">Archive</a>
             <a class="btn" href="#cases">Cases</a>
             <a class="btn" href="#sounds">Transmissions</a>
