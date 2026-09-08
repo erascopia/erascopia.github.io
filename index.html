@@ -275,6 +275,45 @@
         linear-gradient(180deg, rgba(16,20,26,.88), rgba(8,10,13,.94));
     }
 
+    /* Keep the current investigation and case directory visible on arrival. */
+    .archive-entry {
+      margin-top: 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--panel-strong);
+    }
+
+    .archive-entry-heading {
+      margin: 0;
+      padding: 12px 22px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font: 12px/1.5 Consolas, "Liberation Mono", monospace;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .archive-entry-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .archive-entry-panel { padding: 22px; display: flex; flex-direction: column; align-items: flex-start; }
+    .archive-entry-panel + .archive-entry-panel { border-left: 1px solid var(--line); }
+    .archive-entry-current { background: linear-gradient(120deg, rgba(127,154,141,.12), transparent); }
+    .archive-entry-label { color: var(--muted); font-size: 12px; line-height: 1.5; letter-spacing: .1em; text-transform: uppercase; }
+    .archive-entry-active { color: #bdcfc2; }
+    .archive-entry-active::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 9px; border-radius: 50%; background: #bdcfc2; vertical-align: middle; }
+    .archive-entry h3 { margin: 10px 0 8px; font-size: clamp(23px, 3vw, 29px); line-height: 1.15; letter-spacing: -.03em; }
+    .archive-entry p { margin: 0 0 18px; max-width: 52ch; color: var(--muted); font-size: 16px; line-height: 1.6; }
+    .archive-entry-link { margin-top: auto; padding: 5px 0; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
+    .archive-entry-link:hover { color: #bdcfc2; }
+    .archive-entry-pending { margin-top: auto; padding: 5px 0; color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 639px) {
+      .archive-entry-grid { grid-template-columns: 1fr; }
+      .archive-entry-panel { padding: 18px; }
+      .archive-entry-heading { padding-inline: 18px; }
+      .archive-entry-panel + .archive-entry-panel { border-left: 0; border-top: 1px solid var(--line); }
+    }
+
     .hero-grid{
       display:grid;
       gap:18px;
@@ -1858,8 +1897,8 @@
       <nav class="nav" aria-label="Primary">
         <a href="#book">Books</a>
         <a href="#apps">iOS App</a>
-        <a href="#archive-network">Archive</a>
-        <a href="#cases">Cases</a>
+        <a href="/archive/archive.html">Archive</a>
+        <a href="#archive-details">Current case</a>
         <a href="#sounds">Transmissions</a>
         <a href="#manual">Manual</a>
         <a href="#wallpapers">Wallpapers</a>
@@ -1870,6 +1909,29 @@
   </header>
 
   <main id="top" class="wrap">
+    <section class="archive-entry" id="archive-details" aria-labelledby="archive-details-title">
+      <h2 class="archive-entry-heading" id="archive-details-title">Archive / Investigation desk</h2>
+      <div class="archive-entry-grid">
+        <!-- WEEKLY CASE UPDATE: replace the heading and summary with the current case.
+             When /archive/101/case.html is published, replace the pending span below with:
+             <a class="archive-entry-link" href="/archive/101/case.html">Open current case <span aria-hidden="true">↗</span></a>
+             Update the destination for each subsequent case and add that case to archive/archive.html.
+        -->
+        <article class="archive-entry-panel archive-entry-current" aria-labelledby="current-case-title">
+          <span class="archive-entry-label archive-entry-active">Active investigation</span>
+          <h3 id="current-case-title">Current case: under review</h3>
+          <p>The latest record is on the desk. Evidence is being reviewed; the details remain sealed while the case file is prepared.</p>
+          <span class="archive-entry-pending">Case file coming soon</span>
+        </article>
+        <article class="archive-entry-panel" aria-labelledby="all-cases-title">
+          <span class="archive-entry-label">Anomaly case register</span>
+          <h3 id="all-cases-title">The record stays open.</h3>
+          <p>Unexplained incidents, recovered evidence, and unanswered questions. Find every published case in the growing anomaly archive.</p>
+          <a class="archive-entry-link" href="/archive/archive.html">Browse all cases <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
     <section class="hero reveal">
       <div class="hero-grid">
         <div class="hero-copy">
@@ -1881,7 +1943,7 @@
           </p>
           <div class="cta-row" style="margin-top:18px;">
             <a class="btn app-store" href="https://apps.apple.com/app/id6794790065" target="_blank" rel="noopener noreferrer">Get the iOS App</a>
-            <a class="btn" href="#archive-network">Enter the Archive</a>
+            <a class="btn" href="/archive/archive.html">Enter the Archive</a>
           </div>
           <div class="archive-status" aria-label="Archive status">
             <div class="chip">Archive status<strong>Active</strong></div>

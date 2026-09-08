@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101310">
+  <meta name="description" content="The Panic Operator anomaly case register. A growing index of unexplained incidents, recovered evidence, witness accounts, and unresolved records from the main archive.">
+  <meta property="og:title" content="Anomaly Archive — Panic Operator">
+  <meta property="og:description" content="Recovered records. Unexplained incidents. Conclusions pending. Explore the Panic Operator anomaly case register.">
+  <meta property="og:type" content="website">
+  <title>Anomaly Archive — Panic Operator</title>
+  <style>
+    :root { color-scheme: dark; --bg: #101310; --paper: #deded0; --muted: #a4ab9e; --line: #353d32; --accent: #c3cc99; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--paper); font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.65; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .15; background: repeating-linear-gradient(0deg, transparent 0 3px, #80916d18 3px 4px); z-index: 2; }
+    a { color: inherit; text-underline-offset: 5px; }
+    a:hover { color: #eef4cc; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+    .mono, nav, .eyebrow, .label, .register-head, .status, footer { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+    .skip { position: absolute; top: -100px; left: 20px; padding: 12px; background: var(--bg); z-index: 5; }
+    .skip:focus { top: 10px; }
+    .wrap { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
+    header { border-bottom: 1px solid var(--line); }
+    .masthead { min-height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+    .mark { display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid var(--muted); font: 19px Georgia, serif; }
+    .brand strong { display: block; font-size: 14px; letter-spacing: .14em; }
+    .brand small { display: block; color: var(--muted); font-size: 12px; letter-spacing: .12em; margin-top: 3px; }
+    nav { display: flex; gap: 24px; font-size: 13px; }
+    nav a { text-decoration: none; }
+    .hero { position: relative; padding: 62px 0 42px; border-bottom: 1px solid var(--line); }
+    .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 12px; vertical-align: middle; box-shadow: 0 0 14px #c3cc9944; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 255px; gap: 48px; align-items: center; }
+    h1 { margin: 23px 0 21px; font-weight: normal; font-size: clamp(48px, 7.8vw, 90px); letter-spacing: -.055em; line-height: 1; }
+    h1 span { display: block; color: var(--accent); font-style: italic; }
+    .lead { max-width: 590px; color: var(--muted); margin: 0; font-size: 19px; }
+    .docket { border: 1px solid var(--line); padding: 23px; background: linear-gradient(135deg, #c3cc9908, transparent); transform: rotate(2deg); }
+    .docket-title { margin: 0 0 20px; font-size: 12px; letter-spacing: .14em; color: var(--muted); }
+    dl { margin: 0; }
+    .docket dl > div { padding: 10px 0; border-top: 1px solid var(--line); }
+    dt { color: var(--muted); font-size: 12px; }
+    dd { margin: 3px 0 0; font-size: 13px; }
+    .stamp { display: inline-block; margin-top: 19px; border: 1px solid #b5bd88; color: var(--accent); padding: 3px 8px; font-size: 12px; letter-spacing: .1em; }
+    .brief { display: grid; grid-template-columns: 170px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+    .label { margin: 3px 0; color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .brief p { margin: 0; max-width: 780px; }
+    .brief p + p { margin-top: 13px; color: var(--muted); }
+    .register { padding: 40px 0; }
+    .section-title { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; margin-bottom: 20px; }
+    h2 { font-weight: normal; font-size: 31px; margin: 0; letter-spacing: -.025em; }
+    .status { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .09em; }
+    .register-head { padding: 12px 20px; border-block: 1px solid var(--line); color: var(--muted); font-size: 12px; letter-spacing: .09em; display: flex; justify-content: space-between; }
+    .case-list { padding: 0; margin: 0; list-style: none; }
+    .case-link { display: grid; grid-template-columns: 135px 1fr auto; align-items: center; gap: 24px; padding: 23px 20px; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .15s; }
+    .case-link:hover { background: #c3cc990a; }
+    .case-id { font-size: 13px; color: var(--accent); }
+    .case-link h3 { font-size: 23px; font-weight: normal; margin: 0; }
+    .case-link p { color: var(--muted); margin: 5px 0 0; font-size: 16px; }
+    .empty { position: relative; padding: 40px 24px; border-bottom: 1px solid var(--line); background: repeating-linear-gradient(135deg, transparent 0 12px, #c3cc9903 12px 13px); }
+    .empty h3 { font-weight: normal; font-size: 25px; margin: 0 0 8px; }
+    .empty p { max-width: 630px; color: var(--muted); margin: 0; }
+    .empty .label { display: block; margin-top: 22px; }
+    .case-list:has(.case-link) + .empty { display: none; }
+    .note { display: flex; gap: 20px; align-items: baseline; margin-top: 18px; color: var(--muted); font-size: 14px; }
+    .note p { margin: 0; }
+    details { margin-bottom: 44px; border-block: 1px solid var(--line); }
+    summary { cursor: pointer; padding: 16px 0; font-size: 16px; }
+    details p { max-width: 760px; color: var(--muted); margin: 0 0 20px; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0 35px; color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    @media (max-width: 700px) {
+      .wrap { width: calc(100% - 36px); }
+      .masthead { padding-block: 18px; align-items: flex-start; flex-direction: column; gap: 14px; }
+      nav { gap: 22px; }
+      .hero { padding-top: 35px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .docket { transform: none; padding: 18px; }
+      .docket dl { display: flex; flex-wrap: wrap; gap: 12px 30px; }
+      .docket-title { margin-bottom: 10px; }
+      .stamp { margin-top: 10px; }
+      .brief { grid-template-columns: 1fr; gap: 13px; }
+      .section-title { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .case-link { grid-template-columns: 1fr auto; gap: 12px; padding-inline: 12px; }
+      .case-id { grid-column: 1 / -1; }
+      .note { flex-direction: column; gap: 6px; }
+      .empty { padding: 28px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .case-link { transition: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to archive</a>
+  <header>
+    <div class="wrap masthead">
+      <a class="brand mono" href="../index.html" aria-label="Panic Operator home">
+        <span class="mark" aria-hidden="true">⌁</span>
+        <span><strong>PANIC OPERATOR</strong><small>RECORDS &amp; ANOMALIES DIVISION</small></span>
+      </a>
+      <nav aria-label="Archive navigation"><a href="../index.html">← Main site</a><a href="#case-register">Case register ↓</a></nav>
+    </div>
+  </header>
+  <main class="wrap" id="main">
+    <section class="hero" aria-labelledby="archive-title">
+      <div class="eyebrow">Archive index / Public records</div>
+      <div class="hero-grid">
+        <div>
+          <h1 id="archive-title">Anomaly<span>Archive.</span></h1>
+          <p class="lead">A record of things that do not fit. Unexplained incidents, recovered fragments, and cases that remain open long after the recording ends.</p>
+        </div>
+        <aside class="docket mono" aria-label="Archive information">
+          <p class="docket-title">INDEX CONTROL SHEET</p>
+          <dl>
+            <div><dt>Collection</dt><dd>Panic Operator</dd></div>
+            <div><dt>Record type</dt><dd>Anomaly case files</dd></div>
+            <div><dt>Disposition</dt><dd>Ongoing / unresolved</dd></div>
+          </dl>
+          <span class="stamp">PRESERVE THE RECORD</span>
+        </aside>
+      </div>
+    </section>
+    <section class="brief" aria-labelledby="purpose-title">
+      <h2 class="label" id="purpose-title">01 / Archive brief</h2>
+      <div>
+        <p>This index brings together selected anomaly cases from the main Panic Operator archive. It exists to give each incident a lasting place in the record, beyond a passing post or a fragment of footage.</p>
+        <p>Individual files may contain CCTV observations, witness accounts, recovered images, unusual transmissions, and investigation notes. Each entry will lead to its own case page, keeping the available evidence and unanswered questions together.</p>
+      </div>
+    </section>
+    <section class="register" id="case-register" aria-labelledby="register-title">
+      <div class="section-title"><h2 id="register-title">Case register</h2><span class="status">Collection status: expanding</span></div>
+      <div class="register-head" aria-hidden="true"><span>REFERENCE / CASE FILE</span><span>ACCESS</span></div>
+      <!-- ADD CASES HERE: copy the sample <li> below out of this comment into the list.
+           Replace the reference, title, summary, and href with your real case details.
+           The awaiting-transfer notice hides automatically when a .case-link is added.
+      -->
+      <ul class="case-list" aria-label="Published anomaly cases">
+        <!--
+        <li>
+          <a class="case-link" href="./cases/your-case.html">
+            <span class="case-id mono">PO-AR-001</span>
+            <div><h3>Your case title</h3><p>A short description of the incident and the evidence preserved.</p></div>
+            <span class="status">Open file ↗</span>
+          </a>
+        </li>
+        -->
+      </ul>
+      <div class="empty">
+        <h3>Awaiting the first transfer.</h3>
+        <p>The register is prepared. Case pages will appear here as records are transferred from the main archive. No individual files have been published in this index yet.</p>
+        <span class="label">End of available index / Further records pending</span>
+      </div>
+      <div class="note"><span class="label">Source collection</span><p>Earlier reports and ongoing observations remain in the <a href="https://www.facebook.com/panicoperator">main Panic Operator archive ↗</a>.</p></div>
+    </section>
+    <details>
+      <summary>A note on the record</summary>
+      <p>These files belong to the Panic Operator anomaly universe. The archive preserves accounts as they are presented; an observation is not a conclusion. Missing context, conflicting testimony, and unresolved details remain part of the case.</p>
+    </details>
+  </main>
+  <footer><div class="wrap footer-inner"><span>PANIC OPERATOR / ANOMALY ARCHIVE</span><span>The record remains open.</span><a href="#main">Return to index ↑</a></div></footer>
+</body>
+</html>
