@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#070708"><meta name="description" content="The backpack reaches the lobby; its passenger returns only in a rooftop view, carrying a different bag."><title>FILE 010 — The Elevator That Arrived Without Him | PANIC OPERATOR</title><style>
+:root { color-scheme:dark; --bg:#070708; --ink:#d8d9cf; --muted:#a0a497; --green:#8fba7a; --amber:#c4a574; --line:#30352e; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; --sans:"Arial Narrow","Helvetica Neue",Arial,sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.75 var(--sans); }
+body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.13; background:repeating-linear-gradient(0deg,transparent 0 3px,#7f947b18 3px 4px); }
+a { color:var(--green); text-underline-offset:5px; }
+a:hover { color:var(--ink); }
+a:focus-visible,video:focus-visible { outline:2px solid var(--amber); outline-offset:5px; }
+.folder { width:min(960px,calc(100% - 40px)); margin:0 auto; }
+.stamp { padding:28px 0 22px; border-bottom:1px solid var(--line); font:12px/1.8 var(--mono); letter-spacing:.12em; }
+.stamp p { margin:0; color:var(--green); }
+.stamp-row { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:14px; }
+.status { color:var(--amber); }
+h1 { font:600 clamp(34px,6.8vw,68px)/1.06 var(--sans); letter-spacing:-.035em; max-width:750px; margin:34px 0; text-wrap:balance; }
+h2 { margin:0 0 22px; color:var(--amber); font:13px/1.5 var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+h3 { font:500 24px/1.25 var(--sans); margin:8px 0; }
+p { margin:0 0 16px; }
+.player { width:min(100%,420px); margin:0 auto 36px; }
+video { display:block; width:100%; aspect-ratio:9/16; background:#000; border:1px solid var(--line); object-fit:contain; }
+.player p { font:12px/1.6 var(--mono); color:var(--muted); margin:12px 0 0; }
+.section { border-top:1px solid var(--line); padding:30px 0; }
+.log { max-width:70ch; font-size:18px; }
+.plates { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 24px; }
+figure { margin:0; min-width:0; }
+figure img { display:block; width:100%; height:auto; border:1px solid var(--line); background:#000; }
+figcaption { padding:15px 0 4px; font-size:15px; line-height:1.6; }
+.plate-label { color:var(--green); font:12px/1.6 var(--mono); letter-spacing:.04em; }
+figcaption p { margin:10px 0 0; color:var(--muted); }
+.notes { padding:0; margin:0; list-style:none; font:14px/1.8 var(--mono); }
+.notes li { border-bottom:1px solid #20241f; padding:11px 0; }
+.actions { display:flex; align-items:center; gap:24px; flex-wrap:wrap; padding:32px 0; border-top:1px solid var(--line); font:14px/1.6 var(--mono); }
+.button { display:inline-block; padding:14px 20px; border:1px solid var(--green); background:#11170f; color:var(--green); text-decoration:none; }
+footer { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; border-top:1px solid var(--line); margin-top:16px; padding:22px 0 36px; color:var(--muted); font:12px/1.6 var(--mono); }
+.register { list-style:none; padding:0; margin:30px 0 50px; border-top:1px solid var(--line); }
+.register a { display:grid; grid-template-columns:110px 1fr auto; gap:22px; padding:28px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+.register a:hover { background:#10130f; }
+.register p { color:var(--muted); margin:10px 0 0; }
+.reference { color:var(--green); font:13px/1.8 var(--mono); }
+@media(max-width:600px) { .folder { width:calc(100% - 32px); } .stamp { padding-top:22px; } .plates { grid-template-columns:1fr; gap:30px; } .register a { grid-template-columns:1fr; gap:8px; } h1 { margin:26px 0; } .actions { align-items:flex-start; flex-direction:column; gap:20px; } }
+</style></head>
+<body><main class="folder">
+<header class="stamp"><p>PANIC OPERATOR ARCHIVE</p><div class="stamp-row"><span>FILE 010</span><span class="status">STATUS: FRAGMENT PUBLIC</span></div></header>
+<h1>The Elevator That Arrived Without Him</h1>
+<div class="player"><video controls playsinline preload="metadata" poster="images/cover.png" src="https://aws-sam-cli-managed-default-samclisourcebucket-caxwqk2gkjbq.s3.us-east-2.amazonaws.com/panic_operator/archives/archive_10.mov" aria-label="FILE 010 recovered elevator fragment"></video><p>Fragment only. Full record in sealed tray.</p></div>
+<section class="section" aria-labelledby="log"><h2 id="log">01 / Case log</h2><p class="log">A passenger enters on Floor 2 with a black backpack. The lobby view retains the bag and a dark-clothed figure, but not the passenger in the light jacket. A later rooftop view shows a similar light-jacketed man carrying a grocery bag. We retain the sequence; no recovered camera bridges the changes.</p></section>
+<section class="section" aria-labelledby="evidence"><h2 id="evidence">02 / Evidence stills</h2><div class="plates"><figure><img src="images/shot-1.png" alt="CAM 04 / 21:18:03 — Something along the route" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 01 / CAM 04 / 21:18:03</span><h3>Something along the route</h3><p>A dark, wing-like shape occupies the corridor ahead of the passenger. Its identity is unresolved in the supplied record; no interaction is established.</p></figcaption></figure>
+<figure><img src="images/shot-2.png" alt="CAM 04 / 21:27:37 — The missing interval" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 02 / CAM 04 / 21:27:37</span><h3>The missing interval</h3><p>The light jacket and backpack reach Floor 2. The displayed clock has advanced 9 minutes 34 seconds since the corridor view; the intervening movement is absent.</p></figcaption></figure>
+<figure><img src="images/shot-3.png" alt="CAM 02 / 21:27:41 — The other jacket" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 03 / CAM 02 / 21:27:41</span><h3>The other jacket</h3><p>The passenger wears a light jacket at the threshold. The figure in the reflective wall wears dark clothing; the frame does not establish whether this is a reflection or another occupant.</p></figcaption></figure>
+<figure><img src="images/shot-4.png" alt="CAM L1 / 21:16:37 — A clock before entry" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 04 / CAM L1 / 21:16:37</span><h3>A clock before entry</h3><p>The passenger and backpack appear inside the cabin. The overlay precedes the Floor 2 entry by eleven minutes, preventing a reliable clock-based reconstruction.</p></figcaption></figure>
+<figure><img src="images/shot-5.png" alt="CAM 01 / 21:29:22 — The bag arrives" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 05 / CAM 01 / 21:29:22</span><h3>The bag arrives</h3><p>A black backpack stands on the cabin floor beneath the dark figure. The light-jacketed passenger is absent from the visible lobby frame; no removal of the bag is shown.</p></figcaption></figure>
+<figure><img src="images/shot-6.png" alt="CAM R1 / 21:43:52 — Different property" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 06 / CAM R1 / 21:43:52</span><h3>Different property</h3><p>A similar light-jacketed man holds a translucent grocery bag on the roof. The backpack is not visible, and no recovered view records the change of property.</p></figcaption></figure>
+<figure><img src="images/shot-7.png" alt="CAM R1 / 21:43:54 — The observation marker" width="1290" height="2796" loading="lazy"><figcaption><span class="plate-label">PLATE 07 / CAM R1 / 21:43:54</span><h3>The observation marker</h3><p>The foreground crow lifts away while the grocery bag remains in the man&#x27;s hand. The bird&#x27;s movement supplies no missing link between the lobby and roof.</p></figcaption></figure></div></section>
+<section class="section" aria-labelledby="notes"><h2 id="notes">03 / Operator notes</h2><ul class="notes"><li>CAM / PLACE: 04, 02, L1, 01, R1 / residential corridor, elevator, lobby, roof.</li><li>TIME: 14 June 2024 on the overlays; camera clocks do not establish a reliable chronology.</li><li>CONTINUITY: corridor to threshold shows a displayed gap of 9 minutes 34 seconds.</li><li>REFLECTION: the dark figure in CAM 02 does not match the visible light jacket.</li><li>OBJECT BREAK: backpack in the lobby; grocery bag on the roof. No exchange is recorded.</li><li>OBSERVATION: the rooftop crow is retained as a marker, not assigned a cause.</li><li>OPEN QUESTION: who occupies the elevator when the backpack arrives?</li></ul></section>
+<nav class="actions" aria-label="Case actions"><a class="button" href="https://www.patreon.com/cw/PanicOperator">FULL RECORD → Patreon</a><a href="/archive.html">Return to archive →</a></nav>
+<footer><span>Fictional CCTV archive. You decide what happened.</span><span>FILE 010</span></footer>
+</main></body></html>
